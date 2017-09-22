@@ -14,7 +14,6 @@ class CompetenceController extends Controller
      */
     public function index()
     {
-        //
         return view('competences.index');
     }
 

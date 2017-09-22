@@ -15,6 +15,10 @@ class CreateEvaluationsTable extends Migration
     {
         Schema::create('evaluations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('titulo');
+            $table->date('fecha');
+            $table->time('HoraInicio');
+            $table->time('HoraFin');
             $table->timestamps();
         });
     }
