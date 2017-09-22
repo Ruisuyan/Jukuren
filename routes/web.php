@@ -13,3 +13,10 @@
 
 Route::get('/', 'HomeController@index')->name("main");
 Route::get('/minor', 'HomeController@minor')->name("minor");
+
+Route::resource('competencias', 'CompetenceController');
+Route::resource('cursos', 'CourseController');
+Route::resource('alumnos', 'StudentController');
+Route::resource('desempenhos', 'PerformanceController');
+Route::resource('docentes', 'TeacherController');
+Route::resource('evaluaciones', 'EvaluationController');
