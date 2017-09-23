@@ -14,7 +14,11 @@ class PerformanceController extends Controller
      */
     public function index()
     {
-        return view('performances.index');
+        $performances = Performance::all();        
+        $data = [
+            'performances' => $performances,
+        ];
+        return view('performances.index',$data);
     }
 
     /**

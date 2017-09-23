@@ -14,7 +14,11 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return view('teachers.index');
+        $teachers = Teacher::all();        
+        $data = [
+            'teachers' => $teachers,
+        ];
+        return view('teachers.index',$data);
     }
 
     /**

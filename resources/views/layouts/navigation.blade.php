@@ -19,7 +19,7 @@
                 </div>
             </li>
             <li class="{{ isActiveRoute('main') }}">
-                <a href="{{ url('/') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Main view</span></a>
+                <a href="{{ url('/') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Inicio</span></a>
             </li>
             <li>
                 <a href="{{ route('competencias.index') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Competencias</span> </a>

@@ -14,7 +14,11 @@ class CompetenceController extends Controller
      */
     public function index()
     {
-        return view('competences.index');
+        $competences = Competence::all();        
+        $data = [
+            'competences' => $competences,
+        ];
+        return view('competences.index',$data);
     }
 
     /**

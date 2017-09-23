@@ -14,7 +14,11 @@ class EvaluationController extends Controller
      */
     public function index()
     {
-        return view('evaluations.index');
+        $evaluations = Evaluation::all();        
+        $data = [
+            'evaluations' => $evaluations,
+        ];
+        return view('evaluations.index',$data);
     }
 
     /**
