@@ -28,7 +28,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('students.create');
     }
 
     /**
@@ -39,7 +39,17 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $student = new Student;
+            $student->codigo = $request['codigo'];
+            $student->nombres = $request['nombres'];
+            $student->apellidoPaterno = $request['apellidoPaterno'];
+            $student->apellidoMaterno = $request['apellidoMaterno'];
+            $student->save();
+            return redirect()->route('alumnos.index')->with('success','yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning','doh');
+        }
     }
 
     /**

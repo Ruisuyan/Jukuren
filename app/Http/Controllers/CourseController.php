@@ -28,7 +28,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('courses.create');
     }
 
     /**
@@ -39,7 +39,18 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $course = new Course;
+            $course->codigo = $request['codigo'];
+            $course->nombre = $request['nombre'];
+            $course->descripcion = $request['descripcion'];
+            $course->ciclo = $request['ciclo'];
+            $course->save();
+
+            return redirect()->route('cursos.index')->with('success','yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning','doh');
+        }
     }
 
     /**

@@ -28,7 +28,7 @@ class PerformanceController extends Controller
      */
     public function create()
     {
-        //
+        return view('performances.create');
     }
 
     /**
@@ -39,7 +39,15 @@ class PerformanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $performance = new Performance;           
+            $performance->descripcion = $request['descripcion'];
+            $performance->save();
+
+            return redirect()->route('desempenhos.index')->with('success','yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning','doh');
+        }
     }
 
     /**

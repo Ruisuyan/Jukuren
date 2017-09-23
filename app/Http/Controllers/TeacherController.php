@@ -28,7 +28,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        return view('teachers.create');
     }
 
     /**
@@ -39,7 +39,22 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $teacher = new Teacher;
+            $teacher->codigo = $request['codigo'];
+            $teacher->nombres = $request['nombres'];
+            $teacher->apellidoPaterno = $request['apellidoPaterno'];
+            $teacher->apellidoMaterno = $request['apellidoMaterno'];
+            $teacher->oficina = $request['oficina'];
+            $teacher->email = $request['email'];
+            $teacher->telefono = $request['telefono'];
+            $teacher->tiempoCompleto = $request['tiempoCompleto'];
+            $teacher->save();
+
+            return redirect()->route('docentes.index')->with('success','yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning','doh');
+        }
     }
 
     /**

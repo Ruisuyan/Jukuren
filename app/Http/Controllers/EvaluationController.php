@@ -28,7 +28,7 @@ class EvaluationController extends Controller
      */
     public function create()
     {
-        //
+        return view('evaluations.create');
     }
 
     /**
@@ -39,7 +39,19 @@ class EvaluationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $evaluation = new Evaluation;
+            $evaluation->titulo = $request['titulo'];            
+            $evaluation->descripcion = $request['descripcion'];
+            $evaluation->fecha = $request['fecha'];            
+            $evaluation->horaInicio = $request['horaInicio'];            
+            $evaluation->horaFin = $request['horaFin'];            
+            $competence->save();
+
+            return redirect()->route('competencias.index')->with('success','yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning','doh');
+        }
     }
 
     /**

@@ -28,7 +28,7 @@ class CompetenceController extends Controller
      */
     public function create()
     {
-        //
+        return view('competences.create');
     }
 
     /**
@@ -40,6 +40,17 @@ class CompetenceController extends Controller
     public function store(Request $request)
     {
         //
+        try{
+            $competence = new Competence;
+            $competence->codigo = $request['codigo'];
+            $competence->nombre = $request['nombre'];
+            $competence->descripcion = $request['descripcion'];
+            $competence->save();
+
+            return redirect()->route('competencias.index')->with('success','yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning','doh');
+        }
     }
 
     /**
