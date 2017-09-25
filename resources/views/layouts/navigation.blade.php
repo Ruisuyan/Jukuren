@@ -15,7 +15,7 @@
                     </ul>
                 </div>
                 <div class="logo-element">
-                    SKR
+                    SEC
                 </div>
             </li>
             <li>

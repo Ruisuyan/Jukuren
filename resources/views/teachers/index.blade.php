@@ -36,9 +36,9 @@
                         <tbody>
                             @foreach($teachers as $teacher)
                             <tr> 
+                                <td>{{$teacher->codigo}}</td>
                                 <td>{{$teacher->nombres}}</td>
-                                <td>{{$teacher->apellidoPaterno}}</td>
-                                <td>{{$teacher->apellidoMaterno}}</td>
+                                <td>{{$teacher->apellidoPaterno}}</td>                                
                             </tr> 
                             @endforeach
                         </tbody>

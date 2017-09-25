@@ -8,7 +8,7 @@
                     <div class="col-lg-12">
                         <div class="text-center m-t-lg">
                             <h1>
-                                Bienvenido a Sukiru - Sistema de Evaluacion y Seguimiento por Competencias
+                                Bienvenido a SEC - Sistema de Evaluacion por Competencias
                             </h1>
                             <small>
                                 
