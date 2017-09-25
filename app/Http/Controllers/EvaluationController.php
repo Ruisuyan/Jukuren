@@ -45,8 +45,9 @@ class EvaluationController extends Controller
             $evaluation->descripcion = $request['descripcion'];
             $evaluation->fecha = $request['fecha'];            
             $evaluation->horaInicio = $request['horaInicio'];            
-            $evaluation->horaFin = $request['horaFin'];            
-            $competence->save();
+            $evaluation->horaFin = $request['horaFin'];
+            $evaluation->estado = 'Pendiente';
+            $evaluation->save();
 
             return redirect()->route('competencias.index')->with('success','yay');
         }catch(Exception $e){

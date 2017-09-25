@@ -40,10 +40,24 @@
                     <input class="form-control" type="date" name="fecha" id="fecha" value=""/>
                 </div>
             </div>
+
+            <div class="form-group">
+                {{Form::label('Hora de inicio',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                <div class="col-md-4">
+                    <input class="form-control" type="time" name="horaInicio" id="horaInicio" value=""/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{Form::label('Hora de finalización',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                <div class="col-md-4">
+                    <input class="form-control" type="time" name="horaFin" id="horaFin" value=""/>
+                </div>
+            </div>
             
             <div class="row">
                 <div class="col-md-8 col-sm-12 col-xs-12">
-                    {{--  {{Form::submit('Guardar', ['class'=>'btn btn-success pull-right'])}}  --}}
+                    {{Form::submit('Guardar', ['class'=>'btn btn-success pull-right'])}}
                     <a class="btn btn-default pull-right" href="{{ route('competencias.index') }}">Cancelar</a>
                 </div>
             </div>

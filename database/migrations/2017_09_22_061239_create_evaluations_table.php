@@ -20,6 +20,7 @@ class CreateEvaluationsTable extends Migration
             $table->date('fecha');
             $table->time('horaInicio');
             $table->time('horaFin');
+            $table->string('estado');
             $table->timestamps();
         });
     }
