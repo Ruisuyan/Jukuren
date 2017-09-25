@@ -48,7 +48,11 @@ class TeacherController extends Controller
             $teacher->oficina = $request['oficina'];
             $teacher->email = $request['email'];
             $teacher->telefono = $request['telefono'];
-            $teacher->tiempoCompleto = $request['tiempoCompleto'];
+            $teacher->tiempoCompleto =  0;
+            if($request['tiempoCompleto']){
+                $teacher->tiempoCompleto = $request['tiempoCompleto'];
+            }            
+            //dd($teacher);
             $teacher->save();
 
             return redirect()->route('docentes.index')->with('success','yay');

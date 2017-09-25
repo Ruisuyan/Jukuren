@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Docentes')
 @section('content')
 
 
@@ -72,7 +73,7 @@
             <div class="form-group">
                 {{Form::label('¿Es docente a tiempo completo?',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    <input class="form-control" type="checkbox" name="tiempoCompleto" id="tiempoCompleto" value=""/>
+                    <input class="form-control" type="checkbox" name="tiempoCompleto" id="tiempoCompleto" value="1"/>
                 </div>
             </div>
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Main page')
+@section('title', 'Página Principal')
 
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
@@ -8,10 +8,10 @@
                     <div class="col-lg-12">
                         <div class="text-center m-t-lg">
                             <h1>
-                                Bienvenido al proyecto SUKIRU
+                                Bienvenido a Sukiru - Sistema de Evaluacion y Seguimiento por Competencias
                             </h1>
                             <small>
-                                Proyecto de tesis para obtener bachillerato
+                                
                             </small>
                         </div>
                     </div>
