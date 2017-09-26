@@ -94,9 +94,26 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teacher $teacher)
+    public function update(Request $request, $id)
     {
-        //
+        try{
+            $teacher = Teacher::find($id);
+            $teacher->codigo = $request['codigo'];
+            $teacher->nombres = $request['nombres'];
+            $teacher->apellidoPaterno = $request['apellidoPaterno'];
+            $teacher->apellidoMaterno = $request['apellidoMaterno'];
+            $teacher->oficina = $request['oficina'];
+            $teacher->email = $request['email'];
+            $teacher->telefono = $request['telefono'];
+            $teacher->tiempoCompleto =  0;
+            if($request['tiempoCompleto']){
+                $teacher->tiempoCompleto = $request['tiempoCompleto'];
+            }
+            $teacher->save();
+            return redirect()->route('docente.index', $id)->with('success','yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning', 'doh');
+        }
     }
 
     /**
