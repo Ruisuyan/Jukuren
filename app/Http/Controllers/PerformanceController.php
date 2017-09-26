@@ -44,7 +44,7 @@ class PerformanceController extends Controller
             $performance->descripcion = $request['descripcion'];
             $performance->save();
 
-            return redirect()->route('desempenhos.index')->with('success','yay');
+            return redirect()->route('desempenho.index')->with('success','yay');
         }catch(Exception $e){
             return redirect()->back()->with('warning','doh');
         }

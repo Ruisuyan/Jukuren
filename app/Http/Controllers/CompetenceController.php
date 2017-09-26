@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Competence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CompetenceController extends Controller
 {
@@ -47,7 +48,7 @@ class CompetenceController extends Controller
             $competence->descripcion = $request['descripcion'];
             $competence->save();
 
-            return redirect()->route('competencias.index')->with('success','yay');
+            return redirect()->route('competencia.index')->with('success','yay');
         }catch(Exception $e){
             return redirect()->back()->with('warning','doh');
         }
@@ -70,9 +71,14 @@ class CompetenceController extends Controller
      * @param  \App\Competence  $competence
      * @return \Illuminate\Http\Response
      */
-    public function edit(Competence $competence)
+    public function edit($id)
     {
-        //
+        $competence = Competence::find($id);
+        $data = [
+            'competence' => $competence,
+        ];
+        return view('competences.edit',$data);
+        
     }
 
     /**
@@ -82,9 +88,19 @@ class CompetenceController extends Controller
      * @param  \App\Competence  $competence
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Competence $competence)
+    public function update(Request $request, $id)
     {
-        //
+        try {
+
+            $competence = Competence::find($id);
+            $competence->codigo = $request['codigo'];
+            $competence->nombre = $request['nombre'];            
+            $competence->descripcion = $request['descripcion'];                        
+            $competence->save();
+            return redirect()->route('competencia.index',$id)->with('success', 'yay');
+        } catch (Exception $e) {
+            return redirect()->back()->with('warning', 'doh');
+        }
     }
 
     /**

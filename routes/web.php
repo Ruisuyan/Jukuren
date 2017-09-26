@@ -14,9 +14,9 @@
 Route::get('/', 'HomeController@index')->name("main");
 Route::get('/minor', 'HomeController@minor')->name("minor");
 
-Route::resource('competencias', 'CompetenceController');
-Route::resource('cursos', 'CourseController');
-Route::resource('alumnos', 'StudentController');
-Route::resource('desempenhos', 'PerformanceController');
-Route::resource('docentes', 'TeacherController');
-Route::resource('evaluaciones', 'EvaluationController');
+Route::resource('competencia', 'CompetenceController');
+Route::resource('curso', 'CourseController');
+Route::resource('alumno', 'StudentController');
+Route::resource('desempenho', 'PerformanceController');
+Route::resource('docente', 'TeacherController');
+Route::resource('evaluacion', 'EvaluationController');

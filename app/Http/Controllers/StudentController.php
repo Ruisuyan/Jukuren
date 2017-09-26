@@ -46,7 +46,7 @@ class StudentController extends Controller
             $student->apellidoPaterno = $request['apellidoPaterno'];
             $student->apellidoMaterno = $request['apellidoMaterno'];
             $student->save();
-            return redirect()->route('alumnos.index')->with('success','yay');
+            return redirect()->route('alumno.index')->with('success','yay');
         }catch(Exception $e){
             return redirect()->back()->with('warning','doh');
         }

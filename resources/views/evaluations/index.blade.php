@@ -19,7 +19,7 @@
             <div class="panel-body">
                 <div class="row">   
                     <div class="col-md-12">
-                        <a href="{{route('evaluaciones.create')}}">
+                        <a href="{{route('evaluacion.create')}}">
                             {{Form::button('<i class="fa fa-plus"></i> Nueva Evaluacion',['class'=>'btn btn-success pull-right'])}}
                         </a>
                     </div>                    

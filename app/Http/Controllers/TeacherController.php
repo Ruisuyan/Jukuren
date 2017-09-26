@@ -55,7 +55,7 @@ class TeacherController extends Controller
             //dd($teacher);
             $teacher->save();
 
-            return redirect()->route('docentes.index')->with('success','yay');
+            return redirect()->route('docente.index')->with('success','yay');
         }catch(Exception $e){
             return redirect()->back()->with('warning','doh');
         }
@@ -78,9 +78,13 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teacher $teacher)
+    public function edit($id)
     {
-        //
+        $teacher = Teacher::find($id);
+        $data = [
+            'teacher' => $teacher,
+        ];
+        return view('teachers.edit',$data);
     }
 
     /**

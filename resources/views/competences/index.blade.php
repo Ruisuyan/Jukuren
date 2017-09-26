@@ -19,7 +19,7 @@
             <div class="panel-body">
                 <div class="row">   
                     <div class="col-md-12">
-                        <a href="{{route('competencias.create')}}">
+                        <a href="{{route('competencia.create')}}">
                             {{Form::button('<i class="fa fa-plus"></i> Nueva Competencia',['class'=>'btn btn-success pull-right'])}}
                         </a>
                     </div>
@@ -29,17 +29,26 @@
                     <table class="table table-list-search table-striped responsive-utilities jambo_table bulk_action"> 
                         <thead>
                             <tr class="headings">
-                                <th class="column-title">Codigo</th>
-                                <th class="column-title">Nombre</th>
+                                <th class="centered column-title">Codigo</th>
+                                <th class="centered column-title">Nombre</th>
                                 <th class="column-title">Descripcion</th>
+                                <th class="centered column-title last">Acciones</th>
                             </tr>
                         </thead> 
                         <tbody>
                             @foreach($competences as $competence)
                             <tr> 
-                                <td>{{$competence->codigo}}</td> 
-                                <td>{{$competence->nombre}}</td> 
-                                <td>{{$competence->descripcion}}</td>                             
+                                <td class="centered">{{$competence->codigo}}</td> 
+                                <td class="centered">{{$competence->nombre}}</td> 
+                                <td>{{$competence->descripcion}}</td>
+                                <td class="centered">
+                                    <a href="{{route('competencia.edit',$competence->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$competence->id}}">
+                                        <i class="fa fa-remove"></i>
+                                    </a>
+                                </td>                             
                             </tr> 
                             @endforeach
                         </tbody>

@@ -22,22 +22,22 @@
                 <a href="{{ url('/') }}"><i class="fa fa-home"></i> <span class="nav-label">Inicio</span></a>
             </li>
             <li>
-                <a href="{{ route('competencias.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Competencias</span> </a>
+                <a href="{{ route('competencia.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Competencias</span> </a>
             </li>
             <li>
-                <a href="{{ route('cursos.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Cursos</span> </a>
+                <a href="{{ route('curso.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Cursos</span> </a>
             </li>
             <li>
-                <a href="{{ route('desempenhos.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Desempeños</span> </a>
+                <a href="{{ route('desempenho.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Desempeños</span> </a>
             </li>
             <li>
-                <a href="{{ route('docentes.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Docentes</span> </a>
+                <a href="{{ route('docente.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Docentes</span> </a>
             </li>
             <li>
-                <a href="{{ route('alumnos.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Alumnos</span> </a>
+                <a href="{{ route('alumno.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Alumnos</span> </a>
             </li>
             <li>
-                <a href="{{ route('evaluaciones.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Evaluaciones</span> </a>
+                <a href="{{ route('evaluacion.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Evaluaciones</span> </a>
             </li>
 
         </ul>

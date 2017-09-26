@@ -49,7 +49,7 @@ class EvaluationController extends Controller
             $evaluation->estado = 'Pendiente';
             $evaluation->save();
 
-            return redirect()->route('competencias.index')->with('success','yay');
+            return redirect()->route('competencia.index')->with('success','yay');
         }catch(Exception $e){
             return redirect()->back()->with('warning','doh');
         }

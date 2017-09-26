@@ -19,61 +19,61 @@
             <div class="x_title">
                 <div class="clearfix"></div>
             </div>
-            {{Form::open(['route' => 'docente.store','class' => ' form-horizontal','id'=>'formSuggestion'])}}
+            {{Form::open(['route' => ['docente.update',$teacher->id],'class' => ' form-horizontal','method' => 'put'])}}
             
             <div class="form-group">
                 {{Form::label('Codigo',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('codigo',null,['class'=>'form-control', 'required', 'maxlength' => 8])}} 
+                    {{Form::text('codigo',$teacher->codigo,['class'=>'form-control', 'required', 'maxlength' => 8])}} 
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Nombres',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('nombres',null,['class'=>'form-control', 'required', 'maxlength' => 50])}}                    
+                    {{Form::text('nombres',$teacher->nombres,['class'=>'form-control', 'required', 'maxlength' => 50])}}                    
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Apellido Paterno',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('apellidoPaterno',null,['class'=>'form-control', 'required', 'maxlength' => 50])}}
+                    {{Form::text('apellidoPaterno',$teacher->apellidoPaterno,['class'=>'form-control', 'required', 'maxlength' => 50])}}
                 </div>
             </div>
             
             <div class="form-group">
                 {{Form::label('Apellido Materno',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('apellidoMaterno',null,['class'=>'form-control', 'required', 'maxlength' => 50])}}
+                    {{Form::text('apellidoMaterno',$teacher->apellidoMaterno,['class'=>'form-control', 'required', 'maxlength' => 50])}}
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Email',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::email('email',null,['class'=>'form-control', 'required', 'maxlength' => 50])}}
+                    {{Form::email('email',$teacher->email,['class'=>'form-control', 'required', 'maxlength' => 50])}}
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Oficina',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('oficina',null,['class'=>'form-control', 'required', 'maxlength' => 8])}}
+                    {{Form::text('oficina',$teacher->oficina,['class'=>'form-control', 'required', 'maxlength' => 8])}}
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Telefono',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('telefono',null,['class'=>'form-control', 'required', 'maxlength' => 9])}}
+                    {{Form::text('telefono',$teacher->telefono,['class'=>'form-control', 'required', 'maxlength' => 9])}}
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('¿Es docente a tiempo completo?',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::checkbox('tiempoCompleto',1, false,['class'=>'form-control', 'required'])}}
+                    {{Form::checkbox('tiempoCompleto', $teacher->tiempoCompleto, true,['class'=>'form-control', 'required'])}}
                 </div>
             </div>
 

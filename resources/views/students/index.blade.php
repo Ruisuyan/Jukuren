@@ -20,7 +20,7 @@
             <div class="panel-body">
                 <div class="row">   
                     <div class="col-md-12">
-                        <a href="{{route('alumnos.create')}}">
+                        <a href="{{route('alumno.create')}}">
                             {{Form::button('<i class="fa fa-plus"></i> Nuevo Alumno',['class'=>'btn btn-success pull-right'])}}
                         </a>
                     </div>

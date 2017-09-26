@@ -18,7 +18,7 @@
             <div class="x_title">
                 <div class="clearfix"></div>
             </div>
-            {{Form::open(['route' => 'evaluaciones.store','class' => ' form-horizontal','id'=>'formSuggestion'])}}
+            {{Form::open(['route' => 'evaluacion.store','class' => ' form-horizontal','id'=>'formSuggestion'])}}
             
             <div class="form-group">
                 {{Form::label('Titulo',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
@@ -58,7 +58,7 @@
             <div class="row">
                 <div class="col-md-8 col-sm-12 col-xs-12">
                     {{Form::submit('Guardar', ['class'=>'btn btn-success pull-right'])}}
-                    <a class="btn btn-default pull-right" href="{{ route('competencias.index') }}">Cancelar</a>
+                    <a class="btn btn-default pull-right" href="{{ route('evaluacion.index') }}">Cancelar</a>
                 </div>
             </div>
 
