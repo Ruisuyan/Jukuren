@@ -20,3 +20,4 @@ Route::resource('alumno', 'StudentController');
 Route::resource('desempenho', 'PerformanceController');
 Route::resource('docente', 'TeacherController');
 Route::resource('evaluacion', 'EvaluationController');
+Route::resource('pregunta', 'QuestionController');

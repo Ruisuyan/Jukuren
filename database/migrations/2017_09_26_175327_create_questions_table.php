@@ -15,13 +15,12 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tipo')->unsigned();//1 cerrada 2 abierta 3 subir archivo
+            $table->integer('tipo');//1 cerrada 2 abierta 3 subir archivo
             $table->string('descripcion');
-            $table->integer('tiempo')->unsigned();
-            $table->float('puntaje',2,2)->unsigned();                       
-            $table->string('rpta',1)->nullable();
-            $table->integer('tamano_arch')->unsigned()->nullable();
-            $table->string('extension_arch')->nullable();
+            $table->integer('tiempo');//en minutos
+            $table->float('puntaje',3,1);                       
+            $table->string('respuesta')->nullable();            
+            $table->string('codigo')->nullable();
             $table->timestamps();
         });
     }

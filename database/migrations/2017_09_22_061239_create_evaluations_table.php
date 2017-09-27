@@ -15,14 +15,16 @@ class CreateEvaluationsTable extends Migration
     {
         Schema::create('evaluations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('titulo');
+            $table->string('nombre');
             $table->text('descripcion');
-            $table->date('fecha');
-            $table->time('horaInicio');
-            $table->time('horaFin');
-            $table->string('estado');
+            $table->date('fechaInicio');
+            $table->date('fechaFin');
+            $table->integer('duracion');
+            $table->integer('estado'); //entre pendiente corregida cancelada
+            $table->string('codigo')->nullable();
             $table->timestamps();
         });
+        //'fecha_inicio','fecha_fin','nombre','descripcion','tiempo'
     }
 
     /**

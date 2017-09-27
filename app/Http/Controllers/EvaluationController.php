@@ -41,15 +41,15 @@ class EvaluationController extends Controller
     {
         try{
             $evaluation = new Evaluation;
-            $evaluation->titulo = $request['titulo'];            
+            $evaluation->nombre = $request['nombre'];            
             $evaluation->descripcion = $request['descripcion'];
-            $evaluation->fecha = $request['fecha'];            
-            $evaluation->horaInicio = $request['horaInicio'];            
-            $evaluation->horaFin = $request['horaFin'];
-            $evaluation->estado = 'Pendiente';
+            $evaluation->fechaInicio = $request['fechaInicio'];                        
+            $evaluation->fechaFin = $request['fechaFin'];
+            $evaluation->duracion = $request['duracion'];
+            $evaluation->estado = 1;            
             $evaluation->save();
 
-            return redirect()->route('competencia.index')->with('success','yay');
+            return redirect()->route('evaluacion.index')->with('success','yay');
         }catch(Exception $e){
             return redirect()->back()->with('warning','doh');
         }
@@ -95,8 +95,14 @@ class EvaluationController extends Controller
      * @param  \App\Evaluation  $evaluation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Evaluation $evaluation)
+    public function destroy($id)
     {
-        //
+        try{
+            $evaluation = Evaluation::find($id);
+            $evaluation->delete();
+            return redirect()->route('evaluacion.index')->with('success', 'yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning', 'doh');
+        }
     }
 }

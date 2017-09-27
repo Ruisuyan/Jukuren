@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <div class="page-title">
             <div class="title_left">
-                <h3>Nuevo Desempeño</h3>
+                <h3>Editar Desempeño</h3>
             </div>
         </div>
     </div>
@@ -17,17 +17,17 @@
                 <h3 class="panel-title">Información</h3>
             </div>
             <div class="panel-body">
-             {{Form::open(['route' => 'desempenho.store','class' => ' form-horizontal','id'=>'formSuggestion'])}}            
+             {{Form::open(['route' => ['desempenho.update',$performance->id],'class' => ' form-horizontal','method'=>'put'])}}            
             <div class="form-group">
                 {{Form::label('Código: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('codigo',null,['class'=>'form-control', 'required', 'maxlength' => 6])}}
+                    {{Form::text('codigo',$performance->codigo,['class'=>'form-control', 'required', 'maxlength' => 6])}}
                 </div>
             </div>
             <div class="form-group">
                 {{Form::label('Descripción: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::textarea('descripcion',null,['class'=>'form-control', 'required', 'maxlength' => 500])}}
+                    {{Form::textarea('descripcion',$performance->descripcion,['class'=>'form-control', 'required', 'maxlength' => 500])}}
                 </div>
             </div>
             <div class="row">

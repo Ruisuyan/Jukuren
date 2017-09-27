@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="page-title">    
+        <div class="page-title">
 		    <h3>Lista de Evaluaciones</h3>
         </div>
     </div>
@@ -28,17 +28,32 @@
                     <table class="table table-list-search table-striped responsive-utilities jambo_table bulk_action"> 
                         <thead>
                         <tr class="headings">
-                            <th class="column-title">Titulo</th>
-                            <th class="column-title">Fecha</th>
-                            <th class="column-title">Hora</th>                                                
+                            <th class="centered column-title">Estado</th>
+                            {{--  <th class="centered column-title">Codigo</th>  --}}
+                            <th class="column-title">Nombre</th>
+                            <th class="centered column-title">Fecha Inicio</th>
+                            <th class="centered column-title">Fecha Fin</th>
+                            <th class="centered column-title">Acciones</th>                            
                         </tr>
                         </thead>
                         <tbody>
                             @foreach($evaluations as $evaluation)
                             <tr> 
-                                <td>{{$evaluation->titulo}}</td>
-                                <td>{{$evaluation->fecha}}</td>
-                                <td>{{$evaluation->horaInicio}}</td>
+                                @if($evaluation->estado==1)
+                                    <td>Pendiente</td>
+                                @endif
+                                {{--  <td>{{$evaluation->codigo}}</td>  --}}
+                                <td>{{$evaluation->nombre}}</td>
+                                <td>{{$evaluation->fechaInicio}}</td>
+                                <td>{{$evaluation->fechaFin}}</td>
+                                <td class="centered">
+                                    <a href="{{route('evaluacion.edit',$evaluation->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$evaluation->id}}">
+                                        <i class="fa fa-remove"></i>
+                                    </a>
+                                </td>
                             </tr> 
                             @endforeach
                         </tbody>

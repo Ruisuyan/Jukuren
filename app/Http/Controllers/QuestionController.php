@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Course;
+use App\Question;
 use Illuminate\Http\Request;
 
-class CourseController extends Controller
+class QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,11 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();        
+        $question = Question::all();
         $data = [
-            'courses' => $courses,
+            'questions' => $question,
         ];
-        return view('courses.index',$data);
+        return view('questions.index',$data);
     }
 
     /**
@@ -28,7 +28,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('courses.create');
+        return view('questions.create');
     }
 
     /**
@@ -40,14 +40,13 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         try{
-            $course = new Course;
-            $course->codigo = $request['codigo'];
-            $course->nombre = $request['nombre'];
-            $course->descripcion = $request['descripcion'];
-            $course->ciclo = $request['ciclo'];
-            $course->save();
-
-            return redirect()->route('curso.index')->with('success','yay');
+            $question = new Question;
+            $question->tipo = $request['tipo'];
+            $question->descripcion = $request['descripcion'];
+            $question->tiempo = $request['tiempo'];
+            $question->puntaje = $request['puntaje'];
+            $question->save();
+            return redirect()->route('pregunta.index')->with('success','yay');
         }catch(Exception $e){
             return redirect()->back()->with('warning','doh');
         }
@@ -56,10 +55,10 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Course  $course
+     * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show(Question $question)
     {
         //
     }
@@ -67,35 +66,35 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Course  $course
+     * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $course = Course::find($id);
+        $question = Question::find($id);
         $data = [
-            'course' => $course,
+            'question' => $question,
         ];
-        return view('courses.edit',$data);
+        return view('questions.edit',$data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Course  $course
+     * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         try{
-            $course = Course::find($id);
-            $course->codigo = $request['codigo'];
-            $course->nombre = $request['nombre'];
-            $course->descripcion = $request['descripcion'];
-            $course->ciclo = $request['ciclo'];
-            $course->save();
-            return redirect()->route('curso.index',$id)->with('success','yay');
+            $question = Question::find($id);
+            $question->tipo = $request['tipo'];
+            $question->descripcion = $request['descripcion'];
+            $question->tiempo = $request['tiempo'];
+            $question->puntaje = $request['puntaje'];
+            $question->save();
+            return redirect()->route('pregunta.index',$id)->with('success','yay');
         }catch(Exception $e){
             return redirect()->back()->with('warning','doh');
         }
@@ -104,15 +103,15 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Course  $course
+     * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         try{
-            $course = Course::find($id);
-            $course->delete();
-            return redirect()->route('curso.index')->with('success', 'yay');
+            $question = Question::find($id);
+            $question->delete();
+            return redirect()->route('pregunta.index')->with('success', 'yay');
         }catch(Exception $e){
             return redirect()->back()->with('warning', 'doh');
         }

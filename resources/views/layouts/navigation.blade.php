@@ -31,15 +31,17 @@
                 <a href="{{ route('desempenho.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Desempeños</span> </a>
             </li>
             <li>
+                <a href="{{ route('evaluacion.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Evaluaciones</span> </a>
+            </li>
+            <li>
+                <a href="{{ route('pregunta.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Preguntas</span> </a>
+            </li>
+            <li>
                 <a href="{{ route('docente.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Docentes</span> </a>
             </li>
             <li>
                 <a href="{{ route('alumno.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Alumnos</span> </a>
             </li>
-            <li>
-                <a href="{{ route('evaluacion.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Evaluaciones</span> </a>
-            </li>
-
         </ul>
 
     </div>

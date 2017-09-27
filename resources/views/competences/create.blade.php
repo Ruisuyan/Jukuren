@@ -48,7 +48,6 @@
                         <a class="btn btn-default pull-right" href="{{ route('competencia.index') }}">Cancelar</a>
                     </div>
                 </div>
-
             {{Form::close()}}
             </div>  
         </div>

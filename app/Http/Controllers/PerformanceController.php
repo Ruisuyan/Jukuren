@@ -40,7 +40,8 @@ class PerformanceController extends Controller
     public function store(Request $request)
     {
         try{
-            $performance = new Performance;           
+            $performance = new Performance; 
+            $performance->codigo = $request['codigo'];
             $performance->descripcion = $request['descripcion'];
             $performance->save();
 
@@ -67,9 +68,13 @@ class PerformanceController extends Controller
      * @param  \App\Performance  $performance
      * @return \Illuminate\Http\Response
      */
-    public function edit(Performance $performance)
+    public function edit($id)
     {
-        //
+        $performance = Performance::find($id);
+        $data = [
+            'performance' => $performance,
+        ];
+        return view('performances.edit',$data);
     }
 
     /**
@@ -79,9 +84,18 @@ class PerformanceController extends Controller
      * @param  \App\Performance  $performance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Performance $performance)
+    public function update(Request $request, $id)
     {
-        //
+        try{
+            $performance = Performance::find($id); 
+            $performance->codigo = $request['codigo'];
+            $performance->descripcion = $request['descripcion'];
+            $performance->save();
+
+            return redirect()->route('desempenho.index',$id)->with('success','yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning','doh');
+        }
     }
 
     /**
@@ -90,8 +104,14 @@ class PerformanceController extends Controller
      * @param  \App\Performance  $performance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Performance $performance)
+    public function destroy($id)
     {
-        //
+        try{
+            $performance = Performance::find($id);
+            $performance->delete();
+            return redirect()->route('desempenho.index')->with('success', 'yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning', 'doh');
+        }
     }
 }
