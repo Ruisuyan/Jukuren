@@ -42,10 +42,10 @@ class CompetenceController extends Controller
     {
         //
         try{
-            $competence = new Competence;
-            $competence->codigo = $request['codigo'];
+            $competence = new Competence;            
             $competence->nombre = $request['nombre'];
             $competence->descripcion = $request['descripcion'];
+            $competence->tipo = $request['tipo'];
             $competence->save();
 
             return redirect()->route('competencia.index')->with('success','yay');
@@ -93,9 +93,9 @@ class CompetenceController extends Controller
         try {
 
             $competence = Competence::find($id);
-            $competence->codigo = $request['codigo'];
             $competence->nombre = $request['nombre'];            
             $competence->descripcion = $request['descripcion'];                        
+            $competence->tipo = $request['tipo'];
             $competence->save();
             return redirect()->route('competencia.index',$id)->with('success', 'yay');
         } catch (Exception $e) {

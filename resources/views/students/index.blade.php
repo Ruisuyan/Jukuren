@@ -31,18 +31,25 @@
                         <thead>
                         <tr class="headings">
                             <th class="column-title">Codigo</th>
-                            <th class="column-title">Nombre</th>
-                            <th class="column-title">Apellido Paterno</th>
-                            <th class="column-title">Apellido Materno</th>                         
+                            <th class="column-title">Nombres</th>                            
+                            <th class="column-title">Apellidos</th>
+                            <th class="column-title">Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach($students as $student)
                             <tr> 
                                 <td>{{$student->codigo}}</td> 
-                                <td>{{$student->nombres}}</td> 
-                                <td>{{$student->apellidoPaterno}}</td> 
-                                <td>{{$student->apellidoMaterno}}</td>                            
+                                <td>{{$student->nombres}}</td>
+                                <td>{{$student->apellidoPaterno . ' ' . $student->apellidoMaterno}}</td>
+                                <td class="centered">
+                                    <a href="{{route('alumno.edit',$student->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$student->id}}">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </td>
                             </tr> 
                             @endforeach
                         </tbody>

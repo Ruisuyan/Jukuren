@@ -28,9 +28,9 @@
                 <div class="table-responsive">
                     <table class="table table-list-search table-striped responsive-utilities jambo_table bulk_action"> 
                         <thead>
-                            <tr class="headings">
-                                <th class="centered column-title">Codigo</th>
-                                <th class="column-title">Pregunta</th>
+                            <tr class="headings">                                
+                                <th class="column-title">Enunciado</th>
+                                <th class="column-title">Competencia</th>
                                 <th class="centered column-title">Tipo</th>
                                 <th class="centered column-title last">Acciones</th>
                             </tr>
@@ -38,8 +38,8 @@
                         <tbody>
                             @foreach($questions as $question)
                             <tr> 
-                                <td class="centered">{{$question->codigo}}</td> 
-                                <td>{{$question->descripcion}}</td>  
+                                <td>{{$question->enunciado}}</td>
+                                <td>{{$question->competence->nombre}}</td>
                                 @if($question->tipo == 1)
                                 <td class="centered"><i class="fa fa-pencil-square-o fa-2x" title="Abierta" aria-hidden="true"></i></td>                                 
                                 @else
@@ -50,7 +50,7 @@
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                     <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$question->id}}">
-                                        <i class="fa fa-remove"></i>
+                                        <i class="fa fa-trash-o"></i>
                                     </a>
                                 </td>                             
                             </tr> 

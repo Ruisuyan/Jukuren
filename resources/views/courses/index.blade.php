@@ -45,7 +45,7 @@
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                     <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$course->id}}">
-                                        <i class="fa fa-remove"></i>
+                                        <i class="fa fa-trash-o"></i>
                                     </a>
                                 </td> 
                             </tr> 

@@ -22,9 +22,16 @@
              {{Form::open(['route' => 'pregunta.store','class' => ' form-horizontal','id'=>'formSuggestion'])}}
             
                 <div class="form-group">
-                    {{Form::label('Pregunta: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                    {{Form::label('Enunciado: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                     <div class="col-md-4">
-                        {{Form::textarea('descripcion',null,['class'=>'form-control', 'required', 'maxlength' => 500])}}
+                        {{Form::textarea('enunciado',null,['class'=>'form-control', 'required', 'maxlength' => 500])}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{Form::label('Competencia: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                    <div class="col-md-4 col-sm-8 col-xs-12">
+                        {{Form::select('competencia',$competences,null,['placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
                     </div>
                 </div>
 

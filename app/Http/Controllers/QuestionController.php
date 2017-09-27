@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use App\Competence;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -28,7 +29,11 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        return view('questions.create');
+        $competences = Competence::all();
+        $data = [
+            'competences' => $competences->pluck('nombre','id'),
+        ];
+        return view('questions.create',$data);
     }
 
     /**
@@ -39,12 +44,14 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         try{
             $question = new Question;
             $question->tipo = $request['tipo'];
-            $question->descripcion = $request['descripcion'];
+            $question->enunciado = $request['enunciado'];
             $question->tiempo = $request['tiempo'];
             $question->puntaje = $request['puntaje'];
+            $question->competence_id = $request['competencia'];            
             $question->save();
             return redirect()->route('pregunta.index')->with('success','yay');
         }catch(Exception $e){
@@ -72,8 +79,10 @@ class QuestionController extends Controller
     public function edit($id)
     {
         $question = Question::find($id);
+        $competences = Competence::all();       
         $data = [
             'question' => $question,
+            'competences' => $competences->pluck('nombre','id'),
         ];
         return view('questions.edit',$data);
     }
@@ -90,9 +99,10 @@ class QuestionController extends Controller
         try{
             $question = Question::find($id);
             $question->tipo = $request['tipo'];
-            $question->descripcion = $request['descripcion'];
+            $question->enunciado = $request['enunciado'];
             $question->tiempo = $request['tiempo'];
             $question->puntaje = $request['puntaje'];
+            $question->competence_id = $request['competencia'];  
             $question->save();
             return redirect()->route('pregunta.index',$id)->with('success','yay');
         }catch(Exception $e){

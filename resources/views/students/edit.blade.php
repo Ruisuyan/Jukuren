@@ -7,7 +7,7 @@
     <div class="col-md-12">
         <div class="page-title">
             <div class="title_left">
-                <h3>Nuevo Alumno</h3>
+                <h3>Editar Alumno</h3>
             </div>
         </div>
     </div>
@@ -20,54 +20,54 @@
                 <h3 class="panel-title">Información</h3>
             </div>
             <div class="panel-body">
-            {{Form::open(['route' => 'alumno.store','class' => ' form-horizontal','id'=>'formSuggestion'])}}
+            {{Form::open(['route' => ['alumno.store',$student->id],'class' => ' form-horizontal','id'=>'formSuggestion','method'=>'put'])}}
             
             <div class="form-group">
                 {{Form::label('Codigo',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('codigo',null,['class'=>'form-control', 'required', 'maxlength' => 8])}}                    
+                    {{Form::text('codigo',$student->codigo,['class'=>'form-control', 'required', 'maxlength' => 8])}}                    
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('DNI',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('dni',null,['class'=>'form-control', 'required', 'maxlength' => 8])}}
+                    {{Form::text('dni',$student->dni,['class'=>'form-control', 'required', 'maxlength' => 8])}}
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Nombres',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('nombres',null,['class'=>'form-control', 'required', 'maxlength' => 50])}}
+                    {{Form::text('nombres',$student->nombres,['class'=>'form-control', 'required', 'maxlength' => 50])}}
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Apellido Paterno',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('apellidoPaterno',null,['class'=>'form-control', 'required', 'maxlength' => 50])}}
+                    {{Form::text('apellidoPaterno',$student->apellidoPaterno,['class'=>'form-control', 'required', 'maxlength' => 50])}}
                 </div>
             </div>
             
             <div class="form-group">
                 {{Form::label('Apellido Materno',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('apellidoMaterno',null,['class'=>'form-control', 'required', 'maxlength' => 50])}}
+                    {{Form::text('apellidoMaterno',$student->apellidoMaterno,['class'=>'form-control', 'required', 'maxlength' => 50])}}
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Correo',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('correo',null,['class'=>'form-control', 'required', 'maxlength' => 50])}}
+                    {{Form::text('correo',$student->correo,['class'=>'form-control', 'required', 'maxlength' => 50])}}
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Telefono',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('telefono',null,['class'=>'form-control', 'required', 'maxlength' => 50])}}
+                    {{Form::text('telefono',$student->telefono,['class'=>'form-control', 'required', 'maxlength' => 50])}}
                 </div>
             </div>
 

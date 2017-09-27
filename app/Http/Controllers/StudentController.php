@@ -42,9 +42,12 @@ class StudentController extends Controller
         try{
             $student = new Student;
             $student->codigo = $request['codigo'];
+            $student->dni = $request['dni'];
             $student->nombres = $request['nombres'];
             $student->apellidoPaterno = $request['apellidoPaterno'];
             $student->apellidoMaterno = $request['apellidoMaterno'];
+            $student->correo = $request['correo'];
+            $student->telefono = $request['telefono'];
             $student->save();
             return redirect()->route('alumno.index')->with('success','yay');
         }catch(Exception $e){
@@ -58,10 +61,10 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
-    {
-        //
-    }
+     public function show(Student $student)
+     {
+         //
+     }
 
     /**
      * Show the form for editing the specified resource.
@@ -69,9 +72,13 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        $data = [
+            'student' => $student,
+        ];
+        return view('students.edit',$data);
     }
 
     /**
@@ -81,9 +88,22 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, $id)
     {
-        //
+        try{
+            $student = Student::find($id);
+            $student->codigo = $request['codigo'];
+            $student->dni = $request['dni'];
+            $student->nombres = $request['nombres'];
+            $student->apellidoPaterno = $request['apellidoPaterno'];
+            $student->apellidoMaterno = $request['apellidoMaterno'];
+            $student->correo = $request['correo'];
+            $student->telefono = $request['telefono'];
+            $student->save();
+            return redirect()->route('alumno.index',$id)->with('success','yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning','doh');
+        }
     }
 
     /**

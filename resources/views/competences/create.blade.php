@@ -22,12 +22,12 @@
              {{Form::open(['route' => 'competencia.store','class' => ' form-horizontal','id'=>'formSuggestion'])}}
             
                 <div class="form-group">
-                    {{Form::label('Codigo: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
-                    <div class="col-md-4">
-                        {{Form::text('codigo',null,['class'=>'form-control', 'required', 'maxlength' => 6])}}
+                    {{Form::label('Tipo: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                    <div class="col-md-4 col-sm-8 col-xs-12">
+                        {{Form::select('tipo',[1 => 'Competencia Genérica',2 => 'Competencia Específica'],null,['placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
                     </div>
                 </div>
-
+                
                 <div class="form-group">
                     {{Form::label('Nombre: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                     <div class="col-md-4 col-sm-8 col-xs-12">

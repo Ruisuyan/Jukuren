@@ -15,9 +15,9 @@ class CreateCompetencesTable extends Migration
     {
         Schema::create('competences', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('codigo');
             $table->string('nombre');
             $table->text('descripcion');
+            $table->integer('tipo');
             $table->timestamps();
         });
     }
