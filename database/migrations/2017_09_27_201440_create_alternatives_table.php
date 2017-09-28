@@ -15,8 +15,16 @@ class CreateAlternativesTable extends Migration
     {
         Schema::create('alternatives', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('opcion',1);
+            $table->string('descripcion');            
             $table->timestamps();
         });
+
+        //FK
+        Schema::table('alternatives', function (Blueprint $table) {
+            $table->integer('question_id')->unsigned();
+            $table->foreign('question_id')->references('id')->on('questions');
+       });
     }
 
     /**
@@ -26,6 +34,9 @@ class CreateAlternativesTable extends Migration
      */
     public function down()
     {
+        Schema::table('alternatives', function (Blueprint $table) {
+            $table->dropForeign('alternatives_question_id_foreign');
+        });
         Schema::dropIfExists('alternatives');
     }
 }
