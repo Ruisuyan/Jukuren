@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Question;
 use App\Competence;
+use App\Alternative;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -52,7 +53,19 @@ class QuestionController extends Controller
             $question->tiempo = $request['tiempo'];
             $question->puntaje = $request['puntaje'];
             $question->competence_id = $request['competencia'];            
+            if($request['tipo']==1){
+                $question->respuesta = $request['respuesta'];
+            }
             $question->save();
+            //Alternatives
+            if($request['tipo'] == 1){                
+                foreach ($request['clave'] as $numero => $descripcion) {
+                    $alternative = new Alternative;                   
+                    $alternative->descripcion = $descripcion;
+                    $alternative->question_id = $question->id;
+                    $alternative->save();
+                }                
+            }
             return redirect()->route('pregunta.index')->with('success','yay');
         }catch(Exception $e){
             return redirect()->back()->with('warning','doh');

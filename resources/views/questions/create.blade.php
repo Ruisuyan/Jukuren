@@ -75,31 +75,18 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div id="opciones" class="row">									
                                 <div class="form-group">
-                                    {{Form::label('a.',null,['class'=>'control-label col-md-2 col-sm-2 col-xs-1 col-md-offset-0 col-sm-offset-0 col-xs-offset-5'])}}
+                                    {{Form::label('-',null,['class'=>'control-label col-md-2 col-sm-2 col-xs-1 col-md-offset-0 col-sm-offset-0 col-xs-offset-5'])}}
                                     <div class="col-md-8 col-sm-8 col-xs-6">
-                                        <div class="input-group">										
-                                            {{Form::text('clave[a]',null,['class'=>'form-control tCerrada','readonly', 'maxlength' => 500])}}
+                                        <div class="input-group">									
+                                            {{Form::text('clave[1]',null,['class'=>'form-control tCerrada','readonly', 'maxlength' => 500])}}
                                             <span class="input-group-addon">
-                                                <input class="tCerr" type="radio" disabled value="a" name="rpta" > Rpta.
+                                                <input class="tCerr" type="radio" disabled value="1" name="respuesta" > Respuesta.
                                             </span>
                                         </div>
                                     </div>
-
-                                </div>
-                                <div class="form-group">
-                                    {{Form::label('b.',null,['class'=>'control-label col-md-2 col-sm-2 col-xs-1 col-md-offset-0 col-sm-offset-0 col-xs-offset-5'])}}
-                                    <div class="col-md-8 col-sm-8 col-xs-6">
-                                        <div class="input-group">										
-                                            {{Form::text('clave[b]',null,['class'=>'form-control tCerrada','readonly', 'maxlength' => 500])}}
-                                            <span class="input-group-addon">
-                                                <input class="tCerr" type="radio" disabled value="b" name="rpta" > Rpta.
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div>                                
                             </div>
                         </div>
                     </div>
@@ -115,16 +102,16 @@
             </div>
         </div>
     </div>
+    @endsection
+    @section('scripts')
     <script>
         var n=1;
         $("#add").click(function() {
             var x = $("#add").attr('disabled');
             if (typeof x !== typeof undefined && x !== false) {return;	}
-            if(n==25){return;}
-            n++;    
-            var chrm = String.fromCharCode(97 + n);
-            var chrM = String.fromCharCode(65 + n);
-            $("#opciones").append('<div class="form-group preg"><label class="control-label col-md-2 col-sm-2 col-xs-1 col-md-offset-0 col-sm-offset-0 col-xs-offset-5">'+ chrM+'.</label><div class="col-md-8 col-sm-8 col-xs-6"><div class="input-group"><input type="text" name="clave['+chrm+']" class="form-control tCerrada" required maxlength="500">										<span class="input-group-addon"><input type="radio" required class="tCerr" value="'+chrm+'" name="rpta" > Rpta.</span></div></div>	</div>');
+            if(n==6){return;}
+            n++; 
+            $("#opciones").append('<div class="form-group preg"><label class="control-label col-md-2 col-sm-2 col-xs-1 col-md-offset-0 col-sm-offset-0 col-xs-offset-5"> - </label><div class="col-md-8 col-sm-8 col-xs-6"><div class="input-group"><input type="text" name="clave['+n+']" class="form-control tCerrada" required maxlength="500"><span class="input-group-addon"><input type="radio" required class="tCerr" value="'+n+'" name="respuesta" > Respuesta.</span></div></div>	</div>');
 
         });
         $("#remove").click(function() {
