@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Evaluation;
 use App\Competence;
+use App\Question;
 use Illuminate\Http\Request;
 
 class EvaluationController extends Controller
@@ -30,7 +31,9 @@ class EvaluationController extends Controller
     public function create()
     {
         $competences = Competence::all();
+        $questions = Question::all();
         $data = [
+            'questions' => $questions,
             'competences' => $competences->pluck('nombre','id'),
         ];
         return view('evaluations.create',$data);
@@ -45,6 +48,7 @@ class EvaluationController extends Controller
     public function store(Request $request)
     {
         try{
+            dd($request);
             $evaluation = new Evaluation;
             $evaluation->nombre = $request['nombre'];            
             $evaluation->descripcion = $request['descripcion'];

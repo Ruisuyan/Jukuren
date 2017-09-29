@@ -16,6 +16,8 @@ class AddFkToQuestionTable extends Migration
         Schema::table('questions', function (Blueprint $table) {
             $table->integer('competence_id')->unsigned();
             $table->foreign('competence_id')->references('id')->on('competences');
+            $table->integer('evaluation_id')->unsigned()->nullable();
+            $table->foreign('evaluation_id')->references('id')->on('evaluations');
         });
     }
 
@@ -28,6 +30,7 @@ class AddFkToQuestionTable extends Migration
     {
         Schema::table('questions', function (Blueprint $table) {
             $table->dropForeign('questions_competence_id_foreign');
+            $table->dropForeign('questions_evaluation_id_foreign');
         });
     }
 }
