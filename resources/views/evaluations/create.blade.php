@@ -56,7 +56,19 @@
                 </div>
             </div>
 
-            
+            <div class="form-group">
+                {{Form::label('Peso: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                <div class="col-md-4">
+                    {{Form::number('peso',null,['class'=>'form-control', 'required'])}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{Form::label('Competencia: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    {{Form::select('competencia',$competences,null,['placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
+                </div>
+            </div>            
             
             <div class="row">
                 <div class="col-md-8 col-sm-12 col-xs-12">

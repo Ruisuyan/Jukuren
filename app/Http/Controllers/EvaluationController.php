@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Evaluation;
+use App\Competence;
 use Illuminate\Http\Request;
 
 class EvaluationController extends Controller
@@ -28,7 +29,11 @@ class EvaluationController extends Controller
      */
     public function create()
     {
-        return view('evaluations.create');
+        $competences = Competence::all();
+        $data = [
+            'competences' => $competences->pluck('nombre','id'),
+        ];
+        return view('evaluations.create',$data);
     }
 
     /**
@@ -46,7 +51,9 @@ class EvaluationController extends Controller
             $evaluation->fechaInicio = $request['fechaInicio'];                        
             $evaluation->fechaFin = $request['fechaFin'];
             $evaluation->duracion = $request['duracion'];
-            $evaluation->estado = 1;            
+            $evaluation->peso = $request['peso'];
+            $evaluation->estado = 1;
+            $evaluation->competence_id = $request['competencia'];                        
             $evaluation->save();
 
             return redirect()->route('evaluacion.index')->with('success','yay');
@@ -106,3 +113,4 @@ class EvaluationController extends Controller
         }
     }
 }
+

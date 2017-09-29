@@ -18,10 +18,10 @@ class CreateEvaluationsTable extends Migration
             $table->string('nombre');
             $table->text('descripcion');
             $table->date('fechaInicio');
-            $table->date('fechaFin');
+            $table->date('fechaFin')->nullable();
             $table->integer('duracion');
             $table->integer('estado'); //entre pendiente corregida cancelada
-            $table->string('codigo')->nullable();
+            $table->integer('peso');
             $table->timestamps();
         });
         //'fecha_inicio','fecha_fin','nombre','descripcion','tiempo'
