@@ -53,12 +53,12 @@ class QuestionController extends Controller
             $question->tiempo = $request['tiempo'];
             $question->puntaje = $request['puntaje'];
             $question->competence_id = $request['competencia'];            
-            if($request['tipo']==1){
+            if($request['tipo']==2){
                 $question->respuesta = $request['respuesta'];
             }
             $question->save();
             //Alternatives
-            if($request['tipo'] == 1){                
+            if($request['tipo'] == 2){                
                 foreach ($request['clave'] as $numero => $descripcion) {
                     $alternative = new Alternative;                   
                     $alternative->descripcion = $descripcion;

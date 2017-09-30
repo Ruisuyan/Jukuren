@@ -38,7 +38,7 @@
             <div class="form-group">
                 {{Form::label('Fecha Fin: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::date('fechaFin',null,['class'=>'form-control', 'required'])}}
+                    {{Form::date('fechaFin',null,['class'=>'form-control'])}}
                 </div>
             </div>
 
@@ -52,7 +52,7 @@
             <div class="form-group">
                 {{Form::label('Duración: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::number('duracion',null,['class'=>'form-control', 'required'])}}
+                    {{Form::number('duracion',null,['class'=>'form-control', 'required','placeholder' => 'En minutos'])}}                    
                 </div>
             </div>
 
@@ -71,6 +71,10 @@
             </div>
 
             {{-- Tabla de preguntas   --}}
+
+            <div>
+                <h3>Banco de Preguntas</h3>
+            </div>
 
             <div class="table-responsive">
                 <table class="table table-list-search table-striped responsive-utilities jambo_table bulk_action"> 

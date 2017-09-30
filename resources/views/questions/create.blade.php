@@ -38,7 +38,7 @@
                     <div class="form-group">
                         {{Form::label('Duracion: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                         <div class="col-md-4 col-sm-8 col-xs-12">
-                            {{Form::number('tiempo',null,['class'=>'form-control', 'required'])}}
+                            {{Form::number('tiempo',null,['class'=>'form-control', 'required','placeholder'=>'En minutos'])}}
                         </div>
                     </div>
 
@@ -55,11 +55,11 @@
                                 {{Form::label('Tipo: *',null,['class'=>'control-label col-md-6 col-sm-6 col-xs-6'])}}
                                 <div class="col-md-6 col-sm-6 col-xs-6">						
                                     <div class="radio">									
-                                        <label><input type="radio" value="2" name="tipo" checked > Abierta </label>
+                                        <label><input type="radio" value="1" name="tipo" checked > Abierta </label>
                                         <i class="fa fa-pencil-square-o fa-2x" title="Abierta" aria-hidden="true"></i>
                                     </div>                                    
                                     <div class="radio">
-                                        <label><input type="radio" value="1" name="tipo" >Cerrada </label>
+                                        <label><input type="radio" value="2" name="tipo" >Cerrada </label>
                                         <i class="fa fa-list-ul fa-2x" title="Cerrada" aria-hidden="true"></i>
                                     </div>						
                                 </div>
@@ -128,7 +128,7 @@
             $(".tCerr").attr("disabled","true");
             $(".tCerr").removeAttr("required");
             $("#form-cerrada").attr("hidden","true");
-            if(tipo==1){
+            if(tipo==2){
                 $(".tCerrada").removeAttr("readonly");
                 $(".tCerrada").attr("required","true");
                 $(".tCerr").removeAttr("disabled");
