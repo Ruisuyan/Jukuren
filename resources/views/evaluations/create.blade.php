@@ -66,7 +66,7 @@
             <div class="form-group">
                 {{Form::label('Competencia: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4 col-sm-8 col-xs-12">
-                    {{Form::select('competencia',$competences,null,['placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
+                    {{Form::select('competencia',$competences,null,['id' => 'competenceOfQuestions','placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
                 </div>
             </div>
 
@@ -82,9 +82,10 @@
                             <th class="centered column-title">Tipo</th>                            
                         </tr>
                     </thead> 
-                    <tbody>
+                    <tbody class="listOfQuestions">
                         @foreach($questions as $question)
-                        <tr> 
+                        {{--  class="competence".{{$question->competence->id}} --}}
+                        <tr class="competence{{$question->competence->id}}"> 
                             <td>{{Form::checkbox('checks['. $question->id .']', $question->id)}}</td>
                             <td>{{$question->enunciado}}</td>
                             <td>{{$question->competence->nombre}}</td>
@@ -116,6 +117,19 @@
 @endsection
 @section('scripts')
 <script>
-//on change
+
+var rows = $('tbody.listOfQuestions tr');
+
+$(function(){
+    rows.hide();
+});
+
+$('#competenceOfQuestions').change(function(){
+    var idValue = $(this).val();
+    rows.filter('.competence'+idValue).show();
+    rows.not('.competence'+idValue).hide();
+    rows.not('.competence'+idValue).find(':checkbox').prop('checked', false);
+});
+
 </script>
 @endsection

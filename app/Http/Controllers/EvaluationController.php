@@ -48,7 +48,7 @@ class EvaluationController extends Controller
     public function store(Request $request)
     {
         try{
-            dd($request);
+            //dd($request);
             $evaluation = new Evaluation;
             $evaluation->nombre = $request['nombre'];            
             $evaluation->descripcion = $request['descripcion'];
@@ -59,6 +59,13 @@ class EvaluationController extends Controller
             $evaluation->estado = 1;
             $evaluation->competence_id = $request['competencia'];                        
             $evaluation->save();
+            //registrar las preguntas
+            //OJO ver tambien si alguna pregunta ya se uso antes!!
+            foreach($request['checks'] as $n => $questionId){
+                $question = Question::where('id',$questionId)->get()->first();                
+                $question->evaluation_id = $evaluation->id;               
+                $question->save();
+            }
 
             return redirect()->route('evaluacion.index')->with('success','yay');
         }catch(Exception $e){
