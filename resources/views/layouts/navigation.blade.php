@@ -3,13 +3,16 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <span class="clear">
-                            <span class="block m-t-xs">
-                                <strong class="font-bold">Usuario</strong>
-                            </span> <span class="text-muted text-xs block">Menu de usuario <b class="caret"></b></span>
-                        </span>
-                    </a>
+                    @if(auth()->check())
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear">
+                                <span class="block m-t-xs">
+                                    <strong class="font-bold">{{auth()->user()->name}}</strong>
+                                </span>
+                            </span>
+                        </a>
+                    @endif
+                    
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a href="#">Cerrar sesion</a></li>
                     </ul>

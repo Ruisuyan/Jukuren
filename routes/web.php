@@ -11,8 +11,15 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name("main");
-Route::get('/minor', 'HomeController@minor')->name("minor");
+Route::get('/', 'HomeController@index')->name("home");
+// Route::get('/minor', 'HomeController@minor')->name("minor");
+
+Route::get('/register', ['as' => 'register.create', 'uses' => 'RegistrationController@create']); 
+Route::post('/register', ['as' => 'register.store', 'uses' => 'RegistrationController@store']); 
+
+Route::get('/login', ['as' => 'session.create', 'uses' => 'SessionController@create']);
+Route::post('/login', ['as' => 'session.store', 'uses' => 'SessionController@store']);
+Route::get('/logout', ['as' => 'session.destroy', 'uses' => 'SessionController@destroy']);
 
 Route::resource('competencia', 'CompetenceController');
 Route::resource('curso', 'CourseController');
