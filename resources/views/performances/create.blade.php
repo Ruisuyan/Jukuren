@@ -17,13 +17,7 @@
                 <h3 class="panel-title">Información</h3>
             </div>
             <div class="panel-body">
-             {{Form::open(['route' => 'desempenho.store','class' => ' form-horizontal','id'=>'formSuggestion'])}}            
-            <div class="form-group">
-                {{Form::label('Código: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
-                <div class="col-md-4">
-                    {{Form::text('codigo',null,['class'=>'form-control', 'required', 'maxlength' => 6])}}
-                </div>
-            </div>
+            {{Form::open(['route' => 'desempenho.store','class' => ' form-horizontal','id'=>'formSuggestion'])}}  
             <div class="form-group">
                 {{Form::label('Descripción: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">

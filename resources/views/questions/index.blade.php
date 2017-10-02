@@ -41,9 +41,9 @@
                                 <td>{{$question->enunciado}}</td>
                                 <td>{{$question->competence->nombre}}</td>
                                 @if($question->tipo == 1)
-                                <td class="centered"><i class="fa fa-pencil-square-o fa-2x" title="Abierta" aria-hidden="true"></i></td>                                 
+                                <td class="centered">Abierta</td>                                 
                                 @else
-                                <td class="centered"><i class="fa fa-list-ul fa-2x" title="Cerrada" aria-hidden="true"></i></td> 
+                                <td class="centered">Cerrada</td> 
                                 @endif 
                                 <td class="centered">
                                     <a href="{{route('pregunta.edit',$question->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">

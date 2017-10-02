@@ -52,14 +52,14 @@
             <div class="form-group">
                 {{Form::label('Duración: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::number('duracion',null,['class'=>'form-control', 'required','placeholder' => 'En minutos'])}}                    
+                    {{Form::number('duracion',null,['class'=>'form-control', 'required','placeholder' => 'En minutos','min' => 0, 'max' => 180] )}}                    
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Peso: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::number('peso',null,['class'=>'form-control', 'required'])}}
+                    {{Form::number('peso',null,['class'=>'form-control', 'required','min' => 0 , 'max' => 10])}}
                 </div>
             </div>
 
@@ -94,9 +94,9 @@
                             <td>{{$question->enunciado}}</td>
                             <td>{{$question->competence->nombre}}</td>
                             @if($question->tipo == 1)
-                            <td class="centered"><i class="fa fa-pencil-square-o fa-2x" title="Abierta" aria-hidden="true"></i></td>                                 
+                            <td class="centered">Abierta</td>                                 
                             @else
-                            <td class="centered"><i class="fa fa-list-ul fa-2x" title="Cerrada" aria-hidden="true"></i></td> 
+                            <td class="centered">Cerrada</td> 
                             @endif                                                         
                         </tr> 
                         @endforeach

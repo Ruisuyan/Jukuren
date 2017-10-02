@@ -40,8 +40,7 @@ class PerformanceController extends Controller
     public function store(Request $request)
     {
         try{
-            $performance = new Performance; 
-            $performance->codigo = $request['codigo'];
+            $performance = new Performance;
             $performance->descripcion = $request['descripcion'];
             $performance->save();
 
@@ -88,7 +87,6 @@ class PerformanceController extends Controller
     {
         try{
             $performance = Performance::find($id); 
-            $performance->codigo = $request['codigo'];
             $performance->descripcion = $request['descripcion'];
             $performance->save();
 

@@ -45,6 +45,9 @@
             <li>
                 <a href="{{ route('alumno.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Alumnos</span> </a>
             </li>
+            <li>
+                <a href="{{ route('reporte.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Reporte</span> </a>
+            </li>
         </ul>
 
     </div>

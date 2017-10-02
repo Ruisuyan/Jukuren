@@ -28,3 +28,4 @@ Route::resource('desempenho', 'PerformanceController');
 Route::resource('docente', 'TeacherController');
 Route::resource('evaluacion', 'EvaluationController');
 Route::resource('pregunta', 'QuestionController');
+Route::resource('reporte', 'ReportController');

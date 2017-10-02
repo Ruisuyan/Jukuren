@@ -38,14 +38,14 @@
                     <div class="form-group">
                         {{Form::label('Duracion: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                         <div class="col-md-4 col-sm-8 col-xs-12">
-                            {{Form::number('tiempo',null,['class'=>'form-control', 'required','placeholder'=>'En minutos'])}}
+                            {{Form::number('tiempo',null,['class'=>'form-control', 'required','placeholder'=>'En minutos', 'min' => 0, 'max' => 60])}}
                         </div>
                     </div>
 
                     <div class="form-group">
                         {{Form::label('Puntaje: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                         <div class="col-md-4">
-                            {{Form::number('puntaje',null,['class'=>'form-control', 'required', 'step' => 0.1])}}
+                            {{Form::number('puntaje',null,['class'=>'form-control', 'required', 'step' => 0.1, 'min' => 0, 'max' => 20])}}
                         </div>
                     </div>
 
