@@ -3,7 +3,7 @@
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
             <form role="search" class="navbar-form-custom" method="post" action="/">
-                <div class="form-group">
+                <div class="form-group" hidden>
                     <input type="text" placeholder="Buscar..." class="form-control" name="top-search" id="top-search" />
                 </div>
             </form>

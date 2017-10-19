@@ -21,6 +21,7 @@ class CreateEvaluationsTable extends Migration
             $table->date('fechaFin')->nullable();
             $table->integer('duracion');
             $table->integer('estado'); //entre pendiente corregida cancelada
+            $table->string('lugar');
             $table->integer('peso');
             $table->timestamps();
         });

@@ -7,7 +7,7 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear">
                                 <span class="block m-t-xs">
-                                    <strong class="font-bold">{{auth()->user()->name}}</strong>
+                                    <strong class="font-bold">Usuario: {{auth()->user()->name}}</strong>
                                 </span>
                             </span>
                         </a>
