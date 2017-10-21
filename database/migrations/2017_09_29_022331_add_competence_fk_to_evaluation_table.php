@@ -14,8 +14,8 @@ class AddCompetenceFkToEvaluationTable extends Migration
     public function up()
     {
         Schema::table('evaluations', function (Blueprint $table) {
-            $table->integer('competence_id')->unsigned();
-            $table->foreign('competence_id')->references('id')->on('competences');
+            $table->integer('performance_id')->unsigned();
+            $table->foreign('performance_id')->references('id')->on('performances');
         });
     }
 
@@ -27,7 +27,7 @@ class AddCompetenceFkToEvaluationTable extends Migration
     public function down()
     {
         Schema::table('evaluations', function (Blueprint $table) {
-            $table->dropForeign('evaluations_competence_id_foreign');
+            $table->dropForeign('evaluations_performance_id_foreign');
         });
     }
 }

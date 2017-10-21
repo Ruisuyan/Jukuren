@@ -18,18 +18,24 @@
             </div>
             <div class="panel-body">
             {{Form::open(['route' => 'desempenho.store','class' => ' form-horizontal','id'=>'formSuggestion'])}}  
-            <div class="form-group">
-                {{Form::label('Descripción: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
-                <div class="col-md-4">
-                    {{Form::textarea('descripcion',null,['class'=>'form-control', 'required', 'maxlength' => 500])}}
+                <div class="form-group">
+                    {{Form::label('Competencia: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                    <div class="col-md-4 col-sm-8 col-xs-12">
+                        {{Form::select('competencia',$competences,null,['id' => 'competenceOfPerformance','placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-sm-12 col-xs-12">
-                    {{Form::submit('Guardar', ['class'=>'btn btn-success pull-right'])}}
-                    <a class="btn btn-default pull-right" href="{{ route('desempenho.index') }}">Cancelar</a>
+                <div class="form-group">
+                    {{Form::label('Descripción: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                    <div class="col-md-4">
+                        {{Form::textarea('descripcion',null,['class'=>'form-control', 'required', 'maxlength' => 500])}}
+                    </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+                        {{Form::submit('Guardar', ['class'=>'btn btn-success pull-right'])}}
+                        <a class="btn btn-default pull-right" href="{{ route('desempenho.index') }}">Cancelar</a>
+                    </div>
+                </div>
             {{Form::close()}}
             </div>
         </div>

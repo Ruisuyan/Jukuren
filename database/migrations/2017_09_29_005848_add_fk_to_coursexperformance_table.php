@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFkToCoursexcompetenceTable extends Migration
+class AddFkToCoursexPerformanceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddFkToCoursexcompetenceTable extends Migration
      */
     public function up()
     {
-        Schema::table('coursexcompetence', function (Blueprint $table) {
+        Schema::table('coursexperformance', function (Blueprint $table) {
             $table->foreign('course_id')->references('id')->on('courses');
-            $table->foreign('competence_id')->references('id')->on('competences');
+            $table->foreign('performance_id')->references('id')->on('performances');
         });
     }
 
@@ -26,9 +26,9 @@ class AddFkToCoursexcompetenceTable extends Migration
      */
     public function down()
     {
-        Schema::table('coursexcompetence', function (Blueprint $table) {
-            $table->dropForeign('coursexcompetence_course_id_foreign');
-            $table->dropForeign('coursexcompetence_competence_id_foreign');            
+        Schema::table('coursexperformance', function (Blueprint $table) {
+            $table->dropForeign('coursexperformance_course_id_foreign');
+            $table->dropForeign('coursexperformance_performance_id_foreign');            
         });
     }
 }

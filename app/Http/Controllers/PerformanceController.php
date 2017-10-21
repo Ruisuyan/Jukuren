@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Performance;
+use App\Competence;
 use Illuminate\Http\Request;
 
 class PerformanceController extends Controller
@@ -28,7 +29,11 @@ class PerformanceController extends Controller
      */
     public function create()
     {
-        return view('performances.create');
+        $competences = Competence::all();
+        $data = [
+            'competences' => $competences->pluck('nombre','id'),
+        ];
+        return view('performances.create',$data);
     }
 
     /**
@@ -42,8 +47,8 @@ class PerformanceController extends Controller
         try{
             $performance = new Performance;
             $performance->descripcion = $request['descripcion'];
+            $performance->competence_id = $request['competencia'];
             $performance->save();
-
             return redirect()->route('desempenho.index')->with('success','yay');
         }catch(Exception $e){
             return redirect()->back()->with('warning','doh');
