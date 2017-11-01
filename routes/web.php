@@ -21,11 +21,11 @@ Route::get('/login', ['as' => 'session.create', 'uses' => 'SessionController@cre
 Route::post('/login', ['as' => 'session.store', 'uses' => 'SessionController@store']);
 Route::get('/logout', ['as' => 'session.destroy', 'uses' => 'SessionController@destroy']);
 
-Route::resource('competencia', 'CompetenceController');
-Route::resource('curso', 'CourseController');
-Route::resource('alumno', 'StudentController');
-Route::resource('desempenho', 'PerformanceController');
-Route::resource('docente', 'TeacherController');
-Route::resource('evaluacion', 'EvaluationController');
-Route::resource('pregunta', 'QuestionController');
-Route::resource('reporte', 'ReportController');
+Route::resource('competencia', 'CompetenceController')->middleware('coord');
+Route::resource('curso', 'CourseController')->middleware('coord');
+Route::resource('alumno', 'StudentController')->middleware('coord');
+Route::resource('desempenho', 'PerformanceController')->middleware('teacher');
+Route::resource('docente', 'TeacherController')->middleware('coord');
+Route::resource('evaluacion', 'EvaluationController')->middleware('teacher');
+Route::resource('pregunta', 'QuestionController')->middleware('teacher');
+Route::resource('reporte', 'ReportController')->middleware('teacher');

@@ -87,8 +87,7 @@
                         </tr>
                     </thead> 
                     <tbody class="listOfQuestions">
-                        @foreach($questions as $question)
-                        {{--  class="competence".{{$question->competence->id}} --}}
+                        @foreach($questions as $question)                        
                         <tr class="competence{{$question->competence->id}}"> 
                             <td>{{Form::checkbox('checks['. $question->id .']', $question->id)}}</td>
                             <td>{{$question->enunciado}}</td>
