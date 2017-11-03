@@ -23,6 +23,7 @@ class CreateTeachersTable extends Migration
             $table->string('oficina');
             $table->string('telefono');
             $table->boolean('tiempoCompleto');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

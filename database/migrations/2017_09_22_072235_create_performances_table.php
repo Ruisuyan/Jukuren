@@ -16,6 +16,7 @@ class CreatePerformancesTable extends Migration
         Schema::create('performances', function (Blueprint $table) {
             $table->increments('id');            
             $table->string('descripcion');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

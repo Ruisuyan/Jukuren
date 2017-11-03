@@ -24,21 +24,21 @@
             <li>
                 <a href="{{ url('/') }}"><i class="fa fa-home"></i> <span class="nav-label">Inicio</span></a>
             </li>
-            @if(auth()->user()->role_id==2)
+            {{--  @if(auth()->user()->role_id==2)  --}}
             <li>
                 <a href="{{ route('competencia.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Competencias</span> </a>
             </li>    
-            @endif
-            @if(auth()->user()->role_id==2)            
+            {{--  @endif
+            @if(auth()->user()->role_id==2)              --}}
             <li>
                 <a href="{{ route('curso.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Cursos</span> </a>
             </li>            
-            @endif
-            @if(auth()->user()->role_id==2)
+            {{--  @endif
+            @if(auth()->user()->role_id==2)  --}}
             <li>
                 <a href="{{ route('desempenho.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Desempeños</span> </a>
             </li>
-            @endif
+            {{--  @endif  --}}
             <li>
                 <a href="{{ route('evaluacion.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Evaluaciones</span> </a>
             </li>

@@ -22,6 +22,7 @@ class CreateStudentsTable extends Migration
             $table->string('apellidoMaterno');
             $table->string('correo');
             $table->string('telefono');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

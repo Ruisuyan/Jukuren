@@ -45,7 +45,8 @@
                                         <i class="fa fa-trash-o"></i>
                                     </a>
                                 </td>
-                            </tr> 
+                            </tr>
+                            @include('modals.destroy', ['id'=> $performance->id, 'message' => '¿Esta seguro que desea eliminar este desempeño?', 'route' => 'desempenho.destroy'])  
                             @endforeach
                         </tbody>
                     </table>                  

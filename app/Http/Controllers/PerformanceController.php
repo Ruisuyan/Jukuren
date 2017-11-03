@@ -75,8 +75,10 @@ class PerformanceController extends Controller
     public function edit($id)
     {
         $performance = Performance::find($id);
+        $competences = Competence::all();
         $data = [
             'performance' => $performance,
+            'competences' => $competences->pluck('nombre','id'),
         ];
         return view('performances.edit',$data);
     }
@@ -93,6 +95,7 @@ class PerformanceController extends Controller
         try{
             $performance = Performance::find($id); 
             $performance->descripcion = $request['descripcion'];
+            $performance->competence_id = $request['competencia'];
             $performance->save();
 
             return redirect()->route('desempenho.index',$id)->with('success','yay');

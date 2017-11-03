@@ -115,11 +115,12 @@ class CompetenceController extends Controller
     public function destroy($id)
     {
         try{
+            //dd($id);
             $competence = Competence::find($id);
             $competence->delete();
-            return redirect()->route('competencia.index')->with('success', 'yay');
+            return redirect()->route('competencia.index');
         }catch(Exception $e){
-            return redirect()->back()->with('warning', 'doh');
+            return redirect()->back();
         }
     }
 }

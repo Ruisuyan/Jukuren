@@ -18,7 +18,12 @@
             </div>
             <div class="panel-body">
              {{Form::open(['route' => ['desempenho.update',$performance->id],'class' => ' form-horizontal','method'=>'put'])}}            
-            
+            <div class="form-group">
+                    {{Form::label('Competencia: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                    <div class="col-md-4 col-sm-8 col-xs-12">
+                        {{Form::select('competencia',$competences,$performance->competence->id,['id' => 'competenceOfPerformance','placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
+                    </div>
+                </div>
             <div class="form-group">
                 {{Form::label('Descripción: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">

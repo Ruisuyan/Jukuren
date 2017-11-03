@@ -52,7 +52,8 @@
                                         <i class="fa fa-trash-o"></i>
                                     </a>
                                 </td>                             
-                            </tr> 
+                            </tr>
+                            @include('modals.destroy', ['id'=> $competence->id, 'message' => '¿Esta seguro que desea eliminar esta competencia?', 'route' => 'competencia.destroy']) 
                             @endforeach
                         </tbody>
                     </table>                  

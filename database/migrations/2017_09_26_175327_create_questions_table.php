@@ -19,7 +19,8 @@ class CreateQuestionsTable extends Migration
             $table->string('enunciado');
             $table->integer('tiempo');//en minutos
             $table->float('puntaje',3,1);                       
-            $table->integer('respuesta')->nullable();                        
+            $table->integer('respuesta')->nullable();
+            $table->softDeletes();                        
             $table->timestamps();
         });
     }

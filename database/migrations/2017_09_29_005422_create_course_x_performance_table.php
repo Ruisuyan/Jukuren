@@ -17,6 +17,7 @@ class CreateCourseXPerformanceTable extends Migration
             $table->increments('id');
             $table->integer('course_id')->unsigned();
             $table->integer('performance_id')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

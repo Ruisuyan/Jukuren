@@ -19,6 +19,7 @@ class CreateCoursesTable extends Migration
             $table->string('nombre');
             $table->text('descripcion');
             $table->integer('ciclo');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

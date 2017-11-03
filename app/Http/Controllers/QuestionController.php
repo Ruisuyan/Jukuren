@@ -17,6 +17,7 @@ class QuestionController extends Controller
     public function index()
     {
         $question = Question::all();
+        //dd($question);
         $data = [
             'questions' => $question,
         ];
