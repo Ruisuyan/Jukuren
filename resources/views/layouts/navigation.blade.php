@@ -54,6 +54,9 @@
             <li>
                 <a href="{{ route('reporte.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Reporte</span> </a>
             </li>
+            <li>
+                <a href="{{ route('usuario.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Usuarios</span> </a>
+            </li>
         </ul>
 
     </div>

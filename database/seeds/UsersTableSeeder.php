@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'yukari@gensokyo.com',
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
+            'active' => 1,
             'role_id' => 1,
         ]);
         //Coordinator    
@@ -27,6 +28,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'reimu@gensokyo.com',
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
+            'active' => 1,
             'role_id' => 2,
         ]);
         //Teacher    
@@ -35,6 +37,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'keine@gensokyo.com',
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
+            'active' => 1,
             'role_id' => 3,
         ]);
         //Evaluator    
@@ -43,6 +46,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'marisa@gensokyo.com',
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
+            'active' => 1,
             'role_id' => 4,
         ]);
 
@@ -51,6 +55,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'cirno@gensokyo.com',
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
+            'active' => 1,
             'role_id' => 5,
         ]);
     }

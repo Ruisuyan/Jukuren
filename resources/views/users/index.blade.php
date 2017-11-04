@@ -30,18 +30,22 @@
                     <table class="table table-list-search table-striped responsive-utilities jambo_table bulk_action"> 
                         <thead>
                         <tr class="headings">
-                            <th class="column-title">Nombre</th>
-                            <th class="column-title">Correo</th>                            
+                            <th class="column-title">Nombre</th>                                                        
                             <th class="column-title">Rol</th>
+                            <th class="column-title">Estado</th>
                             <th class="column-title">Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach($users as $user)
                             <tr> 
-                                <td>{{$user->name}}</td> 
-                                <td>{{$user->email}}</td>
+                                <td>{{$user->name}}</td>                                 
                                 <td>{{$user->role->nombre}}</td>
+                                @if($user->active==1)
+                                    <td>Activado</td>
+                                @else
+                                    <td>Desactivado</td>
+                                @endif
                                 <td class="centered">
                                     <a href="{{route('usuario.edit',$user->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">
                                         <i class="fa fa-pencil"></i>

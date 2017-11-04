@@ -18,13 +18,13 @@ class ALotOfFk extends Migration
             $table->foreign('competence_id')->references('id')->on('competences');            
         });
         Schema::table('teachers', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('course_id')->unsigned();
             $table->foreign('course_id')->references('id')->on('courses');            
         });
         Schema::table('students', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');            
         });
         Schema::table('reports', function (Blueprint $table) {
