@@ -11,15 +11,15 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name("home")->middleware('auth');
+Route::get('/', 'HomeController@index')->name('home');
 // Route::get('/minor', 'HomeController@minor')->name("minor");
 
-Route::get('/register', ['as' => 'register.create', 'uses' => 'RegistrationController@create']); 
-Route::post('/register', ['as' => 'register.store', 'uses' => 'RegistrationController@store']); 
+// Route::get('/register', ['as' => 'register.create', 'uses' => 'RegistrationController@create']); 
+// Route::post('/register', ['as' => 'register.store', 'uses' => 'RegistrationController@store']); 
 
-Route::get('/login', ['as' => 'session.create', 'uses' => 'SessionController@create']);
-Route::post('/login', ['as' => 'session.store', 'uses' => 'SessionController@store']);
-Route::get('/logout', ['as' => 'session.destroy', 'uses' => 'SessionController@destroy']);
+// Route::get('/login', ['as' => 'session.create', 'uses' => 'SessionController@create']);
+// Route::post('/login', ['as' => 'session.store', 'uses' => 'SessionController@store']);
+// Route::get('/logout', ['as' => 'session.destroy', 'uses' => 'SessionController@destroy']);
 
 Route::resource('competencia', 'CompetenceController');
 Route::resource('curso', 'CourseController');
@@ -31,3 +31,7 @@ Route::resource('pregunta', 'QuestionController');
 Route::resource('reporte', 'ReportController');
 Route::resource('usuario', 'UserController');
 //->middleware('coord','admin')
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

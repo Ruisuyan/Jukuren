@@ -9,8 +9,8 @@
                 <p>{{ $message }}</p>
             </div>
             <div class="modal-footer">
-                {{Form::button('Cancelar', ['class' => 'btn btn-default', 'data-dismiss' => 'modal'])}}
                 {{Form::open(['route' => [$route,$id], 'class' => 'delete', 'method' => 'DELETE']) }}
+                    {{Form::button('Cancelar', ['class' => 'btn btn-default', 'data-dismiss' => 'modal'])}}
                     {{ Form::submit('Eliminar', ['class' => 'btn btn-danger'])}}
                 {{ Form::close() }}
             </div>

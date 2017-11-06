@@ -18,14 +18,14 @@
                 <h3 class="panel-title">Usuarios</h3>
             </div>
             <div class="panel-body">
-                <div class="row">   
+                {{--  <div class="row">   
                     <div class="col-md-12">
                         <a href="{{route('usuario.create')}}">
                             {{Form::button('<i class="fa fa-plus"></i> Nuevo Usuario',['class'=>'btn btn-success pull-right'])}}
                         </a>
                     </div>
                     
-                </div>
+                </div>  --}}
                 <div class="table-responsive">
                     <table class="table table-list-search table-striped responsive-utilities jambo_table bulk_action"> 
                         <thead>

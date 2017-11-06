@@ -15,7 +15,8 @@
         
     </head>
     <body style="background:#F7F7F7;">        
-        <div class="gray-bg">            
+        <div class="gray-bg">
+            @include('layouts.topnavbar')            
             @yield('content')   
             @include('layouts.footer')
         </div>                      
