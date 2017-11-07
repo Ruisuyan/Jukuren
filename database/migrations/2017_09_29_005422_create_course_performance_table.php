@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCourseXPerformanceTable extends Migration
+class CreateCoursePerformanceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateCourseXPerformanceTable extends Migration
      */
     public function up()
     {
-        Schema::create('coursexperformance', function (Blueprint $table) {
+        Schema::create('course_performance', function (Blueprint $table) {            
             $table->increments('id');
-            $table->integer('course_id')->unsigned();
-            $table->integer('performance_id')->unsigned();
+            $table->integer('course_id');
+            $table->integer('performance_id');            
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateCourseXPerformanceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coursexperformance');
+        Schema::dropIfExists('course_performance');
     }
 }

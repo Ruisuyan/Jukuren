@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Performance;
 use App\Competence;
+use App\Course;
 use Illuminate\Http\Request;
 
 class PerformanceController extends Controller
@@ -118,6 +119,34 @@ class PerformanceController extends Controller
             return redirect()->route('desempenho.index')->with('success', 'yay');
         }catch(Exception $e){
             return redirect()->back()->with('warning', 'doh');
+        }
+    }
+
+    
+    //Asignar desempeño a curso
+    public function assignToCourseGet($id)
+    {
+        $performance = Performance::find($id);
+        $courses = Course::all();
+        $data = [
+            'performance' => $performance,
+            'courses' => $courses,
+        ];
+        return view('performances.assignToCourse',$data);
+    }
+
+    public function assignToCoursePost(Request $request, $id)    
+    {
+        //dd($request);
+        try{
+            foreach($request['checks'] as $n => $courseId){
+                $course = Course::where('id',$courseId)->get()->first();                
+                $course->performances()->attach($id);   
+            }
+
+            return redirect()->route('desempenho.index',$id)->with('success','yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning','doh');
         }
     }
 }

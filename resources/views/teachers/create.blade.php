@@ -73,7 +73,7 @@
             <div class="form-group">
                 {{Form::label('¿Es docente a tiempo completo?',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::checkbox('tiempoCompleto',1, false,['class'=>'form-control', 'required'])}}
+                    {{Form::checkbox('tiempoCompleto',1, false,['class'=>'form-control'])}}
                 </div>
             </div>
 

@@ -20,7 +20,7 @@ class ALotOfFk extends Migration
         Schema::table('teachers', function (Blueprint $table) {
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('course_id')->unsigned();
+            $table->integer('course_id')->unsigned()->nullable();
             $table->foreign('course_id')->references('id')->on('courses');            
         });
         Schema::table('students', function (Blueprint $table) {

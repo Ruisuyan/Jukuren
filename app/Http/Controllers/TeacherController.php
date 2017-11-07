@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Teacher;
+use App\Course;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -81,7 +82,9 @@ class TeacherController extends Controller
     public function edit($id)
     {
         $teacher = Teacher::find($id);
+        $courses = Course::all();
         $data = [
+            'courses' => $courses->pluck('nombre','id'),
             'teacher' => $teacher,
         ];
         return view('teachers.edit',$data);
@@ -106,6 +109,7 @@ class TeacherController extends Controller
             $teacher->email = $request['email'];
             $teacher->telefono = $request['telefono'];
             $teacher->tiempoCompleto =  0;
+            $teacher->course_id = $request['curso'];
             if($request['tiempoCompleto']){
                 $teacher->tiempoCompleto = $request['tiempoCompleto'];
             }

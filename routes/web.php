@@ -31,6 +31,8 @@ Route::resource('pregunta', 'QuestionController');
 Route::resource('reporte', 'ReportController');
 Route::resource('usuario', 'UserController');
 //->middleware('coord','admin')
+Route::get('/desempenho/assignToCourse/{id}',['as' => 'desempenho.assignToCourseGet', 'uses' => 'PerformanceController@assignToCourseGet']);
+Route::put('/desempenho/assignToCourse/{id}',['as' => 'desempenho.assignToCoursePost', 'uses' => 'PerformanceController@assignToCoursePost']);
 
 Auth::routes();
 

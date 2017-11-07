@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Yukari Yakumo',
             'email' => 'yukari@gensokyo.com',
-            'password' => bcrypt('secret'),
+            'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
             'remember_token' => str_random(10),
             'active' => 1,
             'role_id' => 1,
@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Reimu Hakurei',
             'email' => 'reimu@gensokyo.com',
-            'password' => bcrypt('secret'),
+            'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
             'remember_token' => str_random(10),
             'active' => 1,
             'role_id' => 2,
@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Keine Kamishirasawa',
             'email' => 'keine@gensokyo.com',
-            'password' => bcrypt('secret'),
+            'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
             'remember_token' => str_random(10),
             'active' => 1,
             'role_id' => 3,
@@ -44,7 +44,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Marisa Kirisame',
             'email' => 'marisa@gensokyo.com',
-            'password' => bcrypt('secret'),
+            'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
             'remember_token' => str_random(10),
             'active' => 1,
             'role_id' => 4,
@@ -53,7 +53,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Cirno',
             'email' => 'cirno@gensokyo.com',
-            'password' => bcrypt('secret'),
+            'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
             'remember_token' => str_random(10),
             'active' => 1,
             'role_id' => 5,
