@@ -39,12 +39,15 @@
                 <a href="{{ route('desempenho.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Desempeños</span> </a>
             </li>
             {{--  @endif  --}}
-            <li>
-                <a href="{{ route('evaluacion.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Evaluaciones</span> </a>
-            </li>
-            <li>
-                <a href="{{ route('pregunta.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Preguntas</span> </a>
-            </li>
+            <li class="bold">
+                <a data-toggle="collapse" href="#collapse1"><i class="fa fa-cog"></i>Evaluacion en linea</a>
+                <div id="collapse1" class="panel-collapse collapse">
+                    <ul>                    
+                    <a href="{{ route('evaluacion.index') }}">Administrar Evaluacion</a>                    
+                    <a href="{{ route('pregunta.index') }}">Administrar Preguntas</a>                                        
+                    </ul>
+                </div>
+            </li>             
             <li>
                 <a href="{{ route('docente.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Docentes</span> </a>
             </li>
@@ -57,6 +60,7 @@
             <li>
                 <a href="{{ route('usuario.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Usuarios</span> </a>
             </li>
+            
         </ul>
 
     </div>
