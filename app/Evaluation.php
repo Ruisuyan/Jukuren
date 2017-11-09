@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Evaluation extends Model
 {
     use SoftDeletes;
-    public function competence(){
-        return $this->belongsTo('App\Competence');
+    public function performance(){
+        return $this->belongsTo('App\Performance');
     }
 }

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Portfolio extends Model
 {
@@ -10,4 +11,5 @@ class Portfolio extends Model
     // {
     //     return $this->belongsTo('App\Student');
     // }
+    use SoftDeletes;
 }

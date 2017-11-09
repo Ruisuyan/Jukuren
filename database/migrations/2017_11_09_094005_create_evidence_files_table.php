@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEvidenceFilesTable extends Migration
+class CreateEvidencefilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class CreateEvidenceFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('evidence_files', function (Blueprint $table) {
+        Schema::create('evidencefiles', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
+            $table->string('extension');
+            $table->integer('evidence_id')->unsigned();
+            $table->foreign('evidence_id')->references('id')->on('evidences');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +31,9 @@ class CreateEvidenceFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('evidence_files');
+        Schema::table('evidencefiles', function (Blueprint $table) {
+            $table->dropForeign('evidencefiles_evidence_id_foreign');
+        });
+        Schema::dropIfExists('evidencefiles');
     }
 }

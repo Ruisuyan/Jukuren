@@ -25,6 +25,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    {{Form::label('Nombre: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                    <div class="col-md-4">
+                        {{Form::text('nombre',null,['class'=>'form-control', 'required', 'maxlength' => 500])}}
+                    </div>
+                </div>
+                <div class="form-group">
                     {{Form::label('Descripción: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                     <div class="col-md-4">
                         {{Form::textarea('descripcion',null,['class'=>'form-control', 'required', 'maxlength' => 500])}}

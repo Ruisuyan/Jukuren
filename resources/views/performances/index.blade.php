@@ -29,13 +29,15 @@
                     <table class="table table-list-search table-striped responsive-utilities jambo_table bulk_action"> 
                         <thead>
                             <tr class="headings">                                
+                                <th class="column-title">Nombre</th>
                                 <th class="column-title">Descripcion</th>
                                 <th class="column-title">Acciones</th>
                             </tr>
                         </thead> 
                         <tbody>
                             @foreach($performances as $performance)
-                            <tr>                                
+                            <tr>
+                                <td>{{$performance->nombre}}</td>                                
                                 <td>{{$performance->descripcion}}</td>
                                 <td class="centered">
                                     <a href="{{route('desempenho.edit',$performance->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">

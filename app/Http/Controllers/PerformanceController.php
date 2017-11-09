@@ -47,6 +47,7 @@ class PerformanceController extends Controller
     {
         try{
             $performance = new Performance;
+            $performance->nombre = $request['nombre'];
             $performance->descripcion = $request['descripcion'];
             $performance->competence_id = $request['competencia'];
             $performance->save();
@@ -95,6 +96,7 @@ class PerformanceController extends Controller
     {
         try{
             $performance = Performance::find($id); 
+            $performance->nombre = $request['nombre'];
             $performance->descripcion = $request['descripcion'];
             $performance->competence_id = $request['competencia'];
             $performance->save();

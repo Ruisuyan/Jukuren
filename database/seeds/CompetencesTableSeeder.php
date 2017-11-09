@@ -22,5 +22,11 @@ class CompetencesTableSeeder extends Seeder
             'descripcion' => 'Descripcion de Competencia 2',
             'tipo' => 2,
         ]);
+
+        DB::table('competences')->insert([
+            'nombre' => 'Competencia 3',
+            'descripcion' => 'Descripcion de Competencia 3',
+            'tipo' => 1,
+        ]);
     }
 }

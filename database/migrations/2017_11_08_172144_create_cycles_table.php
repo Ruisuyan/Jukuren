@@ -15,6 +15,9 @@ class CreateCyclesTable extends Migration
     {
         Schema::create('cycles', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('anho');
+            $table->integer('periodo');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
