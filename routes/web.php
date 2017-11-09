@@ -30,6 +30,8 @@ Route::resource('evaluacion', 'EvaluationController');
 Route::resource('pregunta', 'QuestionController');
 Route::resource('reporte', 'ReportController');
 Route::resource('usuario', 'UserController');
+Route::resource('portafolio', 'PortfolioController');
+Route::resource('evidencia', 'EvidenceController');
 //->middleware('coord','admin')
 Route::get('/desempenho/assignToCourse/{id}',['as' => 'desempenho.assignToCourseGet', 'uses' => 'PerformanceController@assignToCourseGet']);
 Route::put('/desempenho/assignToCourse/{id}',['as' => 'desempenho.assignToCoursePost', 'uses' => 'PerformanceController@assignToCoursePost']);

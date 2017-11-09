@@ -104,5 +104,5 @@
     </div>
     @endsection
     @section('scripts')
-    <script src="{!! asset('js/questionCreate.js') !!}" type="text/javascript"></script>
+    <script src="{{ asset('js/questionCreate.js') }}" type="text/javascript"></script>
     @endsection

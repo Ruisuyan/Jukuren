@@ -20,7 +20,10 @@ class AddFkToPortfoliosEvidences extends Migration
         Schema::table('evidences', function (Blueprint $table) {
             $table->integer('portfolio_id')->unsigned();
             $table->foreign('portfolio_id')->references('id')->on('portfolios');
+            $table->integer('performance_id')->unsigned();
+            $table->foreign('performance_id')->references('id')->on('performances');
         });
+
     }
 
     /**
@@ -35,6 +38,7 @@ class AddFkToPortfoliosEvidences extends Migration
         });
         Schema::table('evidences', function (Blueprint $table) {
             $table->dropForeign('evidences_portfolio_id_foreign');
+            $table->dropForeign('evidences_performance_id_foreign');
         });
     }
 }

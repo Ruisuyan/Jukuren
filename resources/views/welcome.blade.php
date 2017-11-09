@@ -8,8 +8,8 @@
         <title>SEC | Sistema de Evaluacion por Competencias</title>
 
         <!-- Fonts -->        
-        <link rel="stylesheet" href="{!! asset('css/vendor.css') !!}" />
-        <link rel="stylesheet" href="{!! asset('css/app.css') !!}" />
+        <link rel="stylesheet" href="{{ asset('css/vendor.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
 
         <!-- Styles -->
         
@@ -20,7 +20,7 @@
             @yield('content')   
             @include('layouts.footer')
         </div>                      
-        <script src="{!! asset('js/app.js') !!}" type="text/javascript"></script>
+        <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
         @show
     </body>
 </html>

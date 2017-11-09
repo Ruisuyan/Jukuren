@@ -60,6 +60,9 @@
             <li>
                 <a href="{{ route('usuario.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Usuarios</span> </a>
             </li>
+            <li>
+                <a href="{{ route('evidencia.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Portafolio</span> </a>
+            </li>
             
         </ul>
 
