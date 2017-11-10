@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cycle;
+use App\Course;
 use Illuminate\Http\Request;
 
 class CycleController extends Controller
@@ -14,7 +15,11 @@ class CycleController extends Controller
      */
     public function index()
     {
-        //
+        $cycles = Cycle::all();
+        $data = [
+            'cycles' => $cycles,
+        ];
+        return view('cycles.index',$data);
     }
 
     /**
@@ -24,7 +29,7 @@ class CycleController extends Controller
      */
     public function create()
     {
-        //
+        return view('cycles.create');
     }
 
     /**
@@ -81,5 +86,30 @@ class CycleController extends Controller
     public function destroy(Cycle $cycle)
     {
         //
+    }
+
+    public function assignToCourseGet($id)
+    {
+        $cycle = Cycle::find($id);
+        $courses = Course::all();
+        $data = [
+            'cycle' => $cycle,
+            'courses' => $courses,
+        ];
+        return view('cycles.assignToCourse',$data);
+    }
+
+    public function assignToCoursePost(Request $request, $id)    
+    {
+        try{
+            foreach($request['checks'] as $n => $courseId){
+                $course = Course::where('id',$courseId)->get()->first();                
+                $course->cycles()->attach($id);   
+            }
+
+            return redirect()->route('ciclo.index',$id)->with('success','yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning','doh');
+        }
     }
 }

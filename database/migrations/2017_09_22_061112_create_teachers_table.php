@@ -21,8 +21,7 @@ class CreateTeachersTable extends Migration
             $table->string('apellidoMaterno');
             $table->string('email');
             $table->string('oficina');
-            $table->string('telefono');
-            $table->boolean('tiempoCompleto');
+            $table->string('telefono');            
             $table->softDeletes();
             $table->timestamps();
         });

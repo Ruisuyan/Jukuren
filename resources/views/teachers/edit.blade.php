@@ -70,12 +70,12 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            {{--  <div class="form-group">
                 {{Form::label('¿Es docente a tiempo completo?',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
                     {{Form::checkbox('tiempoCompleto', $teacher->tiempoCompleto, true,['class'=>'form-control', 'required'])}}
                 </div>
-            </div>
+            </div>  --}}
 
              <div class="form-group">
                 {{Form::label('Curso: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}

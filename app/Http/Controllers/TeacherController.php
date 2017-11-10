@@ -49,10 +49,10 @@ class TeacherController extends Controller
             $teacher->oficina = $request['oficina'];
             $teacher->email = $request['email'];
             $teacher->telefono = $request['telefono'];
-            $teacher->tiempoCompleto =  0;
-            if($request['tiempoCompleto']){
-                $teacher->tiempoCompleto = $request['tiempoCompleto'];
-            }            
+            // $teacher->tiempoCompleto =  0;
+            // if($request['tiempoCompleto']){
+            //     $teacher->tiempoCompleto = $request['tiempoCompleto'];
+            // }            
             //dd($teacher);
             $teacher->save();
 
@@ -108,11 +108,11 @@ class TeacherController extends Controller
             $teacher->oficina = $request['oficina'];
             $teacher->email = $request['email'];
             $teacher->telefono = $request['telefono'];
-            $teacher->tiempoCompleto =  0;
+            // $teacher->tiempoCompleto =  0;
             $teacher->course_id = $request['curso'];
-            if($request['tiempoCompleto']){
-                $teacher->tiempoCompleto = $request['tiempoCompleto'];
-            }
+            // if($request['tiempoCompleto']){
+            //     $teacher->tiempoCompleto = $request['tiempoCompleto'];
+            // }
             $teacher->save();
             return redirect()->route('docente.index', $id)->with('success','yay');
         }catch(Exception $e){
