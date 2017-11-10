@@ -29,25 +29,25 @@
                     <table class="table table-list-search table-striped responsive-utilities jambo_table bulk_action"> 
                         <thead>
                             <tr class="headings">                                
-                                <th class="column-title">Nombre</th>
-                                <th class="centered column-title">Estado</th>
+                                {{--  <th class="column-title">Nombre</th>  --}}
+                                {{--  <th class="centered column-title">Estado</th>  --}}
                                 <th class="centered column-title">Fecha</th>
-                                <th class="centered column-title">Peso</th>
+                                {{--  <th class="centered column-title">Peso</th>  --}}
                                 <th class="centered column-title">Acciones</th>
                             </tr>
                         </thead> 
                         <tbody>
                             @foreach($evidences as $evidence)
                             <tr> 
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
+                                {{--  <td></td>  --}}
+                                {{--  <td></td>  --}}
+                                <td>{{$evidence->fechalimite}}</td>
+                                {{--  <td></td>                                 --}}
                                 <td class="centered">
-                                    <a href="{{route('competencia.edit',$competence->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">
+                                    <a href="{{route('evidencia.edit',$evidence->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">
                                         <i class="fa fa-pencil"></i>
                                     </a>
-                                    <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$competence->id}}">
+                                    <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$evidence->id}}">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
                                 </td>                             

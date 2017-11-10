@@ -18,7 +18,7 @@ class AddFkToPortfoliosEvidences extends Migration
             $table->foreign('student_id')->references('id')->on('students');
         });
         Schema::table('evidences', function (Blueprint $table) {
-            $table->integer('portfolio_id')->unsigned();
+            $table->integer('portfolio_id')->unsigned()->nullable();
             $table->foreign('portfolio_id')->references('id')->on('portfolios');
             $table->integer('performance_id')->unsigned();
             $table->foreign('performance_id')->references('id')->on('performances');

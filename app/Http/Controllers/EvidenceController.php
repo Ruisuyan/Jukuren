@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Evidence;
+use App\Course;
+use App\Performance;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -29,7 +31,12 @@ class EvidenceController extends Controller
      */
     public function create()
     {
-        return view('evidences.create');
+        $performances = Course::find(1)->performances()->get(); //Este id debe ser el que posee el profesor en el curso determinado        
+        //dd($performances);
+        $data = [
+            'performances' => $performances->pluck('nombre','id'),
+        ];
+        return view('evidences.create',$data);
     }
 
     /**
@@ -41,8 +48,14 @@ class EvidenceController extends Controller
     public function store(Request $request)
     {
         try{
-            $file = $request->file('archivo');
-            $file->store('upload','public');
+            // $file = $request->file('archivo');
+            // $file->store('upload','public');
+            $evidence = new Evidence;
+            $evidence->fechalimite = $request['fechalimite'];
+            $evidence->indicaciones = $request['indicaciones'];
+            $evidence->performance_id = $request['desempenho'];
+            $evidence->estado = 1;
+            $evidence->save();
             return redirect()->route('evidencia.index');
         }catch(Exception $e){
             return redirect()->back();

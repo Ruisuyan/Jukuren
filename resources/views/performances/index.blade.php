@@ -41,10 +41,13 @@
                                 <td>{{$performance->descripcion}}</td>
                                 <td class="centered">
                                     <a href="{{route('desempenho.edit',$performance->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">
-                                        <i class="fa fa-pencil"></i>
+                                        <i class="fa fa-pencil"> Editar</i>
+                                    </a>
+                                    <a href="{{route('desempenho.assignToCourseGet',$performance->id)}}" title="Asignar a Curso" class="btn btn-success btn-xs view-group">
+                                        <i class="fa fa-arrow-circle-o-right"> Asignar</i>
                                     </a>
                                     <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$performance->id}}">
-                                        <i class="fa fa-trash-o"></i>
+                                        <i class="fa fa-trash-o"> Eliminar</i>
                                     </a>
                                 </td>
                             </tr>

@@ -14,7 +14,7 @@ class AddFksToEvidenceTable extends Migration
     public function up()
     {
         Schema::table('evidences', function (Blueprint $table) {
-            $table->integer('course_cycle_id')->unsigned();
+            $table->integer('course_cycle_id')->unsigned()->nullable();
             $table->foreign('course_cycle_id')->references('id')->on('course_cycle');            
         });
     }

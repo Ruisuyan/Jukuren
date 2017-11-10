@@ -14,7 +14,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">{{$performance->id}}</h3>
+                <h3 class="panel-title">{{$performance->nombre}}</h3>
             </div>
             <div class="panel-body">
              {{Form::open(['route' => ['desempenho.assignToCoursePost',$performance->id],'class' => ' form-horizontal','method'=>'put'])}}            
