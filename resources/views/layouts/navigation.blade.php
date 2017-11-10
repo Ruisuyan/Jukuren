@@ -39,7 +39,7 @@
                 <a href="{{ route('desempenho.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Desempeños</span> </a>
             </li>
             {{--  @endif  --}}
-            <li class="bold">
+            {{--  <li class="bold">
                 <a data-toggle="collapse" href="#collapse1"><i class="fa fa-cog"></i>Evaluacion en linea</a>
                 <div id="collapse1" class="panel-collapse collapse">
                     <ul>                    
@@ -47,7 +47,7 @@
                     <a href="{{ route('pregunta.index') }}">Administrar Preguntas</a>                                        
                     </ul>
                 </div>
-            </li>             
+            </li>               --}}
             <li>
                 <a href="{{ route('docente.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Docentes</span> </a>
             </li>

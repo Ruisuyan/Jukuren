@@ -15,6 +15,7 @@ class CreateEvidencesTable extends Migration
     {
         Schema::create('evidences', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
             $table->date('fechasubida')->nullable();
             $table->date('fechalimite');
             $table->integer('estado');//1 corregido, 2 en observacion, 3 sin evidencia

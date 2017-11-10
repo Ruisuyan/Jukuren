@@ -24,9 +24,9 @@ class UsersTableSeeder extends Seeder
         // ]);
         //Coordinator    
         DB::table('users')->insert([
-            'name' => 'Reimu Hakurei',
-            'email' => 'reimu@gensokyo.com',
-            'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
+            'name' => '22222222',
+            'email' => '22222222@mail.com',
+            'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
             'active' => 1,
             'role_id' => 2,

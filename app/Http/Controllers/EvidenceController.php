@@ -51,6 +51,7 @@ class EvidenceController extends Controller
             // $file = $request->file('archivo');
             // $file->store('upload','public');
             $evidence = new Evidence;
+            $evidence->nombre = $request['nombre'];
             $evidence->fechalimite = $request['fechalimite'];
             $evidence->indicaciones = $request['indicaciones'];
             $evidence->performance_id = $request['desempenho'];

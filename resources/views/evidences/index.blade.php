@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="page-title">    
-		    <h3>Lista de Evidencias del Alumno X</h3>
+		    <h3>Evidencias a asignar a un curso</h3>
         </div>
     </div>
 </div>
@@ -29,7 +29,7 @@
                     <table class="table table-list-search table-striped responsive-utilities jambo_table bulk_action"> 
                         <thead>
                             <tr class="headings">                                
-                                {{--  <th class="column-title">Nombre</th>  --}}
+                                <th class="column-title">Nombre</th>
                                 {{--  <th class="centered column-title">Estado</th>  --}}
                                 <th class="centered column-title">Fecha</th>
                                 {{--  <th class="centered column-title">Peso</th>  --}}
@@ -39,7 +39,7 @@
                         <tbody>
                             @foreach($evidences as $evidence)
                             <tr> 
-                                {{--  <td></td>  --}}
+                                <td>{{$evidence->nombre}}</td>
                                 {{--  <td></td>  --}}
                                 <td>{{$evidence->fechalimite}}</td>
                                 {{--  <td></td>                                 --}}
