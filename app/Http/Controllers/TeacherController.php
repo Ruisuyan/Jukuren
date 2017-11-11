@@ -15,7 +15,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all();        
+        $teachers = Teacher::all();
+//        dd($teachers);
         $data = [
             'teachers' => $teachers,
         ];

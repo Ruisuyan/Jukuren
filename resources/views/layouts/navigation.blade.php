@@ -63,8 +63,11 @@
             <li>
                 <a href="{{ route('evidencia.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Portafolio</span> </a>
             </li>
-             <li>
+            <li>
                 <a href="{{ route('ciclo.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Ciclo</span> </a>
+            </li>
+            <li>
+                <a href="{{ route('horario.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Horario</span> </a>
             </li>
             
         </ul>

@@ -21,7 +21,7 @@
             <div class="form-group">
                 {{Form::label('Ciclo: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4 col-sm-8 col-xs-12">
-                    {{Form::selectRange('ciclo',1,10,null,['id' => 'cycleOfCourse','placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
+                    {{Form::selectRange('cicloCurso',1,10,null,['id' => 'cycleOfCourse','placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
                 </div>
             </div>            
 
@@ -42,7 +42,7 @@
                     </thead> 
                     <tbody class="listOfCourses">
                         @foreach($courses as $course)                        
-                        <tr class="course{{$course->ciclo}}"> 
+                        <tr class="course{{$course->cicloCurso}}"> 
                             <td>{{Form::checkbox('checks['. $course->id .']', $course->id)}}</td>
                             <td>{{$course->codigo}}</td>
                             <td>{{$course->nombre}}</td>                           

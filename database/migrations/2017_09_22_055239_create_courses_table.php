@@ -18,7 +18,7 @@ class CreateCoursesTable extends Migration
             $table->string('codigo');
             $table->string('nombre');
             $table->text('descripcion');
-            $table->integer('ciclo');
+            $table->integer('cicloCurso');
             $table->softDeletes();
             $table->timestamps();
         });

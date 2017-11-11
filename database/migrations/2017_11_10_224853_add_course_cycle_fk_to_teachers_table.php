@@ -13,10 +13,10 @@ class AddCourseCycleFkToTeachersTable extends Migration
      */
     public function up()
     {
-        Schema::table('teachers', function (Blueprint $table) {
-            $table->integer('course_cycle_id')->unsigned()->nullable();
-            $table->foreign('course_cycle_id')->references('id')->on('course_cycle');
-        });
+        // Schema::table('teachers', function (Blueprint $table) {
+        //     $table->integer('course_cycle_id')->unsigned()->nullable();
+        //     $table->foreign('course_cycle_id')->references('id')->on('course_cycle');
+        // });
     }
 
     /**
@@ -26,8 +26,8 @@ class AddCourseCycleFkToTeachersTable extends Migration
      */
     public function down()
     {
-        Schema::table('teachers', function (Blueprint $table) {
-            $table->dropForeign(['course_cycle_id']);
-        });
+        // Schema::table('teachers', function (Blueprint $table) {
+        //     $table->dropForeign(['course_cycle_id']);
+        // });
     }
 }

@@ -15,70 +15,70 @@ class CoursesTableSeeder extends Seeder
             'codigo' => 'EDU123',
             'nombre' => 'Educacion EDU123',
             'descripcion' => 'Descripcion de EDU123',
-            'ciclo' => 1,
+            'cicloCurso' => 1,
         ]);
 
         DB::table('courses')->insert([
             'codigo' => 'EDU123',
             'nombre' => 'Educacion EDU123',
             'descripcion' => 'Descripcion de EDU123',
-            'ciclo' => 2,
+            'cicloCurso' => 2,
         ]);
 
         DB::table('courses')->insert([
             'codigo' => 'EDU123',
             'nombre' => 'Educacion EDU123',
             'descripcion' => 'Descripcion de EDU123',
-            'ciclo' => 3,
+            'cicloCurso' => 3,
         ]);
 
         DB::table('courses')->insert([
             'codigo' => 'EDU123',
             'nombre' => 'Educacion EDU123',
             'descripcion' => 'Descripcion de EDU123',
-            'ciclo' => 4,
+            'cicloCurso' => 4,
         ]);
 
         DB::table('courses')->insert([
             'codigo' => 'EDU123',
             'nombre' => 'Educacion EDU123',
             'descripcion' => 'Descripcion de EDU123',
-            'ciclo' => 5,
+            'cicloCurso' => 5,
         ]);
         
         DB::table('courses')->insert([
             'codigo' => 'EDU123',
             'nombre' => 'Educacion EDU123',
             'descripcion' => 'Descripcion de EDU123',
-            'ciclo' => 6,
+            'cicloCurso' => 6,
         ]);
 
         DB::table('courses')->insert([
             'codigo' => 'EDU123',
             'nombre' => 'Educacion EDU123',
             'descripcion' => 'Descripcion de EDU123',
-            'ciclo' => 7,
+            'cicloCurso' => 7,
         ]);
 
         DB::table('courses')->insert([
             'codigo' => 'EDU123',
             'nombre' => 'Educacion EDU123',
             'descripcion' => 'Descripcion de EDU123',
-            'ciclo' => 8,
+            'cicloCurso' => 8,
         ]);
 
         DB::table('courses')->insert([
             'codigo' => 'EDU321',
             'nombre' => 'Educacion EDU321',
             'descripcion' => 'Descripcion de EDU321',
-            'ciclo' => 9,
+            'cicloCurso' => 9,
         ]);
 
         DB::table('courses')->insert([
             'codigo' => 'EDU123',
             'nombre' => 'Educacion EDU123',
             'descripcion' => 'Descripcion de EDU123',
-            'ciclo' => 10,
+            'cicloCurso' => 10,
         ]);
     }
 }

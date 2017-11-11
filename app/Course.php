@@ -13,6 +13,6 @@ class Course extends Model
     }
 
     public function cycles(){
-        return $this->belongsToMany('App\Cycle');
+        return $this->belongsToMany('App\Cycle')->using('App\CourseXCycle');
     }
 }

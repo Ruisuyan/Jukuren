@@ -17,6 +17,7 @@ class CreateCyclesTable extends Migration
             $table->increments('id');
             $table->integer('anho');
             $table->integer('periodo');
+            $table->string('semestre');
             $table->date('fechainicio');
             $table->date('fechafin');
             $table->integer('estado');//1 = activo, 2=Proximo, 3=Culminado

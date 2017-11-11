@@ -15,6 +15,7 @@ class CyclesTableSeeder extends Seeder
         DB::table('cycles')->insert([
             'anho' => '2017',
             'periodo' => '2',
+            'semestre' => '2017-2',
             'fechainicio' => Carbon::createFromDate(2017, 8, 14),
             'fechafin' => Carbon::createFromDate(2017, 11, 27),
             'estado' => '1',
@@ -23,6 +24,7 @@ class CyclesTableSeeder extends Seeder
         DB::table('cycles')->insert([
             'anho' => '2018',
             'periodo' => '1',
+            'semestre' => '2018-1',
             'fechainicio' => Carbon::createFromDate(2018, 3, 12),
             'fechafin' => Carbon::createFromDate(2018, 6, 29),
             'estado' => '2',
@@ -31,6 +33,7 @@ class CyclesTableSeeder extends Seeder
         DB::table('cycles')->insert([
             'anho' => '2018',
             'periodo' => '2',
+            'semestre' => '2018-2',
             'fechainicio' => Carbon::createFromDate(2018, 8, 13),
             'fechafin' => Carbon::createFromDate(2018, 11, 30),
             'estado' => '2',

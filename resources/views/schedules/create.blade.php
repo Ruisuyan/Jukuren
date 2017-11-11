@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title', 'Ciclos')
+@section('title', 'Horario')
 @section('content')
 <div class="row">
     <div class="col-md-12">
         <div class="page-title">
             <div class="title_left">
-                <h3>Asignar Ciclo Academico a Cursos</h3>
+                <h3>Crear Horario</h3>
             </div>
         </div>
     </div>
@@ -14,10 +14,22 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">{{$cycle->anho.' - '.$cycle->periodo}}</h3>
+                <h3 class="panel-title">Nuevo Horario</h3>
             </div>
             <div class="panel-body">
-             {{Form::open(['route' => ['ciclo.assignToCoursePost',$cycle->id],'class' => ' form-horizontal','method'=>'put'])}}            
+             {{Form::open(['route' =>'horario.store','class' => ' form-horizontal'])}}            
+             <div class="form-group">
+                {{Form::label('Codigo',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                <div class="col-md-4">
+                    {{Form::text('codigo',null,['class'=>'form-control', 'required', 'maxlength' => 6])}}
+                </div>
+            </div>
+            <div class="form-group">
+                {{Form::label('Ciclo Academico: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    {{Form::select('cicloAcademico',$cycles,null,['id' => 'academicCycle','placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
+                </div>
+            </div>
             <div class="form-group">
                 {{Form::label('Ciclo (nivel academico): *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4 col-sm-8 col-xs-12">
@@ -43,7 +55,7 @@
                     <tbody class="listOfCourses">
                         @foreach($courses as $course)                        
                         <tr class="course{{$course->cicloCurso}}"> 
-                            <td>{{Form::checkbox('checks['. $course->id .']', $course->id)}}</td>
+                            <td>{{Form::radio('courseId', $course->id)}}</td>
                             <td>{{$course->codigo}}</td>
                             <td>{{$course->nombre}}</td>                           
                         </tr> 
@@ -55,7 +67,7 @@
             <div class="row">
                 <div class="col-md-8 col-sm-12 col-xs-12">
                     {{Form::submit('Guardar', ['class'=>'btn btn-success pull-right'])}}
-                    <a class="btn btn-default pull-right" href="{{ route('ciclo.index') }}">Cancelar</a>
+                    <a class="btn btn-default pull-right" href="{{ route('horario.index') }}">Cancelar</a>
                 </div>
             </div>
             

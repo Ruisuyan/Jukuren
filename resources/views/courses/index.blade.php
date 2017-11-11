@@ -38,7 +38,7 @@
                             @foreach($courses as $course)
                             <tr> 
                                 <td class="centered">{{$course->codigo}}</td> 
-                                <td class="centered">{{$course->ciclo}}</td> 
+                                <td class="centered">{{$course->cicloCurso}}</td> 
                                 <td>{{$course->nombre}}</td>                             
                                 <td class="centered">
                                     <a href="{{route('curso.edit',$course->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">

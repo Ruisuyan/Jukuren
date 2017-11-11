@@ -39,7 +39,7 @@
                         <div class="form-group">
                             {{Form::label('Ciclo',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                             <div class="col-md-4">
-                                {{Form::number('ciclo',$course->ciclo,['class'=>'form-control', 'required'])}}
+                                {{Form::number('cicloCurso',$course->ciclo,['class'=>'form-control', 'required'])}}
                             </div>
                         </div>                        
                         <div class="row">

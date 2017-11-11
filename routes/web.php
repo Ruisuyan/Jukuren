@@ -33,11 +33,14 @@ Route::resource('usuario', 'UserController');
 Route::resource('portafolio', 'PortfolioController');
 Route::resource('evidencia', 'EvidenceController');
 Route::resource('ciclo', 'CycleController');
+Route::resource('horario', 'ScheduleController');
 //->middleware('coord','admin')
 Route::get('/desempenho/assignToCourse/{id}',['as' => 'desempenho.assignToCourseGet', 'uses' => 'PerformanceController@assignToCourseGet']);
 Route::put('/desempenho/assignToCourse/{id}',['as' => 'desempenho.assignToCoursePost', 'uses' => 'PerformanceController@assignToCoursePost']);
-Route::get('/ciclo/assignToCourse/{id}',['as' => 'ciclo.assignToCourseGet', 'uses' => 'CycleController@assignToCourseGet']);
-Route::put('/ciclo/assignToCourse/{id}',['as' => 'ciclo.assignToCoursePost', 'uses' => 'CycleController@assignToCoursePost']);
+// Route::get('/ciclo/assignToCourse/{id}',['as' => 'ciclo.assignToCourseGet', 'uses' => 'CycleController@assignToCourseGet']);
+// Route::put('/ciclo/assignToCourse/{id}',['as' => 'ciclo.assignToCoursePost', 'uses' => 'CycleController@assignToCoursePost']);
+Route::get('/horario/assignToTeacher/{id}',['as' => 'horario.assignToTeacherGet', 'uses' => 'ScheduleController@assignToTeacherGet']);
+Route::put('/horario/assignToTeacher/{id}',['as' => 'horario.assignToTeacherPost', 'uses' => 'ScheduleController@assignToTeacherPost']);
 
 Auth::routes();
 

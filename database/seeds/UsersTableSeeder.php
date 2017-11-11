@@ -37,17 +37,17 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
             'remember_token' => str_random(10),
             'active' => 1,
-            'role_id' => 1,
+            'role_id' => 2,
         ]);
-        // //Teacher    
-        // DB::table('users')->insert([
-        //     'name' => 'Keine Kamishirasawa',
-        //     'email' => 'keine@gensokyo.com',
-        //     'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
-        //     'remember_token' => str_random(10),
-        //     'active' => 1,
-        //     'role_id' => 3,
-        // ]);
+        //Teacher    
+        DB::table('users')->insert([
+            'name' => 'Keine Kamishirasawa',
+            'email' => 'keine@gensokyo.com',
+            'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
+            'remember_token' => str_random(10),
+            'active' => 1,
+            'role_id' => 3,
+        ]);
         // //Evaluator    
         // DB::table('users')->insert([
         //     'name' => 'Marisa Kirisame',
@@ -57,14 +57,14 @@ class UsersTableSeeder extends Seeder
         //     'active' => 1,
         //     'role_id' => 4,
         // ]);
-
-        // DB::table('users')->insert([
-        //     'name' => 'Cirno',
-        //     'email' => 'cirno@gensokyo.com',
-        //     'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
-        //     'remember_token' => str_random(10),
-        //     'active' => 1,
-        //     'role_id' => 5,
-        // ]);
+        //Student
+        DB::table('users')->insert([
+            'name' => 'Cirno',
+            'email' => 'cirno@gensokyo.com',
+            'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
+            'remember_token' => str_random(10),
+            'active' => 1,
+            'role_id' => 5,
+        ]);
     }
 }

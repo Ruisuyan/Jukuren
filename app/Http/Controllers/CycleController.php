@@ -88,28 +88,28 @@ class CycleController extends Controller
         //
     }
 
-    public function assignToCourseGet($id)
-    {
-        $cycle = Cycle::find($id);
-        $courses = Course::all();
-        $data = [
-            'cycle' => $cycle,
-            'courses' => $courses,
-        ];
-        return view('cycles.assignToCourse',$data);
-    }
+    // public function assignToCourseGet($id)
+    // {
+    //     $cycle = Cycle::find($id);
+    //     $courses = Course::all();
+    //     $data = [
+    //         'cycle' => $cycle,
+    //         'courses' => $courses,
+    //     ];
+    //     return view('cycles.assignToCourse',$data);
+    // }
 
-    public function assignToCoursePost(Request $request, $id)    
-    {
-        try{
-            foreach($request['checks'] as $n => $courseId){
-                $course = Course::where('id',$courseId)->get()->first();                
-                $course->cycles()->attach($id);   
-            }
+    // public function assignToCoursePost(Request $request, $id)    
+    // {
+    //     try{
+    //         foreach($request['checks'] as $n => $courseId){
+    //             $course = Course::where('id',$courseId)->get()->first();                
+    //             $course->cycles()->attach($id);   
+    //         }
 
-            return redirect()->route('ciclo.index',$id)->with('success','yay');
-        }catch(Exception $e){
-            return redirect()->back()->with('warning','doh');
-        }
-    }
+    //         return redirect()->route('ciclo.index',$id)->with('success','yay');
+    //     }catch(Exception $e){
+    //         return redirect()->back()->with('warning','doh');
+    //     }
+    // }
 }
