@@ -13,7 +13,7 @@ class AddPerformanceFkToEvaluationTable extends Migration
      */
     public function up()
     {
-        Schema::table('evaluations', function (Blueprint $table) {
+        Schema::table('onlineevaluations', function (Blueprint $table) {
             $table->integer('performance_id')->unsigned();
             $table->foreign('performance_id')->references('id')->on('performances');
         });
@@ -26,8 +26,8 @@ class AddPerformanceFkToEvaluationTable extends Migration
      */
     public function down()
     {
-        Schema::table('evaluations', function (Blueprint $table) {
-            $table->dropForeign('evaluations_performance_id_foreign');
+        Schema::table('onlineevaluations', function (Blueprint $table) {
+            $table->dropForeign('onlineevaluations_performance_id_foreign');
         });
     }
 }

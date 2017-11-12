@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Evaluation;
-use App\Competence;
-use App\Question;
+use App\Schedule;
+use App\Teacher;
 use Illuminate\Http\Request;
 
 class EvaluationController extends Controller
@@ -16,7 +16,7 @@ class EvaluationController extends Controller
      */
     public function index()
     {
-        $evaluations = Evaluation::all();        
+        $evaluations = Evaluation::all();
         $data = [
             'evaluations' => $evaluations,
         ];
@@ -28,14 +28,34 @@ class EvaluationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    public function chooseScheduleGet()
     {
-        $competences = Competence::all();
-        $questions = Question::all();
+        $userId = auth()->user()->id;
+        $teacher = Teacher::where('user_id',$userId)->first();        
         $data = [
-            'questions' => $questions,
-            'competences' => $competences->pluck('nombre','id'),
+            'teacher' => $teacher,            
         ];
+        //dd($userId);
+        return view('evaluations.chooseSchedule',$data);
+    }
+
+    public function chooseSchedulePost(Request $request)
+    {
+        $scheduleId = $request['scheduleId'];
+        return redirect()->route('evaluacion.create',$scheduleId);
+    }
+
+    public function create($id)
+    {
+        $schedule = Schedule::where('id',$id)->first();
+        $teacherId = $schedule->teacher->id;
+        $data = [
+            'scheduleId' => $schedule->id,
+            'teacherId' => $teacherId,
+            'performances' => $schedule->course->performances->pluck('nombre','id'),
+        ];
+        //dd($data);
         return view('evaluations.create',$data);
     }
 
@@ -47,30 +67,24 @@ class EvaluationController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         try{
-            //dd($request);
             $evaluation = new Evaluation;
-            $evaluation->nombre = $request['nombre'];            
-            $evaluation->descripcion = $request['descripcion'];
-            $evaluation->fechaInicio = $request['fechaInicio'];                        
+            $evaluation->nombre = $request['nombre'];
+            $evaluation->tipo = $request['tipo'];
+            $evaluation->fechaInicio = $request['fechaInicio'];
             $evaluation->fechaFin = $request['fechaFin'];
-            $evaluation->duracion = $request['duracion'];
-            $evaluation->peso = $request['peso'];
+            $evaluation->indicaciones = $request['indicaciones'];
             $evaluation->estado = 1;
-            $evaluation->competence_id = $request['competencia'];                        
+            $evaluation->performance_id = $request['performanceId'];
+            $evaluation->schedule_id = $request['scheduleId'];
+            $evaluation->teacher_id = $request['teacherId'];
             $evaluation->save();
-            //registrar las preguntas
-            //OJO ver tambien si alguna pregunta ya se uso antes!!
-            foreach($request['checks'] as $n => $questionId){
-                $question = Question::where('id',$questionId)->get()->first();                
-                $question->evaluation_id = $evaluation->id;               
-                $question->save();
-            }
-
-            return redirect()->route('evaluacion.index')->with('success','yay');
+            return redirect()->route('evaluacion.index');
         }catch(Exception $e){
-            return redirect()->back()->with('warning','doh');
+            return redirect()->back();
         }
+        
     }
 
     /**
@@ -113,15 +127,8 @@ class EvaluationController extends Controller
      * @param  \App\Evaluation  $evaluation
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Evaluation $evaluation)
     {
-        try{
-            $evaluation = Evaluation::find($id);
-            $evaluation->delete();
-            return redirect()->route('evaluacion.index')->with('success', 'yay');
-        }catch(Exception $e){
-            return redirect()->back()->with('warning', 'doh');
-        }
+        //
     }
 }
-

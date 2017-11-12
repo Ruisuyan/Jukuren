@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Cycle extends Model
 {
     public function courses(){
-        return $this->belongsToMany('App\Courses')->using('App\CourseXCycle');
+        return $this->belongsToMany('App\Courses');
     }
     use SoftDeletes;
 }

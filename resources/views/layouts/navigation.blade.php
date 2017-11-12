@@ -7,7 +7,7 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear">
                                 <span class="block m-t-xs">
-                                    <strong class="font-bold">Usuario: {{auth()->user()->name}}</strong>
+                                    <strong class="font-bold">{{auth()->user()->role->nombre.': '.auth()->user()->name}}</strong>
                                 </span>
                             </span>
                         </a>
@@ -48,6 +48,11 @@
                     </ul>
                 </div>
             </li>               --}}
+            @if(auth()->user()->role_id==3)
+            <li>
+                <a href="{{ route('evaluacion.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Evaluaciones</span> </a>
+            </li>
+            @endif
             <li>
                 <a href="{{ route('docente.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Docentes</span> </a>
             </li>

@@ -9,10 +9,10 @@ class Course extends Model
 {
     use SoftDeletes;
     public function performances(){
-        return $this->belongsToMany('App\Performance');
+        return $this->belongsToMany('App\Performance')->using('App\CourseXPerformance');
     }
 
     public function cycles(){
-        return $this->belongsToMany('App\Cycle')->using('App\CourseXCycle');
+        return $this->belongsToMany('App\Cycle');
     }
 }

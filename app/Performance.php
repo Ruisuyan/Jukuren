@@ -14,7 +14,7 @@ class Performance extends Model
     }
 
     public function courses(){
-        return $this->belongsToMany('App\Course');                
+        return $this->belongsToMany('App\Course')->using('App\CourseXPerformance');                
     }
     
 }
