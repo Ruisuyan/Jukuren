@@ -6,6 +6,7 @@ use App\Schedule;
 use App\Cycle;
 use App\Course;
 use App\Teacher;
+use App\Student;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
@@ -126,6 +127,33 @@ class ScheduleController extends Controller
             $schedule->teacher_id = $request['teacherId'];
             $schedule->save();
             return redirect()->route('ciclo.index',$id)->with('success','yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning','doh');
+        }
+    }
+
+    public function assignToStudentsGet($id)
+    {
+        $schedule = Schedule::find($id);
+        $students = Student::all();
+        //dd($teachers);
+        
+        $data = [
+            'students' => $students,
+            'schedule' => $schedule,            
+        ];
+        //dd($data);
+        return view('schedules.assignToStudents',$data);
+    }
+
+    public function assignToStudentsPost(Request $request, $id)    
+    {
+        try{
+            foreach ($request['checks'] as $n => $studentId) {
+                $student = Student::where('id',$studentId)->first();
+                $student->schedules()->attach($id);
+            }                        
+            return redirect()->route('horario.index',$id)->with('success','yay');
         }catch(Exception $e){
             return redirect()->back()->with('warning','doh');
         }

@@ -24,6 +24,11 @@
             <li>
                 <a href="{{ url('/') }}"><i class="fa fa-home"></i> <span class="nav-label">Inicio</span></a>
             </li>
+            @if(auth()->user()->role_id==5)
+            <li>
+                <a href="{{ route('alumno.myEvaluations') }}"><i class="fa fa-cog"></i> <span class="nav-label">Mis evaluaciones</span> </a>
+            </li>    
+            @endif
             {{--  @if(auth()->user()->role_id==2)  --}}
             <li>
                 <a href="{{ route('competencia.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Competencias</span> </a>
@@ -48,6 +53,9 @@
                     </ul>
                 </div>
             </li>               --}}
+            <li>
+                <a href="{{ route('horario.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Horario</span> </a>
+            </li>
             @if(auth()->user()->role_id==3)
             <li>
                 <a href="{{ route('evaluacion.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Evaluaciones</span> </a>
@@ -71,9 +79,7 @@
             <li>
                 <a href="{{ route('ciclo.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Ciclo</span> </a>
             </li>
-            <li>
-                <a href="{{ route('horario.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Horario</span> </a>
-            </li>
+            
             
         </ul>
 

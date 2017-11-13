@@ -47,7 +47,10 @@
                                     </a>                                    
                                     <a href="{{route('horario.assignToTeacherGet',$schedule->id)}}" title="Asignar a Docente" class="btn btn-success btn-xs view-group">
                                         <i class="fa fa-arrow-circle-o-right"> Asignar docente</i>
-                                    </a>                                    
+                                    </a>
+                                    <a href="{{route('horario.assignToStudentsGet',$schedule->id)}}" title="Asignar a Alumnos" class="btn btn-success btn-xs view-group">
+                                        <i class="fa fa-arrow-circle-o-right"> Asignar alumnos</i>
+                                    </a>                                     
                                     <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$schedule->id}}">
                                         <i class="fa fa-trash-o"> Eliminar</i>
                                     </a>

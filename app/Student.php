@@ -10,5 +10,11 @@ class Student extends Model
     {
         return $this->hasOne('App\Portfolio');
     }
+
+    public function schedules()
+    {
+        return $this->belongsToMany('App\Schedule')->using('App\ScheduleXStudent');
+    }
+    
     use SoftDeletes;
 }

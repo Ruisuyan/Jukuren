@@ -17,13 +17,13 @@
                 <h3 class="panel-title">Evaluaciones</h3>
             </div>
             <div class="panel-body">
-                <div class="row">   
+                {{--  <div class="row">   
                     <div class="col-md-12">
                         <a href="{{route('evaluacion.chooseScheduleGet')}}">
                             {{Form::button('<i class="fa fa-plus"></i> Nueva Evaluacion',['class'=>'btn btn-success pull-right'])}}
                         </a>
                     </div>                    
-                </div>
+                </div>  --}}
                 <div class="table-responsive">
                     <table class="table table-list-search table-striped responsive-utilities jambo_table bulk_action"> 
                         <thead>
@@ -32,27 +32,21 @@
                             <th class="centered column-title">Curso</th>
                             <th class="centered column-title">Fecha Inicio</th>
                             <th class="centered column-title">Fecha Fin</th>
-                            <th class="centered column-title">Desempeño</th>
-                            <th class="centered column-title">Acciones</th>                            
+                            <th class="centered column-title">Desempeño</th>                            
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($evaluations as $evaluation)
-                            <tr>                                
-                                <td>{{$evaluation->nombre}}</td>
-                                <td>{{$evaluation->schedule->course->nombre}}</td>
-                                <td>{{$evaluation->fechaInicio}}</td>
-                                <td>{{$evaluation->fechaFin}}</td>
-                                <td>{{$evaluation->performance->nombre}}</td>
-                                <td class="centered">
-                                    <a href="#" title="Editar" class="btn btn-primary btn-xs view-group">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                    <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$evaluation->id}}">
-                                        <i class="fa fa-trash-o"></i>
-                                    </a>
-                                </td>
-                            </tr> 
+                            @foreach($student->schedules as $schedule)
+                                @foreach($schedule->evaluations as $evaluation)
+                                <tr>                                
+                                    <td>{{$evaluation->nombre}}</td>
+                                    <td>{{$evaluation->schedule->course->nombre}}</td>
+                                    <td>{{$evaluation->fechaInicio}}</td>
+                                    <td>{{$evaluation->fechaFin}}</td>
+                                    <td>{{$evaluation->performance->nombre}}</td>
+                                </tr> 
+                                @endforeach
+                            
                             @endforeach
                         </tbody>
                     </table>                  

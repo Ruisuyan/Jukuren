@@ -20,4 +20,12 @@ class Schedule extends Model
     {
         return $this->belongsTo('App\Teacher');
     }
+    public function students()
+    {
+        return $this->belongsToMany('App\Students')->using('App\ScheduleXStudent');
+    }
+    public function evaluations()
+    {        
+        return $this->hasMany('App\Evaluation');
+    }
 }

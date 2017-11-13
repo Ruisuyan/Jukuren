@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+use App\Schedule;
+use App\ScheduleXStudent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class StudentController extends Controller
 {
@@ -115,5 +118,15 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         //
+    }
+
+    public function myEvaluations()
+    {
+        $userId = auth()->user()->id;
+        $student = Student::where('user_id',$userId)->with('schedules.evaluations')->first();
+        $data = [
+            'student' => $student,
+        ];
+        return view('students.myEvaluations',$data);
     }
 }

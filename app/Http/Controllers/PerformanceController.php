@@ -142,7 +142,7 @@ class PerformanceController extends Controller
         //dd($request);
         try{
             foreach($request['checks'] as $n => $courseId){
-                $course = Course::where('id',$courseId)->get()->first();                
+                $course = Course::where('id',$courseId)->first();                
                 $course->performances()->attach($id);   
             }
 
