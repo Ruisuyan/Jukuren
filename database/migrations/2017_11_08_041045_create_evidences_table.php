@@ -14,15 +14,13 @@ class CreateEvidencesTable extends Migration
     public function up()
     {
         Schema::create('evidences', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre');
-            $table->date('fechasubida')->nullable();
-            $table->date('fechalimite');
-            $table->integer('estado');//1 corregido, 2 en observacion, 3 sin evidencia
-            $table->string('comentario')->nullable();
-            $table->string('indicaciones');
+            $table->increments('id');            
+            $table->date('fechasubida');            
+            $table->integer('estado');//1 corregido, 2 observandose
+            $table->string('comentario')->nullable();            
             $table->string('observaciones')->nullable();
             $table->integer('puntaje')->nullable();
+            $table->string('nombreArchivo');
             $table->softDeletes();
             $table->timestamps();
         });

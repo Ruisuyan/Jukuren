@@ -32,7 +32,8 @@
                             <th class="centered column-title">Curso</th>
                             <th class="centered column-title">Fecha Inicio</th>
                             <th class="centered column-title">Fecha Fin</th>
-                            <th class="centered column-title">Desempeño</th>                            
+                            {{--  <th class="centered column-title">Desempeño</th>--}}
+                            <th class="centered column-title">Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -43,10 +44,16 @@
                                     <td>{{$evaluation->schedule->course->nombre}}</td>
                                     <td>{{$evaluation->fechaInicio}}</td>
                                     <td>{{$evaluation->fechaFin}}</td>
-                                    <td>{{$evaluation->performance->nombre}}</td>
+                                    {{--  <td>{{$evaluation->performance->nombre}}</td>  --}}
+                                    @if($evaluation->tipo == 1)
+                                        <td>
+                                            <a href="{{route('evidencia.uploadEvidenceGet',$evaluation->id)}}" title="Resolver" class="btn btn-success btn-xs view-group">
+                                                <i class="fa fa-arrow-circle-o-right">Resolver</i>
+                                            </a> 
+                                        </td>
+                                    @endif
                                 </tr> 
-                                @endforeach
-                            
+                                @endforeach                            
                             @endforeach
                         </tbody>
                     </table>                  

@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Evidence;
 use App\Course;
 use App\Performance;
+use App\Evaluation;
+use App\Student;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Carbon\Carbon;
 
 class EvidenceController extends Controller
 {
@@ -17,13 +19,43 @@ class EvidenceController extends Controller
      */
     public function index()
     {
-        $evidences = Evidence::all();
-        $data = [
-            'evidences' => $evidences,
-        ];
-        return view('evidences.index',$data);
+        // $evidences = Evidence::all();
+        // $data = [
+        //     'evidences' => $evidences,
+        // ];
+        // return view('evidences.index',$data);
     }
 
+    public function uploadEvidenceGet($id)
+    {
+        $evaluation = Evaluation::where('id',$id)->first();                
+        $data = [
+            'evaluation' => $evaluation,
+        ];
+        return view('evidences.uploadEvidence',$data);
+    }    
+
+    public function uploadEvidencePost(Request $request,$id)
+    {
+        try{
+            $student = Student::where('user_id',auth()->user()->id)->first();
+            $path  = $request->file('archivo')->storeAs(
+                'portafolio/'.$student->nombres,'myFile'
+            );            
+            $student = Student::where('user_id',auth()->user()->id)->first();
+            $evidence = new Evidence;
+            $evidence->evaluation_id = $id;            
+            $evidence->student_id = $student->id;
+            $evidence->fechasubida = Carbon::now();
+            $evidence->estado = 2;
+            $evidence->comentario = $request['comentario'];            
+            $evidence->nombreArchivo = $path;
+            $evidence->save();
+            return redirect()->route('alumno.myEvaluations');
+        }catch(Exception $e){
+            return redirect()->back();
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -31,12 +63,12 @@ class EvidenceController extends Controller
      */
     public function create()
     {
-        $performances = Course::find(1)->performances()->get(); //Este id debe ser el que posee el profesor en el curso determinado        
-        //dd($performances);
-        $data = [
-            'performances' => $performances->pluck('nombre','id'),
-        ];
-        return view('evidences.create',$data);
+        // $performances = Course::find(1)->performances()->get(); //Este id debe ser el que posee el profesor en el curso determinado        
+        // //dd($performances);
+        // $data = [
+        //     'performances' => $performances->pluck('nombre','id'),
+        // ];
+        // return view('evidences.create',$data);
     }
 
     /**

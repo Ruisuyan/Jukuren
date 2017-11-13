@@ -12,14 +12,6 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
-// Route::get('/minor', 'HomeController@minor')->name("minor");
-
-// Route::get('/register', ['as' => 'register.create', 'uses' => 'RegistrationController@create']); 
-// Route::post('/register', ['as' => 'register.store', 'uses' => 'RegistrationController@store']); 
-
-// Route::get('/login', ['as' => 'session.create', 'uses' => 'SessionController@create']);
-// Route::post('/login', ['as' => 'session.store', 'uses' => 'SessionController@store']);
-// Route::get('/logout', ['as' => 'session.destroy', 'uses' => 'SessionController@destroy']);
 
 Route::resource('competencia', 'CompetenceController');
 Route::resource('curso', 'CourseController');
@@ -29,11 +21,8 @@ Route::resource('evaluacionenlinea', 'OnlineEvaluationController');
 Route::resource('pregunta', 'QuestionController');
 Route::resource('reporte', 'ReportController');
 Route::resource('usuario', 'UserController');
-Route::resource('portafolio', 'PortfolioController');
-Route::resource('evidencia', 'EvidenceController');
 Route::resource('ciclo', 'CycleController');
 Route::resource('horario', 'ScheduleController');
-//->middleware('coord','admin')
 
 //Evaluacion
 Route::get('/evaluacion/elegirHorario',['as' => 'evaluacion.chooseScheduleGet', 'uses' => 'EvaluationController@chooseScheduleGet'])->middleware('teacher');
@@ -52,7 +41,9 @@ Route::put('/horario/asignarAlumnos/{id}',['as' => 'horario.assignToStudentsPost
 //Alumno
 Route::get('/alumno/misEvaluaciones',['as' => 'alumno.myEvaluations', 'uses' => 'StudentController@myEvaluations'])->middleware('student');
 Route::resource('alumno', 'StudentController');
+//Evidencia
+Route::get('/evidencia/subirEvidencia/{id}',['as' => 'evidencia.uploadEvidenceGet', 'uses' => 'EvidenceController@uploadEvidenceGet']);
+Route::put('/evidencia/subirEvidencia/{id}',['as' => 'evidencia.uploadEvidencePost', 'uses' => 'EvidenceController@uploadEvidencePost']);
+Route::resource('evidencia', 'EvidenceController');
 
 Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');

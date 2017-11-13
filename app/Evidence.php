@@ -9,9 +9,15 @@ class Evidence extends Model
 {
     protected $table = 'evidences';
 
-    public function performance()
+    public function student()
     {
-        return $this->belongsTo('App\Performance');
+        return $this->belongsTo('App\Student');
     }
+
+    public function evaluation()
+    {
+        return $this->belongsTo('App\Evaluation');
+    }
+
     use SoftDeletes;
 }

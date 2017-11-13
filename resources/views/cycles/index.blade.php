@@ -53,11 +53,6 @@
                                     <a href="{{route('ciclo.edit',$cycle->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">
                                         <i class="fa fa-pencil"> Editar</i>
                                     </a>
-                                    {{--  @if($cycle->estado==1)
-                                        <a href="{{route('ciclo.assignToCourseGet',$cycle->id)}}" title="Asignar a Cursos" class="btn btn-success btn-xs view-group">
-                                            <i class="fa fa-arrow-circle-o-right"> Asignar</i>
-                                        </a>
-                                    @endif                                      --}}
                                     <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$cycle->id}}">
                                         <i class="fa fa-trash-o"> Eliminar</i>
                                     </a>
