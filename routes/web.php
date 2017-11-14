@@ -13,16 +13,16 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::resource('competencia', 'CompetenceController');
-Route::resource('curso', 'CourseController');
-Route::resource('desempenho', 'PerformanceController');
-Route::resource('docente', 'TeacherController');
+Route::resource('competencia', 'CompetenceController')->middleware('coord');
+Route::resource('curso', 'CourseController')->middleware('coord');
+Route::resource('desempenho', 'PerformanceController')->middleware('coord');
+Route::resource('docente', 'TeacherController')->middleware('coord');
 Route::resource('evaluacionenlinea', 'OnlineEvaluationController');
 Route::resource('pregunta', 'QuestionController');
 Route::resource('reporte', 'ReportController');
-Route::resource('usuario', 'UserController');
-Route::resource('ciclo', 'CycleController');
-Route::resource('horario', 'ScheduleController');
+Route::resource('usuario', 'UserCotroller')->middleware('admin');
+Route::resource('ciclo', 'CycleController')->middleware('coord');
+Route::resource('horario', 'ScheduleController')->middleware('coord');
 
 //Evaluacion
 Route::get('/evaluacion/elegirHorario',['as' => 'evaluacion.chooseScheduleGet', 'uses' => 'EvaluationController@chooseScheduleGet'])->middleware('teacher');
@@ -31,13 +31,13 @@ Route::get('/evaluacion/create/{id}',['as' => 'evaluacion.create', 'uses' => 'Ev
 Route::post('/evaluacion',['as' => 'evaluacion.store', 'uses' => 'EvaluationController@store'])->middleware('teacher');
 Route::resource('evaluacion', 'EvaluationController', ['except' => [ 'create', 'store' ]])->middleware('teacher');
 //Desempeño
-Route::get('/desempenho/asignarCursos/{id}',['as' => 'desempenho.assignToCourseGet', 'uses' => 'PerformanceController@assignToCourseGet']);
-Route::put('/desempenho/asignarCursos/{id}',['as' => 'desempenho.assignToCoursePost', 'uses' => 'PerformanceController@assignToCoursePost']);
+Route::get('/desempenho/asignarCursos/{id}',['as' => 'desempenho.assignToCourseGet', 'uses' => 'PerformanceController@assignToCourseGet'])->middleware('coord');
+Route::put('/desempenho/asignarCursos/{id}',['as' => 'desempenho.assignToCoursePost', 'uses' => 'PerformanceController@assignToCoursePost'])->middleware('coord');
 //Horario
-Route::get('/horario/asignarDocente/{id}',['as' => 'horario.assignToTeacherGet', 'uses' => 'ScheduleController@assignToTeacherGet']);
-Route::put('/horario/asignarDocente/{id}',['as' => 'horario.assignToTeacherPost', 'uses' => 'ScheduleController@assignToTeacherPost']);
-Route::get('/horario/asignarAlumnos/{id}',['as' => 'horario.assignToStudentsGet', 'uses' => 'ScheduleController@assignToStudentsGet']);
-Route::put('/horario/asignarAlumnos/{id}',['as' => 'horario.assignToStudentsPost', 'uses' => 'ScheduleController@assignToStudentsPost']);
+Route::get('/horario/asignarDocente/{id}',['as' => 'horario.assignToTeacherGet', 'uses' => 'ScheduleController@assignToTeacherGet'])->middleware('coord');
+Route::put('/horario/asignarDocente/{id}',['as' => 'horario.assignToTeacherPost', 'uses' => 'ScheduleController@assignToTeacherPost'])->middleware('coord');
+Route::get('/horario/asignarAlumnos/{id}',['as' => 'horario.assignToStudentsGet', 'uses' => 'ScheduleController@assignToStudentsGet'])->middleware('coord');
+Route::put('/horario/asignarAlumnos/{id}',['as' => 'horario.assignToStudentsPost', 'uses' => 'ScheduleController@assignToStudentsPost'])->middleware('coord');
 //Alumno
 Route::get('/alumno/misEvaluaciones',['as' => 'alumno.myEvaluations', 'uses' => 'StudentController@myEvaluations'])->middleware('student');
 Route::resource('alumno', 'StudentController');

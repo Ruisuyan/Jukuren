@@ -17,7 +17,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
+        $students = Student::all()->sortBy('nombres');
         $data = [
             'students' => $students,
         ];

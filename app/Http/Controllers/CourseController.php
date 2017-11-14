@@ -14,7 +14,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();        
+        $courses = Course::all()->sortBy('cicloCurso');        
         $data = [
             'courses' => $courses,
         ];
@@ -44,7 +44,7 @@ class CourseController extends Controller
             $course->codigo = $request['codigo'];
             $course->nombre = $request['nombre'];
             $course->descripcion = $request['descripcion'];
-            $course->ciclo = $request['ciclo'];
+            $course->cicloCurso = $request['cicloCurso'];
             $course->save();
 
             return redirect()->route('curso.index')->with('success','yay');

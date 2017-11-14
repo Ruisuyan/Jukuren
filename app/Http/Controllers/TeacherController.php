@@ -15,7 +15,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all();
+        $teachers = Teacher::all()->sortBy('nombres');
 //        dd($teachers);
         $data = [
             'teachers' => $teachers,

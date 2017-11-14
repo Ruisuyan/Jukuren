@@ -15,7 +15,7 @@ class CycleController extends Controller
      */
     public function index()
     {
-        $cycles = Cycle::all();
+        $cycles = Cycle::all()->sortBy('semestre');
         $data = [
             'cycles' => $cycles,
         ];
@@ -40,7 +40,20 @@ class CycleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        try{
+            $cycle = new Cycle;
+            $cycle->anho = $request['anho'];
+            $cycle->periodo = $request['periodo'];
+            $cycle->semestre = $request['anho'].' - '.$request['periodo'];
+            $cycle->fechainicio = $request['fechainicio'];
+            $cycle->fechafin = $request['fechafin'];
+            $cycle->estado = $request['estado'];
+            $cycle->save();
+            return redirect()->route('ciclo.index')->with('success','yay');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning','doh');
+        }
     }
 
     /**
