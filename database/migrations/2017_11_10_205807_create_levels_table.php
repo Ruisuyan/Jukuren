@@ -15,6 +15,12 @@ class CreateLevelsTable extends Migration
     {
         Schema::create('levels', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('gradoAlto');
+            $table->string('gradoMedio');
+            $table->string('gradoBajo');
+            $table->integer('puntajeAlto');
+            $table->integer('puntajeMedio');
+            $table->integer('puntajeBajo');            
             $table->timestamps();
         });
     }

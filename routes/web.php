@@ -42,8 +42,11 @@ Route::put('/horario/asignarAlumnos/{id}',['as' => 'horario.assignToStudentsPost
 Route::get('/alumno/misEvaluaciones',['as' => 'alumno.myEvaluations', 'uses' => 'StudentController@myEvaluations'])->middleware('student');
 Route::resource('alumno', 'StudentController');
 //Evidencia
-Route::get('/evidencia/subirEvidencia/{id}',['as' => 'evidencia.uploadEvidenceGet', 'uses' => 'EvidenceController@uploadEvidenceGet']);
-Route::put('/evidencia/subirEvidencia/{id}',['as' => 'evidencia.uploadEvidencePost', 'uses' => 'EvidenceController@uploadEvidencePost']);
+Route::get('/evidencia/subirEvidencia/{id}',['as' => 'evidencia.uploadEvidenceGet', 'uses' => 'EvidenceController@uploadEvidenceGet'])->middleware('student');
+Route::put('/evidencia/subirEvidencia/{id}',['as' => 'evidencia.uploadEvidencePost', 'uses' => 'EvidenceController@uploadEvidencePost'])->middleware('student');
+Route::get('/evidencia/corregirEvidencia/{id}',['as' => 'evidencia.checkEvidenceGet', 'uses' => 'EvidenceController@checkEvidenceGet'])->middleware('teacher');
+Route::put('/evidencia/corregirEvidencia/{id}',['as' => 'evidencia.checkEvidencePost', 'uses' => 'EvidenceController@checkEvidencePost'])->middleware('teacher');
+Route::get('/evidencia/listaEvidencias/{id}',['as' => 'evidencia.evidencesIndex', 'uses' => 'EvidenceController@evidencesIndex'])->middleware('teacher');
 Route::resource('evidencia', 'EvidenceController');
 
 Auth::routes();

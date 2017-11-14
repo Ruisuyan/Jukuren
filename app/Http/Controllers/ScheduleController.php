@@ -126,7 +126,7 @@ class ScheduleController extends Controller
             $schedule = Schedule::where('id',$id)->get()->first();                
             $schedule->teacher_id = $request['teacherId'];
             $schedule->save();
-            return redirect()->route('ciclo.index',$id)->with('success','yay');
+            return redirect()->route('horario.index',$id)->with('success','yay');
         }catch(Exception $e){
             return redirect()->back()->with('warning','doh');
         }

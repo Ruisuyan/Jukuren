@@ -32,7 +32,8 @@
                             <th class="centered column-title">Curso</th>
                             <th class="centered column-title">Fecha Inicio</th>
                             <th class="centered column-title">Fecha Fin</th>
-                            <th class="centered column-title">Desempeño</th>
+                            <th class="centered column-title">Tipo</th>
+                            {{--  <th class="centered column-title">Desempeño</th>  --}}
                             <th class="centered column-title">Acciones</th>                            
                         </tr>
                         </thead>
@@ -43,10 +44,20 @@
                                 <td>{{$evaluation->schedule->course->nombre}}</td>
                                 <td>{{$evaluation->fechaInicio}}</td>
                                 <td>{{$evaluation->fechaFin}}</td>
-                                <td>{{$evaluation->performance->nombre}}</td>
+                                @if($evaluation->tipo == 1)
+                                    <td>Portafolio</td>
+                                @elseif($evaluation->tipo == 2)
+                                    <td>En linea</td>
+                                @else
+                                    <td>Directa</td>
+                                @endif                                
+                                {{--  <td>{{$evaluation->performance->nombre}}</td>  --}}
                                 <td class="centered">
                                     <a href="#" title="Editar" class="btn btn-primary btn-xs view-group">
                                         <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a href="{{route('evidencia.evidencesIndex',$evaluation->id)}}" title="Asignar a Docente" class="btn btn-success btn-xs view-group">
+                                        <i class="fa fa-arrow-circle-o-right">Evaluaciones subidas</i>
                                     </a>
                                     <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$evaluation->id}}">
                                         <i class="fa fa-trash-o"></i>

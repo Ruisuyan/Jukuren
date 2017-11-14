@@ -140,4 +140,37 @@ class EvidenceController extends Controller
     {
         //
     }
+
+    public function evidencesIndex($id)
+    {
+        $evidences = Evidence::where('evaluation_id',$id)->get();
+        //dd($evidences);
+        $data = [
+            'evidences' => $evidences,
+        ];
+        return view('evidences.evidencesIndex',$data);
+    }
+    
+    public function checkEvidenceGet($id)
+    {
+        $evidence = Evidence::where('id',$id)->first();                
+        $data = [
+            'evidence' => $evidence,
+        ];
+        return view('evidences.checkEvidence',$data);
+    }    
+
+    public function checkEvidencePost(Request $request,$id)
+    {
+        try{
+            $evidence = Evidence::where('id',$id)->first();
+            //dd($request);
+            $evidence->observaciones = $request['observaciones'];
+            $evidence->puntaje = $request['puntaje'];
+            $evidence->save();
+            return redirect()->route('evaluacion.index');
+        }catch(Exception $e){
+            return redirect()->back();
+        }
+    }
 }

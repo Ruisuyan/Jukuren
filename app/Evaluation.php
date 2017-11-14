@@ -20,4 +20,8 @@ class Evaluation extends Model
     {        
         return $this->belongsTo('App\Teacher');
     }
+    public function level()
+    {
+        return $this->belongsTo('App\Level');
+    }
 }

@@ -11,8 +11,9 @@
     <title>SEC - @yield('title') </title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{!! asset('css/vendor.css') !!}" />
-    <link rel="stylesheet" href="{!! asset('css/app.css') !!}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/toastr.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/vendor.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />    
 </head>
 <body>
     <!-- Wrapper-->
@@ -39,6 +40,8 @@
     </div>
     <!-- End wrapper-->
 
+
+<script src="{{ asset('js/toastr.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 
 @yield('scripts')

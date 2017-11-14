@@ -25,13 +25,57 @@
 
             {{Form::hidden('teacherId',$teacherId)}}
 
+            {{--  Parte select  --}}
             <div class="form-group">
                 {{Form::label('Desempeño: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4 col-sm-8 col-xs-12">
                     {{Form::select('performanceId',$performances,null,['placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
                 </div>
             </div>
+            {{--  Grado alto  --}}
+            <div class="form-group">
+                {{Form::label('Grado alto: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                <div class="col-md-4">
+                    {{Form::text('gradoAlto',null,['class'=>'form-control', 'required', 'maxlength' => 50])}}
+                </div>
+            </div>
 
+            <div class="form-group">
+                {{Form::label('Puntaje',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                <div class="col-md-4">
+                    {{Form::number('puntajeAlto',null,['class'=>'form-control', 'required', 'min' => 1, 'max' => 10])}}
+                </div>
+            </div> 
+            {{--  Grado Medio  --}}
+            <div class="form-group">
+                {{Form::label('Grado medio: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                <div class="col-md-4">
+                    {{Form::text('gradoMedio',null,['class'=>'form-control', 'required', 'maxlength' => 50])}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{Form::label('Puntaje',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                <div class="col-md-4">
+                    {{Form::number('puntajeMedio',null,['class'=>'form-control', 'required', 'min' => 1, 'max' => 10])}}
+                </div>
+            </div> 
+            
+            {{--  Grado Bajo  --}}
+            <div class="form-group">
+                {{Form::label('Grado medio: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                <div class="col-md-4">
+                    {{Form::text('gradoBajo',null,['class'=>'form-control', 'required', 'maxlength' => 50])}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{Form::label('Puntaje',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                <div class="col-md-4">
+                    {{Form::number('puntajeBajo',null,['class'=>'form-control', 'required', 'min' => 1, 'max' => 10])}}
+                </div>
+            </div> 
+            <hr />
             <div class="form-group">
                 {{Form::label('Nombre: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">

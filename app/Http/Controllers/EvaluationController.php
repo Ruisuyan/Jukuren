@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Evaluation;
 use App\Schedule;
 use App\Teacher;
+use App\Level;
 use Illuminate\Http\Request;
 
 class EvaluationController extends Controller
@@ -69,6 +70,16 @@ class EvaluationController extends Controller
     {
         //dd($request);
         try{
+            // grado
+            $level = new Level;
+            $level->gradoAlto = $request['gradoAlto'];
+            $level->gradoMedio = $request['gradoMedio'];
+            $level->gradoBajo = $request['gradoBajo'];
+            $level->puntajeAlto = $request['puntajeAlto'];
+            $level->puntajeMedio = $request['puntajeMedio'];
+            $level->puntajeBajo = $request['puntajeBajo'];
+            $level->save();
+            //evaluacion
             $evaluation = new Evaluation;
             $evaluation->nombre = $request['nombre'];
             $evaluation->tipo = $request['tipo'];
@@ -79,6 +90,7 @@ class EvaluationController extends Controller
             $evaluation->performance_id = $request['performanceId'];
             $evaluation->schedule_id = $request['scheduleId'];
             $evaluation->teacher_id = $request['teacherId'];
+            $evaluation->level_id = $level->id;
             $evaluation->save();
             return redirect()->route('evaluacion.index');
         }catch(Exception $e){
