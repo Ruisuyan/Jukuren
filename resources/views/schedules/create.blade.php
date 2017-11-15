@@ -33,7 +33,7 @@
             <div class="form-group">
                 {{Form::label('Ciclo (nivel academico): *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4 col-sm-8 col-xs-12">
-                    {{Form::selectRange('cicloCurso',1,10,null,['id' => 'cycleOfCourse','placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
+                    {{Form::selectRange('cicloCurso',1,10,null,['id' => 'cycleOfCourse','placeholder' => 'Elegir','class'=>'form-control'])}}
                 </div>
             </div>            
 

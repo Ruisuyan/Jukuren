@@ -7,7 +7,9 @@ use App\Course;
 use App\Performance;
 use App\Evaluation;
 use App\Student;
+use App\Schedule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 class EvidenceController extends Controller
@@ -39,8 +41,10 @@ class EvidenceController extends Controller
     {
         try{
             $student = Student::where('user_id',auth()->user()->id)->first();
+            $evaluation = Evaluation::where('id',$id)->first();
             $path  = $request->file('archivo')->storeAs(
-                'portafolio/'.$student->nombres,'myFile'
+                'portafolio/'.$student->codigo.'/'.$evaluation->schedule->cycle->semestre.'/'.$evaluation->schedule->course->codigo.'/'.$evaluation->nombre,
+                $request->file('archivo')->getClientOriginalName()
             );            
             $student = Student::where('user_id',auth()->user()->id)->first();
             $evidence = new Evidence;
@@ -153,9 +157,13 @@ class EvidenceController extends Controller
     
     public function checkEvidenceGet($id)
     {
-        $evidence = Evidence::where('id',$id)->first();                
+        $evidence = Evidence::where('id',$id)->first();
+        //ruta: codigoAlumno/semestre/codigoCurso/nombreEvaluacion/archivo
+        $studentArchive = Storage::url('portafolio/'.$evidence->student->codigo.'/'.$evidence->evaluation->schedule->cycle->semestre.'/'.$evidence->evaluation->schedule->course->codigo.'/'.$evidence->evaluation->nombre.'/descarga.png');
+        //dd($studentArchive);
         $data = [
             'evidence' => $evidence,
+            'studentArchive' => $studentArchive,
         ];
         return view('evidences.checkEvidence',$data);
     }    

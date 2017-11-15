@@ -7,7 +7,11 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear">
                                 <span class="block m-t-xs">
+                                @if(is_null(auth()->user()->role_id))
+                                    <strong class="font-bold">{{'Invitado: '.auth()->user()->name}}</strong>
+                                @else                                    
                                     <strong class="font-bold">{{auth()->user()->role->nombre.': '.auth()->user()->name}}</strong>
+                                @endif                                    
                                 </span>
                             </span>
                         </a>
@@ -36,6 +40,12 @@
             @endif
             @if(auth()->user()->role_id==2)
                 <li>
+                    <a href="{{ route('docente.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Docentes</span> </a>
+                </li>
+                <li>
+                    <a href="{{ route('alumno.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Alumnos</span> </a>
+                </li>
+                <li>
                     <a href="{{ route('competencia.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Competencias</span> </a>
                 </li>
                 <li>
@@ -50,12 +60,7 @@
                 <li>
                     <a href="{{ route('horario.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Horario</span> </a>
                 </li>  
-                <li>
-                    <a href="{{ route('docente.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Docentes</span> </a>
-                </li>
-                <li>
-                    <a href="{{ route('alumno.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Alumnos</span> </a>
-                </li>
+                
             @endif
             
             {{--  <li class="bold">
@@ -72,17 +77,13 @@
             <li>
                 <a href="{{ route('evaluacion.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Evaluaciones</span> </a>
             </li>
-            @endif
             <li>
                 <a href="{{ route('reporte.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Reporte</span> </a>
             </li>
+            @endif            
             {{--  <li>
                 <a href="{{ route('evidencia.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Portafolio</span> </a>
             </li>  --}}
-            
-            
-            
         </ul>
-
     </div>
 </nav>

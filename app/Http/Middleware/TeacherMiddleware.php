@@ -18,6 +18,7 @@ class TeacherMiddleware
         if (auth()->check() && auth()->user()->role_id==3) {
             return $next($request);
         }
-        return redirect('home');
+        //return redirect()->home();
+        return redirect('/');
     }
 }

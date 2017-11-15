@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div class="page-title">
             <div class="title_left">
-                <h3>Nueva Evaluacion</h3>
+                <h3>Elija el horario</h3>
             </div>
         </div>
     </div>

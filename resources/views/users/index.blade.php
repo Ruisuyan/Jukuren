@@ -31,21 +31,22 @@
                         <thead>
                         <tr class="headings">
                             <th class="column-title">Nombre</th>                                                        
-                            <th class="column-title">Rol</th>
-                            <th class="column-title">Estado</th>
+                            <th class="column-title">Correo</th>
+                            <th class="column-title">Rol</th>                            
                             <th class="column-title">Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach($users as $user)
                             <tr> 
-                                <td>{{$user->name}}</td>                                 
-                                <td>{{$user->role->nombre}}</td>
-                                @if($user->active==1)
-                                    <td>Activado</td>
-                                @else
-                                    <td>Desactivado</td>
-                                @endif
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                @if(is_null($user->role_id))
+                                    <td>Invitado</td>
+                                @else                                    
+                                    <td>{{$user->role->nombre}}</td>
+                                @endif  
+                                
                                 <td class="centered">
                                     <a href="{{route('usuario.edit',$user->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">
                                         <i class="fa fa-pencil"></i>

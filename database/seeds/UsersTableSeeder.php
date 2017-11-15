@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //factory(User::class,5)->create();
-        //Admin
+        // // Admin
         // DB::table('users')->insert([
         //     'name' => 'Yukari Yakumo',
         //     'email' => 'yukari@gensokyo.com',
@@ -22,9 +22,37 @@ class UsersTableSeeder extends Seeder
         //     'active' => 1,
         //     'role_id' => 1,
         // ]);
+        // DB::table('users')->insert([
+        //     'name' => '22222222',
+        //     'email' => '22222222@mail.com',
+        //     'password' => bcrypt('secret'),
+        //     'remember_token' => str_random(10),
+        //     'active' => 1,
+        //     'role_id' => 1,
+        // ]);
+        // //Coordinator    
+        // DB::table('users')->insert([
+        //     'name' => 'Reimu Hakurei',
+        //     'email' => 'reimu@gensokyo.com',
+        //     'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
+        //     'remember_token' => str_random(10),
+        //     'active' => 1,
+        //     'role_id' => 2,
+        // ]);
+        // //Teacher    
+        // DB::table('users')->insert([
+        //     'name' => 'Keine Kamishirasawa',
+        //     'email' => 'keine@gensokyo.com',
+        //     'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
+        //     'remember_token' => str_random(10),
+        //     'active' => 1,
+        //     'role_id' => 3,
+        // ]);
+        
+        // Admin
         DB::table('users')->insert([
-            'name' => '22222222',
-            'email' => '22222222@mail.com',
+            'name' => 'Juan Admin',
+            'email' => 'admin@sec.com',
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
             'active' => 1,
@@ -32,18 +60,18 @@ class UsersTableSeeder extends Seeder
         ]);
         //Coordinator    
         DB::table('users')->insert([
-            'name' => 'Reimu Hakurei',
-            'email' => 'reimu@gensokyo.com',
-            'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
+            'name' => 'Juan Coordinador',
+            'email' => 'coord@sec.com',
+            'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
             'active' => 1,
             'role_id' => 2,
         ]);
         //Teacher    
         DB::table('users')->insert([
-            'name' => 'Keine Kamishirasawa',
-            'email' => 'keine@gensokyo.com',
-            'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
+            'name' => 'Cesar Aguilera',
+            'email' => 'c.aguilera@sec.com',
+            'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
             'active' => 1,
             'role_id' => 3,
@@ -59,9 +87,9 @@ class UsersTableSeeder extends Seeder
         // ]);
         //Student
         DB::table('users')->insert([
-            'name' => 'Cirno',
-            'email' => 'cirno@gensokyo.com',
-            'password' => bcrypt('g6fBdMYHFu82IuuyzxlN'),
+            'name' => 'Juan Alumno',
+            'email' => 'juan@sec.com',
+            'password' => bcrypt('sec'),
             'remember_token' => str_random(10),
             'active' => 1,
             'role_id' => 5,

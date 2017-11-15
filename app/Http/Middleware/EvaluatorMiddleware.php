@@ -18,6 +18,7 @@ class EvaluatorMiddleware
         if (auth()->check() && auth()->user()->role_id==4) {
             return $next($request);
         }
-        return redirect('home');
+       //return redirect()->home();
+       return redirect('/');
     }
 }

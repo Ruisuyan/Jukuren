@@ -129,7 +129,7 @@ class PerformanceController extends Controller
     public function assignToCourseGet($id)
     {
         $performance = Performance::find($id);
-        $courses = Course::all();
+        $courses = Course::all();        
         $data = [
             'performance' => $performance,
             'courses' => $courses,

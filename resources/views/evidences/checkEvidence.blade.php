@@ -39,6 +39,12 @@
 					</div>
 				</div>
                 <div class="form-group">
+                    {{Form::label('Archivo: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                    <div class="col-md-4">
+                        <a class="btn btn-success" href="{{$studentArchive}}" download>Descargar</a>
+                    </div>
+                </div>
+                <div class="form-group">
                     {{Form::label('Observaciones: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                     <div class="col-md-4">
                         {{Form::textarea('observaciones',null,['class'=>'form-control', 'required', 'maxlength' => 500])}}

@@ -30,7 +30,7 @@
                         <thead>
                             <tr class="headings">                                
                                 <th class="column-title">Nombre</th>
-                                <th class="column-title">Descripcion</th>
+                                <th class="column-title">Competencia</th>
                                 <th class="column-title">Acciones</th>
                             </tr>
                         </thead> 
@@ -38,13 +38,13 @@
                             @foreach($performances as $performance)
                             <tr>
                                 <td>{{$performance->nombre}}</td>                                
-                                <td>{{$performance->descripcion}}</td>
+                                <td>{{$performance->competence->nombre}}</td>
                                 <td class="centered">
                                     <a href="{{route('desempenho.edit',$performance->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">
                                         <i class="fa fa-pencil"> Editar</i>
                                     </a>
                                     <a href="{{route('desempenho.assignToCourseGet',$performance->id)}}" title="Asignar a Curso" class="btn btn-success btn-xs view-group">
-                                        <i class="fa fa-arrow-circle-o-right"> Asignar</i>
+                                        <i class="fa fa-arrow-circle-o-right"> Asignar a cursos</i>
                                     </a>
                                     <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$performance->id}}">
                                         <i class="fa fa-trash-o"> Eliminar</i>
