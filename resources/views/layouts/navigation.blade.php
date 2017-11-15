@@ -62,24 +62,29 @@
                 </li>  
                 
             @endif
-            
-            {{--  <li class="bold">
-                <a data-toggle="collapse" href="#collapse1"><i class="fa fa-cog"></i>Evaluacion en linea</a>
+            @if(auth()->user()->role_id==3 or auth()->user()->role_id==2)
+            <li class="bold">
+                <a data-toggle="collapse" href="#collapse1"><i class="fa fa-cog"></i>Reportes</a>
                 <div id="collapse1" class="panel-collapse collapse">
-                    <ul>                    
-                    <a href="{{ route('evaluacion.index') }}">Administrar Evaluacion</a>                    
-                    <a href="{{ route('pregunta.index') }}">Administrar Preguntas</a>                                        
+                    <ul> 
+                        @if(auth()->user()->role_id==3)                 
+                            <li class="bold"><a href="{{route('reporte.scheduleSelectGet')}}">Por horario</a></li>
+                        @endif
+                        @if(auth()->user()->role_id==2)
+                        <li class="bold"><a href="#">Por alumno</a></li>
+                        @endif
                     </ul>
                 </div>
-            </li>               --}}
+            </li>
+            @endif             
             
             @if(auth()->user()->role_id==3)
             <li>
                 <a href="{{ route('evaluacion.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Evaluaciones</span> </a>
             </li>
-            <li>
+            {{--  <li>
                 <a href="{{ route('reporte.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Reporte</span> </a>
-            </li>
+            </li>  --}}
             @endif            
             {{--  <li>
                 <a href="{{ route('evidencia.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Portafolio</span> </a>

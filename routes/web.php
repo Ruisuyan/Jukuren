@@ -27,7 +27,6 @@ Route::resource('desempenho', 'PerformanceController')->middleware('coord');
 Route::resource('docente', 'TeacherController')->middleware('coord');
 Route::resource('evaluacionenlinea', 'OnlineEvaluationController')->middleware('auth');
 Route::resource('pregunta', 'QuestionController')->middleware('auth');
-Route::resource('reporte', 'ReportController')->middleware('teacher');
 Route::resource('usuario', 'UserController')->middleware('admin');
 Route::resource('ciclo', 'CycleController')->middleware('coord');
 Route::resource('horario', 'ScheduleController')->middleware('coord');
@@ -56,3 +55,8 @@ Route::get('/evidencia/corregirEvidencia/{id}',['as' => 'evidencia.checkEvidence
 Route::put('/evidencia/corregirEvidencia/{id}',['as' => 'evidencia.checkEvidencePost', 'uses' => 'EvidenceController@checkEvidencePost'])->middleware('teacher');
 Route::get('/evidencia/listaEvidencias/{id}',['as' => 'evidencia.evidencesIndex', 'uses' => 'EvidenceController@evidencesIndex'])->middleware('teacher');
 Route::resource('evidencia', 'EvidenceController')->middleware('auth');
+//Reporte
+Route::get('/reporte/elegirHorario',['as' => 'reporte.scheduleSelectGet', 'uses' => 'ReportController@scheduleSelectGet'])->middleware('teacher');
+Route::post('/reporte/elegirHorario',['as' => 'reporte.scheduleSelectPost', 'uses' => 'ReportController@scheduleSelectPost'])->middleware('teacher');
+Route::get('/reporte/reporteHorario/{id}',['as' => 'reporte.scheduleReport', 'uses' => 'ReportController@scheduleReport'])->middleware('teacher');
+Route::resource('reporte', 'ReportController')->middleware('teacher');

@@ -88,8 +88,8 @@ class UsersTableSeeder extends Seeder
         //Student
         DB::table('users')->insert([
             'name' => 'Juan Alumno',
-            'email' => 'juan@sec.com',
-            'password' => bcrypt('sec'),
+            'email' => 'j.perez@sec.com',
+            'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
             'active' => 1,
             'role_id' => 5,

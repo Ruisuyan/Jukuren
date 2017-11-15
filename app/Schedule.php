@@ -22,7 +22,7 @@ class Schedule extends Model
     }
     public function students()
     {
-        return $this->belongsToMany('App\Students')->using('App\ScheduleXStudent');
+        return $this->belongsToMany('App\Student')->using('App\ScheduleXStudent');
     }
     public function evaluations()
     {        
