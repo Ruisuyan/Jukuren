@@ -47,7 +47,7 @@ Route::get('/horario/asignarAlumnos/{id}',['as' => 'horario.assignToStudentsGet'
 Route::put('/horario/asignarAlumnos/{id}',['as' => 'horario.assignToStudentsPost', 'uses' => 'ScheduleController@assignToStudentsPost'])->middleware('coord');
 //Alumno
 Route::get('/alumno/misEvaluaciones',['as' => 'alumno.myEvaluations', 'uses' => 'StudentController@myEvaluations'])->middleware('student');
-Route::resource('alumno', 'StudentController')->middleware('teacher');
+Route::resource('alumno', 'StudentController')->middleware('coord');
 //Evidencia
 Route::get('/evidencia/subirEvidencia/{id}',['as' => 'evidencia.uploadEvidenceGet', 'uses' => 'EvidenceController@uploadEvidenceGet'])->middleware('student');
 Route::put('/evidencia/subirEvidencia/{id}',['as' => 'evidencia.uploadEvidencePost', 'uses' => 'EvidenceController@uploadEvidencePost'])->middleware('student');
