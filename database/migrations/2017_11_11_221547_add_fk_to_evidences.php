@@ -30,7 +30,7 @@ class AddFkToEvidences extends Migration
     {        
         Schema::table('evidences', function (Blueprint $table) {
             $table->dropForeign('evidences_evaluation_id_foreign');
-            $table->dropForeign('students_evaluation_id_foreign');
+            $table->dropForeign('evidences_student_id_foreign');
         });
     }
 }
