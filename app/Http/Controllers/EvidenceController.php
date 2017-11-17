@@ -43,8 +43,12 @@ class EvidenceController extends Controller
             $student = Student::where('user_id',auth()->user()->id)->first();
             $evaluation = Evaluation::where('id',$id)->first();
             $path  = $request->file('archivo')->storeAs(
-                'portafolio/'.$student->codigo.'/'.$evaluation->schedule->cycle->semestre.'/'.$evaluation->schedule->course->codigo.'/'.$evaluation->nombre,
+                'portafolio/'.$student->codigo.'/'.
+                $evaluation->schedule->cycle->semestre.'/'.
+                $evaluation->schedule->course->codigo.'/'.
+                $evaluation->nombre,
                 $request->file('archivo')->getClientOriginalName()
+                //,'s3'
             );            
             $student = Student::where('user_id',auth()->user()->id)->first();
             $evidence = new Evidence;
@@ -159,8 +163,10 @@ class EvidenceController extends Controller
     {
         $evidence = Evidence::where('id',$id)->first();
         //ruta: codigoAlumno/semestre/codigoCurso/nombreEvaluacion/archivo
-        $studentArchive = Storage::url('portafolio/'.$evidence->student->codigo.'/'.$evidence->evaluation->schedule->cycle->semestre.'/'.$evidence->evaluation->schedule->course->codigo.'/'.$evidence->evaluation->nombre.'/descarga.png');
-        //dd($studentArchive);
+        $studentArchive = Storage::url($evidence->nombreArchivo);
+        // $studentArchive = Storage::disk('s3')->temporaryUrl(
+        //     '$evidence->nombreArchivo', Carbon::now()->addMinutes(5)
+        // );        
         $data = [
             'evidence' => $evidence,
             'studentArchive' => $studentArchive,
