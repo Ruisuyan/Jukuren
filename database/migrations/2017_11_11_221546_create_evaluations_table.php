@@ -16,11 +16,11 @@ class CreateEvaluationsTable extends Migration
         Schema::create('evaluations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->integer('tipo');//Evidencia, en linea, libre
+            $table->boolean('tipo');//Evidencia, en linea, libre
             $table->date('fechaInicio');
             $table->date('fechaFin');
-            $table->string('indicaciones');
-            $table->integer('estado');//registrado, evaluandose, finalizado
+            $table->text('indicaciones');
+            $table->boolean('estado');//registrado, evaluandose, finalizado
             $table->timestamps();
             $table->softDeletes();
         });

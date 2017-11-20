@@ -15,14 +15,14 @@ class CreateOnlineevaluationsTable extends Migration
     {
         Schema::create('onlineevaluations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->text('descripcion');
-            $table->date('fechaInicio');
-            $table->date('fechaFin')->nullable();
-            $table->integer('duracion');
-            $table->integer('estado'); //entre pendiente corregida cancelada
-            $table->string('lugar');
-            $table->integer('peso');
+            // $table->string('nombre');
+            $table->text('observaciones');
+            $table->date('fechaResolucion');
+            // $table->date('fechaFin')->nullable();
+            // $table->integer('duracion');
+            $table->boolean('estado'); //entre pendiente corregida cancelada
+            // $table->string('lugar');
+            $table->integer('puntaje');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -15,11 +15,11 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tipo');//1 cerrada 2 abierta
-            $table->string('enunciado');
-            $table->integer('tiempo');//en minutos
+            $table->boolean('tipo');//1 cerrada 2 abierta
+            $table->text('enunciado');
+            // $table->integer('tiempo');//en minutos
             $table->float('puntaje',3,1);                       
-            $table->integer('respuesta')->nullable();
+            $table->text('respuesta')->nullable();
             $table->softDeletes();                        
             $table->timestamps();
         });

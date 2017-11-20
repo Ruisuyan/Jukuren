@@ -16,9 +16,9 @@ class CreateEvidencesTable extends Migration
         Schema::create('evidences', function (Blueprint $table) {
             $table->increments('id');            
             $table->date('fechasubida');            
-            $table->integer('estado');//1 corregido, 2 observandose
-            $table->string('comentario')->nullable();            
-            $table->string('observaciones')->nullable();
+            $table->boolean('estado');//1 corregido, 2 observandose
+            $table->text('comentario')->nullable();            
+            $table->text('observaciones')->nullable();
             $table->integer('puntaje')->nullable();
             $table->string('nombreArchivo');
             $table->softDeletes();

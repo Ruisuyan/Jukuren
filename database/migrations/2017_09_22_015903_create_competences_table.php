@@ -17,7 +17,7 @@ class CreateCompetencesTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->text('descripcion');
-            $table->integer('tipo');
+            $table->boolean('tipo');
             $table->softDeletes();
             $table->timestamps();
         });

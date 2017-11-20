@@ -20,7 +20,7 @@ class CreateCyclesTable extends Migration
             $table->string('semestre');
             $table->date('fechainicio');
             $table->date('fechafin');
-            $table->integer('estado');//1 = activo, 2=Proximo, 3=Culminado
+            $table->boolean('estado');//1 = activo, 2=Proximo, 3=Culminado
             $table->softDeletes();
             $table->timestamps();
         });

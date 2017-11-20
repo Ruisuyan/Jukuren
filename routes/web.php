@@ -25,7 +25,7 @@ Route::resource('competencia', 'CompetenceController')->middleware('coord');
 Route::resource('curso', 'CourseController')->middleware('coord');
 Route::resource('desempenho', 'PerformanceController')->middleware('coord');
 Route::resource('docente', 'TeacherController')->middleware('coord');
-Route::resource('evaluacionenlinea', 'OnlineEvaluationController')->middleware('auth');
+// Route::resource('evaluacionenlinea', 'OnlineEvaluationController')->middleware('auth');
 Route::resource('pregunta', 'QuestionController')->middleware('auth');
 Route::resource('usuario', 'UserController')->middleware('admin');
 Route::resource('ciclo', 'CycleController')->middleware('coord');
