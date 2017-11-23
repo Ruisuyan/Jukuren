@@ -70,15 +70,14 @@ class EvaluationController extends Controller
     {
         //dd($request);
         try{
-            // grado
-            $level = new Level;
-            $level->gradoAlto = $request['gradoAlto'];
-            $level->gradoMedio = $request['gradoMedio'];
-            $level->gradoBajo = $request['gradoBajo'];
-            $level->puntajeAlto = $request['puntajeAlto'];
-            $level->puntajeMedio = $request['puntajeMedio'];
-            $level->puntajeBajo = $request['puntajeBajo'];
-            $level->save();
+            
+            // $level->gradoAlto = $request['gradoAlto'];
+            // $level->gradoMedio = $request['gradoMedio'];
+            // $level->gradoBajo = $request['gradoBajo'];
+            // $level->puntajeAlto = $request['puntajeAlto'];
+            // $level->puntajeMedio = $request['puntajeMedio'];
+            // $level->puntajeBajo = $request['puntajeBajo'];
+            
             //evaluacion
             $evaluation = new Evaluation;
             $evaluation->nombre = $request['nombre'];
@@ -90,8 +89,19 @@ class EvaluationController extends Controller
             $evaluation->performance_id = $request['performanceId'];
             $evaluation->schedule_id = $request['scheduleId'];
             $evaluation->teacher_id = $request['teacherId'];
-            $evaluation->level_id = $level->id;
             $evaluation->save();
+
+            // grado
+            $puntajes = $request['puntaje'];
+            //dd($puntajes);
+            foreach ($request['clave'] as $key => $nombre) {
+                $level = new Level;
+                $level->nombre = $nombre;
+                $level->puntaje = $puntajes[$key];
+                $level->evaluation_id = $evaluation->id;
+                $level->save();
+            }
+
             return redirect()->route('evaluacion.index');
         }catch(Exception $e){
             return redirect()->back();

@@ -8,6 +8,6 @@ class Level extends Model
 {
     public function evaluation()
     {
-        return $this->hasOne('App\Evaluation');
+        return $this->belongsTo('App\Evaluation');
     }
 }

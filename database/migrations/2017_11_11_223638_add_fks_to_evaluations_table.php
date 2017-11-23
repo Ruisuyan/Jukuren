@@ -20,8 +20,10 @@ class AddFksToEvaluationsTable extends Migration
             $table->foreign('schedule_id')->references('id')->on('schedules');
             $table->integer('teacher_id')->unsigned();
             $table->foreign('teacher_id')->references('id')->on('teachers');
-            $table->integer('level_id')->unsigned();
-            $table->foreign('level_id')->references('id')->on('levels');
+        });
+        Schema::table('levels', function (Blueprint $table) {
+            $table->integer('evaluation_id')->unsigned();
+            $table->foreign('evaluation_id')->references('id')->on('evaluations');            
         });
     }
 
@@ -35,8 +37,10 @@ class AddFksToEvaluationsTable extends Migration
         Schema::table('evaluations', function (Blueprint $table) {
             $table->dropForeign('evaluations_performance_id_foreign');
             $table->dropForeign('evaluations_schedule_id_foreign');
-            $table->dropForeign('evaluations_teacher_id_foreign');
-            $table->dropForeign('evaluations_level_id_foreign');
+            $table->dropForeign('evaluations_teacher_id_foreign');            
+        });
+        Schema::table('levels', function (Blueprint $table) {
+            $table->dropForeign('levels_evaluation_id_foreign');            
         });
     }
 }

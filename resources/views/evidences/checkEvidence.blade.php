@@ -63,13 +63,21 @@
                     <table class="table table-list-search table-striped responsive-utilities jambo_table bulk_action"> 
                         <thead>
                         <tr class="headings">                            
-                            <th class="text-center column-title">Bajo</th>
+                            {{--  <th class="text-center column-title">Bajo</th>
                             <th class="text-center column-title">Medio</th>
-                            <th class="text-center column-title">Alto</th>                                                        
+                            <th class="text-center column-title">Alto</th>--}}
+                            <th class="text-center column-title">Criterio</th>
+                            <th class="text-center column-title">Puntaje</th>
                         </tr>
                         </thead>
-                        <tbody>                            
-                            <tr class="selectGrade">                                
+                        <tbody> 
+                            @foreach($evaluation->levels as $level)                           
+                            <tr>
+                                <td>{{$level->nombre}}</td>
+                                <td>{{$level->puntaje}}</td>
+                            </tr>
+                            @endforeach
+                            {{--  <tr class="selectGrade">                                
                                 <td class="text-center">
                                     {{$evidence->evaluation->level->gradoBajo.' / Puntos: '.$evidence->evaluation->level->puntajeBajo}}
                                     {{Form::hidden('bajo',$evidence->evaluation->level->puntajeBajo,['class' => 'puntos'])}}
@@ -82,7 +90,7 @@
                                     {{$evidence->evaluation->level->gradoAlto.' / Puntos: '.$evidence->evaluation->level->puntajeAlto}}
                                     {{Form::hidden('alto',$evidence->evaluation->level->puntajeAlto,['class' => 'puntos'])}}
                                 </td>      
-                            </tr>                            
+                            </tr>--}}
                         </tbody>
                     </table>                  
                 </div>

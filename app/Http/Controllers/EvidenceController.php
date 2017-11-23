@@ -8,6 +8,7 @@ use App\Performance;
 use App\Evaluation;
 use App\Student;
 use App\Schedule;
+use App\Level;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -164,12 +165,14 @@ class EvidenceController extends Controller
         $evidence = Evidence::where('id',$id)->first();
         //ruta: codigoAlumno/semestre/codigoCurso/nombreEvaluacion/archivo
         $studentArchive = Storage::url($evidence->nombreArchivo);
+        $evaluation = Evaluation::where('id',$evidence->evaluation_id)->with('levels')->first();
         // $studentArchive = Storage::disk('s3')->temporaryUrl(
         //     '$evidence->nombreArchivo', Carbon::now()->addMinutes(5)
         // );        
         $data = [
             'evidence' => $evidence,
             'studentArchive' => $studentArchive,
+            'evaluation' => $evaluation,
         ];
         return view('evidences.checkEvidence',$data);
     }    

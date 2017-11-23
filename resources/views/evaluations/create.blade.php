@@ -84,7 +84,7 @@
             <div class="form-group">
                 {{Form::label('Tipo: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4 col-sm-8 col-xs-12">
-                    {{Form::select('tipo',[1 => 'Portafolio',2 => 'En linea', 3 => 'Directa'],null,['placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
+                    {{Form::select('tipo',[1 => 'Carga de evidencia',2 => 'Cuestionario', 3 => 'Directa'],null,['placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
                 </div>
             </div>
 
@@ -110,9 +110,33 @@
             </div>
             <hr/>
             <div>
-                <h3>Describa los niveles de logro del desempeño a evaluar e indique su puntaje</h3>
+                <h3>Criterios de evaluación</h3>
             </div>
-            <div class="table-responsive">
+            <div id="form-cerrada" class="col-md-8 col-sm-8 col-xs-12">
+                <div class="row">
+                    <div class="form-group">
+                        {{Form::label('Criterios: ',null,['class'=>'control-label col-md-4 col-sm-4 col-xs-6'])}}
+                        <div class="col-md-8 col-sm-8 col-xs-6">
+                            <a id="add" class="btn btn-warning tCerr">Agregar</a>
+                            <a id="remove" class="btn btn-danger tCerr">Quitar</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="opciones" class="row">									
+                    <div class="form-group">
+                        {{Form::label('-',null,['class'=>'control-label col-md-2 col-sm-2 col-xs-1 col-md-offset-0 col-sm-offset-0 col-xs-offset-5'])}}
+                        <div class="col-md-8 col-sm-8 col-xs-6">
+                            <div class="input-group">									
+                                {{Form::text('clave[1]',null,['class'=>'form-control tCerrada', 'maxlength' => 500])}}
+                                <span class="input-group-addon">
+                                    <input class="tCerr" type="number" value="0" name="puntaje[1]" > Puntaje 
+                                </span>
+                            </div>
+                        </div>
+                    </div>                                
+                </div>
+            </div>
+            {{--  <div class="table-responsive">
                 <table class="table table-list-search table-striped responsive-utilities jambo_table bulk_action"> 
                     <thead>
                     <tr class="headings">                            
@@ -146,7 +170,7 @@
                         </tr>                             
                     </tbody>
                 </table>                  
-            </div>
+            </div>  --}}
 
             <hr/>
                         
@@ -166,3 +190,6 @@
     </div>
 </div>
 @endsection
+@section('scripts')
+    <script src="{{ asset('js/evaluationCreate.js') }}" type="text/javascript"></script>
+    @endsection
