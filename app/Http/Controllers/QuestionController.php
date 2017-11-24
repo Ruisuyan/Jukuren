@@ -50,8 +50,7 @@ class QuestionController extends Controller
         try{
             $question = new Question;
             $question->tipo = $request['tipo'];
-            $question->enunciado = $request['enunciado'];
-            $question->tiempo = $request['tiempo'];
+            $question->enunciado = $request['enunciado'];            
             $question->puntaje = $request['puntaje'];
             $question->competence_id = $request['competencia'];            
             if($request['tipo']==2){

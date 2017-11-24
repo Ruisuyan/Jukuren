@@ -45,24 +45,29 @@
                                 <td>{{$evaluation->fechaInicio}}</td>
                                 <td>{{$evaluation->fechaFin}}</td>
                                 @if($evaluation->tipo == 1)
-                                    <td>Portafolio</td>
+                                    <td>Carga de evidencia</td>
+                                    <td class="centered">                                        
+                                        <a href="{{route('evidencia.evidencesIndex',$evaluation->id)}}" title="Asignar a Docente" class="btn btn-success btn-xs view-group">
+                                            <i class="fa fa-arrow-circle-o-right">Evaluaciones subidas</i>
+                                        </a>
+                                    </td>
                                 @elseif($evaluation->tipo == 2)
-                                    <td>En linea</td>
-                                @else
+                                    <td>Cuestionario</td>
+                                    <td class="centered">
+                                        <a href="{{route('cuestionario.create',$evaluation->id)}}" title="Asignar a Docente" class="btn btn-success btn-xs view-group">
+                                            <i class="fa fa-arrow-circle-o-right">Cuestionario</i>
+                                        </a>
+                                    </td>
+                                @elseif($evaluation->tipo == 3)
                                     <td>Directa</td>
+                                    <td class="centered">
+                                        <a href="{{route('evidencia.evidencesIndex',$evaluation->id)}}" title="Asignar a Docente" class="btn btn-success btn-xs view-group">
+                                            <i class="fa fa-arrow-circle-o-right">Directa</i>
+                                        </a>
+                                    </td>
                                 @endif                                
                                 {{--  <td>{{$evaluation->performance->nombre}}</td>  --}}
-                                <td class="centered">
-                                    <a href="#" title="Editar" class="btn btn-primary btn-xs view-group">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                    <a href="{{route('evidencia.evidencesIndex',$evaluation->id)}}" title="Asignar a Docente" class="btn btn-success btn-xs view-group">
-                                        <i class="fa fa-arrow-circle-o-right">Evaluaciones subidas</i>
-                                    </a>
-                                    <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$evaluation->id}}">
-                                        <i class="fa fa-trash-o"></i>
-                                    </a>
-                                </td>
+                                
                             </tr> 
                             @endforeach
                         </tbody>

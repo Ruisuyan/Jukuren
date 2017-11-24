@@ -26,11 +26,15 @@ Route::resource('curso', 'CourseController')->middleware('coord');
 Route::resource('desempenho', 'PerformanceController')->middleware('coord');
 Route::resource('docente', 'TeacherController')->middleware('coord');
 // Route::resource('evaluacionenlinea', 'OnlineEvaluationController')->middleware('auth');
-Route::resource('pregunta', 'QuestionController')->middleware('auth');
+Route::resource('pregunta', 'QuestionController')->middleware('auth'); 
 Route::resource('usuario', 'UserController')->middleware('admin');
 Route::resource('ciclo', 'CycleController')->middleware('coord');
 Route::resource('horario', 'ScheduleController')->middleware('coord');
-
+Route::resource('cuestionario', 'PollController')->middleware('teacher');
+//Cuestionario
+Route::get('/cuestionario/create/{id}',['as' => 'cuestionario.create', 'uses' => 'PollController@create'])->middleware('teacher');
+Route::post('/cuestionario',['as' => 'cuestionario.store', 'uses' => 'PollController@store'])->middleware('teacher');
+Route::resource('cuestionario', 'PollController', ['except' => [ 'create', 'store' ]])->middleware('teacher');
 //Evaluacion
 Route::get('/evaluacion/elegirHorario',['as' => 'evaluacion.chooseScheduleGet', 'uses' => 'EvaluationController@chooseScheduleGet'])->middleware('teacher');
 Route::post('/evaluacion/elegirHorario',['as' => 'evaluacion.chooseSchedulePost', 'uses' => 'EvaluationController@chooseSchedulePost'])->middleware('teacher');

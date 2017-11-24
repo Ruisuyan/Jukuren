@@ -84,21 +84,21 @@
             <div class="form-group">
                 {{Form::label('Tipo: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4 col-sm-8 col-xs-12">
-                    {{Form::select('tipo',[1 => 'Carga de evidencia',2 => 'Cuestionario', 3 => 'Directa'],null,['placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
+                    {{Form::select('tipo',[1 => 'Carga de evidencia',2 => 'Cuestionario', 3 => 'Directa'],null,['placeholder' => 'Elegir','class'=>'form-control', 'required', 'id' => 'tipo'])}}
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Fecha Inicio: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::date('fechaInicio',null,['class'=>'form-control', 'required'])}}
+                    {{Form::date('fechaInicio',null,['class'=>'form-control', 'required','id' => 'fechaInicio'])}}
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Fecha Fin: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::date('fechaFin',null,['class'=>'form-control'])}}
+                    {{Form::date('fechaFin',null,['class'=>'form-control','id' => 'fechaFin'])}}
                 </div>
             </div>
 

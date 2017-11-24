@@ -9,8 +9,8 @@ class OnlineEvaluation extends Model
 {
     use SoftDeletes;
     protected $table = 'onlineevaluations';
-    // public function performance(){
-    //     return $this->belongsTo('App\Performance');
-    // }
+    public function poll(){
+        return $this->belongsTo('App\Poll');
+    }
     //belongsto evaluation
 }

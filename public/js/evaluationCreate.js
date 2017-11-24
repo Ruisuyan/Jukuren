@@ -29,3 +29,14 @@ $("#remove").click(function() {
 //         $("#form-cerrada").removeAttr("hidden");	
 //     }	
 // });
+$('#tipo').change(function() {
+    var valorTipo = $('#tipo').val();
+    //alert(valorTipo);    
+    if(valorTipo==3){
+        $("#fechaInicio").attr("disabled","true");
+        $("#fechaFin").attr("disabled","true");
+    }else{
+        $("#fechaInicio").removeAttr("disabled");
+        $("#fechaFin").removeAttr("disabled");
+    }
+});

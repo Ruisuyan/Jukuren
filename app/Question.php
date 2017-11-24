@@ -11,7 +11,7 @@ class Question extends Model
         return $this->belongsTo('App\Competence');
     }
 
-    public function onlineEvaluation(){
-        return $this->belongsTo('App\OnlineEvaluation');
+    public function poll(){
+        return $this->belongsTo('App\Poll');
     }
 }

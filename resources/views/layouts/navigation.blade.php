@@ -82,9 +82,9 @@
             <li>
                 <a href="{{ route('evaluacion.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Evaluaciones</span> </a>
             </li>
-            {{--  <li>
-                <a href="{{ route('reporte.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Reporte</span> </a>
-            </li>  --}}
+            <li>
+                <a href="{{ route('cuestionario.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Cuestionarios</span> </a>
+            </li>
             @endif            
             {{--  <li>
                 <a href="{{ route('evidencia.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Portafolio</span> </a>

@@ -14,14 +14,10 @@ class CreateOnlineevaluationsTable extends Migration
     public function up()
     {
         Schema::create('onlineevaluations', function (Blueprint $table) {
-            $table->increments('id');
-            // $table->string('nombre');
+            $table->increments('id');            
             $table->text('observaciones');
-            $table->date('fechaResolucion');
-            // $table->date('fechaFin')->nullable();
-            // $table->integer('duracion');
-            $table->boolean('estado'); //entre pendiente corregida cancelada
-            // $table->string('lugar');
+            $table->date('fechaResolucion');            
+            $table->boolean('estado'); //entre pendiente corregida cancelada            
             $table->integer('puntaje');
             $table->softDeletes();
             $table->timestamps();
