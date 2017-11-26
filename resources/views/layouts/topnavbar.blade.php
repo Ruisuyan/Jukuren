@@ -1,15 +1,16 @@
 <div class="row border-bottom">
     <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
-                {{--  <div class="navbar-header">
+                @auth               
+                <div class="navbar-header">
                     <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-                    <form role="search" class="navbar-form-custom" method="post" action="/">
+                    {{--  <form role="search" class="navbar-form-custom" method="post" action="/">
                         <div class="form-group" hidden>
                             <input type="text" placeholder="Buscar..." class="form-control" name="top-search" id="top-search" />
                         </div>
-                    </form>
-                </div>  --}}
-
+                    </form>  --}}
+                </div>
+                @endauth
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">

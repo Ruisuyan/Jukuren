@@ -15,4 +15,8 @@ class Poll extends Model
     {
         return $this->hasMany('App\OnlineEvaluation');
     }
+
+    public function questions(){
+        return $this->hasMany('App\Question');
+    }
 }

@@ -14,4 +14,8 @@ class Question extends Model
     public function poll(){
         return $this->belongsTo('App\Poll');
     }
+
+    public function alternatives(){
+        return $this->hasMany('App\Alternative');
+    }
 }

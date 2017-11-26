@@ -3,13 +3,76 @@
 namespace App\Http\Controllers;
 
 use App\OnlineEvaluation;
+use App\Evaluation;
 use App\Competence;
 use App\Performance;
 use App\Question;
+use App\Poll;
+use App\Answer;
+use App\Student;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class OnlineevaluationController extends Controller
 {
+
+    public function infoPoll($id)
+    {        
+        $evaluation = Evaluation::where('id',$id)->first();        
+        $data = [
+            'evaluation' => $evaluation,     
+        ];
+        return view('onlineEvaluations.infoPoll',$data);
+    }
+    public function solvePollGet($id)
+    {
+        $poll = Poll::where('evaluation_id',$id)->with('questions')->first();
+        $evaluation = Evaluation::where('id',$id)->first();
+        $data = [
+            'evaluation' => $evaluation,
+            'poll' => $poll,            
+        ];        
+        return view('onlineEvaluations.solvePoll',$data);
+    }
+
+    public function solvePollPost(Request $request)
+    {
+        $evaluationId = $request['evaluationId'];        //idevaluacion profesor horario
+        $student = Student::where('user_id',auth()->user()->id)->first();//alumno evaluado
+        $poll = Poll::where('evaluation_id',$evaluationId)->with('questions')->first();//encuesta usada
+        //nuevo registro de evaluacion
+        $onlineEvaluation = new OnlineEvaluation;
+        $onlineEvaluation->poll_id = $poll->id;
+        $onlineEvaluation->estado = 1;
+        $onlineEvaluation->fechaResolucion = Carbon::now();
+        $onlineEvaluation->student_id = $student->id;
+        $onlineEvaluation->save();
+        foreach ($request['arrQuestion'] as $idQuestion => $questionAnswered) {
+            $question = Question::where('id',$idQuestion)->first();
+            $answer = new Answer;
+            $answer->onlineevaluation_id = $onlineEvaluation->id;
+            $answer->questionId = $idQuestion;
+            if($question->tipo == 1){//si es abierta
+                $answer->respuestaAbierta = $questionAnswered;
+            }
+            else if ($question->tipo == 2){//si es cerrada
+                $answer->respuestaCerrada    = $questionAnswered;
+                //se corrige
+                $correcta = $question->respuestaCerrada;
+                if( ($questionAnswered=="0") || ($questionAnswered != $correcta)  ){//no se marco ninguna alternativa o es incorrecta
+                    $answer->puntaje = 0;
+                }
+                else {
+                    $answer->puntaje = $question->proporcion; //se le asigna el puntaje completo
+                    //se suma al acumulado dependiendo de su competencia                    
+                }
+            }
+            $answer->save();
+            
+        }  
+                
+        return redirect()->route('home');
+    }
     /**
      * Display a listing of the resource.
      *

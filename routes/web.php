@@ -25,8 +25,7 @@ Route::resource('competencia', 'CompetenceController')->middleware('coord');
 Route::resource('curso', 'CourseController')->middleware('coord');
 Route::resource('desempenho', 'PerformanceController')->middleware('coord');
 Route::resource('docente', 'TeacherController')->middleware('coord');
-// Route::resource('evaluacionenlinea', 'OnlineEvaluationController')->middleware('auth');
-Route::resource('pregunta', 'QuestionController')->middleware('auth'); 
+Route::resource('pregunta', 'QuestionController')->middleware('teacher'); 
 Route::resource('usuario', 'UserController')->middleware('admin');
 Route::resource('ciclo', 'CycleController')->middleware('coord');
 Route::resource('horario', 'ScheduleController')->middleware('coord');
@@ -64,3 +63,10 @@ Route::get('/reporte/elegirHorario',['as' => 'reporte.scheduleSelectGet', 'uses'
 Route::post('/reporte/elegirHorario',['as' => 'reporte.scheduleSelectPost', 'uses' => 'ReportController@scheduleSelectPost'])->middleware('teacher');
 Route::get('/reporte/reporteHorario/{id}',['as' => 'reporte.scheduleReport', 'uses' => 'ReportController@scheduleReport'])->middleware('teacher');
 Route::resource('reporte', 'ReportController')->middleware('teacher');
+//EnLinea
+Route::get('/evaluacionenlinea/infoCuestionario/{id}',['as' => 'evaluacionenlinea.infoPoll', 'uses' => 'OnlineEvaluationController@infoPoll'])->middleware('student');
+Route::get('/evaluacionenlinea/resolverCuestionario/{id}',['as' => 'evaluacionenlinea.solvePollGet', 'uses' => 'OnlineEvaluationController@solvePollGet'])->middleware('student');
+Route::put('/evaluacionenlinea/resolverCuestionario',['as' => 'evaluacionenlinea.solvePollPost', 'uses' => 'OnlineEvaluationController@solvePollPost'])->middleware('student');
+Route::get('/evaluacionenlinea/corregirCuestionario/{id}',['as' => 'evaluacionenlinea.checkPollGet', 'uses' => 'OnlineEvaluationController@checkPollGet'])->middleware('teacher');
+Route::put('/evaluacionenlinea/corregirCuestionario',['as' => 'evaluacionenlinea.checkPollPost', 'uses' => 'OnlineEvaluationController@checkPollPost'])->middleware('teacher');
+Route::resource('evaluacionenlinea', 'OnlineEvaluationController')->middleware('student');

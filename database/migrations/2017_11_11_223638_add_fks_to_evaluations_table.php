@@ -23,7 +23,9 @@ class AddFksToEvaluationsTable extends Migration
         });
         Schema::table('onlineevaluations', function (Blueprint $table) {
             $table->integer('poll_id')->unsigned();
-            $table->foreign('poll_id')->references('id')->on('polls');            
+            $table->foreign('poll_id')->references('id')->on('students');            
+            $table->integer('student_id')->unsigned();
+            $table->foreign('student_id')->references('id')->on('students');
         });
         Schema::table('levels', function (Blueprint $table) {
             $table->integer('evaluation_id')->unsigned();
@@ -47,7 +49,8 @@ class AddFksToEvaluationsTable extends Migration
             $table->dropForeign('levels_evaluation_id_foreign');            
         });
         Schema::table('onlineevaluations', function (Blueprint $table) {
-            $table->dropForeign('onlineevaluations_poll_id_foreign');          
+            $table->dropForeign('onlineevaluations_poll_id_foreign');
+            $table->dropForeign('students_poll_id_foreign');          
         });
     }
 }

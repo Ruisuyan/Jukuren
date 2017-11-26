@@ -46,15 +46,15 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
         try{
             $question = new Question;
-            $question->tipo = $request['tipo'];
-            $question->enunciado = $request['enunciado'];            
-            $question->puntaje = $request['puntaje'];
+            dd($request['tipo']);
+            $question->tipo = $request['tipo'];            
+            $question->utilizado = 1;
+            $question->proporcion = $request['proporcion'];
             $question->competence_id = $request['competencia'];            
             if($request['tipo']==2){
-                $question->respuesta = $request['respuesta'];
+                $question->respuestaCerrada = $request['respuestaCerrada'];
             }
             $question->save();
             //Alternatives

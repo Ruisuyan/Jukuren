@@ -48,7 +48,13 @@
                                     @if($evaluation->tipo == 1)
                                         <td>
                                             <a href="{{route('evidencia.uploadEvidenceGet',$evaluation->id)}}" title="Resolver" class="btn btn-success btn-xs view-group">
-                                                <i class="fa fa-arrow-circle-o-right">Resolver</i>
+                                                <i class="fa fa-arrow-circle-o-right">Subir Archivo</i>
+                                            </a> 
+                                        </td>
+                                    @elseif($evaluation->tipo == 2)
+                                        <td>
+                                            <a href="{{route('evaluacionenlinea.infoPoll',$evaluation->id)}}" title="Resolver" class="btn btn-success btn-xs view-group">
+                                                <i class="fa fa-arrow-circle-o-right">Resolver Cuestionario</i>
                                             </a> 
                                         </td>
                                     @endif
