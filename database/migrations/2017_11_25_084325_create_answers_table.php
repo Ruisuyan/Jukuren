@@ -18,6 +18,7 @@ class CreateAnswersTable extends Migration
             $table->integer('questionId');
             $table->text('respuestaAbierta')->nullable();
             $table->integer('respuestaCerrada')->nullable();
+            $table->text('observaciones')->nullable();
             $table->integer('puntaje')->nullable();
             $table->integer('onlineevaluation_id')->unsigned()->nullable();
             $table->foreign('onlineevaluation_id')->references('id')->on('onlineevaluations');

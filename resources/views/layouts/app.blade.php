@@ -10,10 +10,11 @@
 
     <title>SEC - @yield('title') </title>
 
-    <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/toastr.min.css') }}" />
+    <!-- Styles -->    
     <link rel="stylesheet" href="{{ asset('css/vendor.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />    
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}" />
+     {!! Charts::styles() !!}
 </head>
 <body>
     <!-- Wrapper-->
@@ -41,9 +42,10 @@
     <!-- End wrapper-->
 
 
-<script src="{{ asset('js/toastr.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
-
+<script src="{{ asset('js/toastr.min.js') }}" type="text/javascript"></script>
+{!! Charts::scripts() !!}
+{!! $chart->script() !!}
 @yield('scripts')
 @show
 </body>

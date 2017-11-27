@@ -56,7 +56,7 @@ class OnlineevaluationController extends Controller
                 $answer->respuestaAbierta = $questionAnswered;
             }
             else if ($question->tipo == 2){//si es cerrada
-                $answer->respuestaCerrada    = $questionAnswered;
+                $answer->respuestaCerrada = $questionAnswered;
                 //se corrige
                 $correcta = $question->respuestaCerrada;
                 if( ($questionAnswered=="0") || ($questionAnswered != $correcta)  ){//no se marco ninguna alternativa o es incorrecta
@@ -72,6 +72,63 @@ class OnlineevaluationController extends Controller
         }  
                 
         return redirect()->route('home');
+    }
+
+    public function pollsIndex($id)
+    {
+        $poll = Poll::where('evaluation_id',$id)->first();
+        $onlineEvaluations = OnlineEvaluation::where('poll_id',$poll->id)->get();
+        //dd($evidences);
+        $data = [
+            'onlineEvaluations' => $onlineEvaluations,
+        ];
+        return view('onlineEvaluations.pollsIndex',$data);
+    }
+
+    public function checkPollGet($id)
+    {
+        $onlineEvaluation = OnlineEvaluation::where('id',$id)->with('answers')->first();
+        $poll = Poll::where('id',$onlineEvaluation->poll_id)->with(['questions', 'evaluation'])->first();
+              
+        $data = [
+            'onlineEvaluation' => $onlineEvaluation,        
+            'poll' => $poll,
+        ];
+        
+        return view('onlineEvaluations.checkPoll',$data);
+    }    
+
+    public function checkPollPost(Request $request)
+    {
+        //$evaluationId = $request['evaluationId'];//idevaluacion profesor horario
+        //$student = Student::where('user_id',auth()->user()->id)->first();//alumno evaluado
+        //$poll = Poll::where('evaluation_id',$evaluationId)->with('questions')->first();//encuesta usada
+        //nuevo registro de evaluacion
+        $onlineEvaluation = OnlineEvaluation::where('id',$request['$onlineevaluationId'])->first();        
+        $onlineEvaluation->estado = 2;
+        //$onlineEvaluation->save();
+        $scoreOpenAnswers = $request['arrScore'];
+        foreach ($request['arrObservation'] as $idAnswer => $observation) {
+            //$question = Question::where('id',$idQuestion)->first();
+            $answer = Answer::where('id',$idAnswer);
+            $answer->observaciones = $observation;            
+            if($question->tipo == 2){//si es cerrada
+                $answer->puntaje = $scoreOpenAnswers[$idAnswer];                
+            }
+            $answer->save();            
+        }  
+                
+        return redirect()->route('home');
+
+        // try{
+        //     $evidence = Evidence::where('id',$id)->first();            
+        //     $evidence->observaciones = $request['observaciones'];
+        //     $evidence->puntaje = $request['puntaje'];
+        //     $evidence->save();
+        //     return redirect()->route('home');
+        // }catch(Exception $e){
+        //     return redirect()->back();
+        // }
     }
     /**
      * Display a listing of the resource.

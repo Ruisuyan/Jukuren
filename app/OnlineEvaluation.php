@@ -23,4 +23,9 @@ class OnlineEvaluation extends Model
     {
         return $this->belongsTo('App\Student');
     }    
+
+    public function answers()
+    {
+        return $this->hasMany('App\Answer','onlineevaluation_id');
+    }
 }

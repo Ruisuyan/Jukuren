@@ -9,7 +9,9 @@ use App\Evaluation;
 use App\Evidence;
 use App\Teacher;
 use App\Level;
+use App\OnlineEvaluation;
 use Illuminate\Http\Request;
+use Charts;
 
 class ReportController extends Controller
 {
@@ -20,7 +22,32 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return view('reports.index');
+        // $chart = Charts::multi('bar', 'material')
+        // // Setup the chart settings
+        // ->title("My Cool Chart")
+        // // A dimension of 0 means it will take 100% of the space
+        // ->dimensions(0, 400) // Width x Height
+        // // This defines a preset of colors already done:)
+        // ->template("material")
+        // // You could always set them manually
+        // // ->colors(['#2196F3', '#F44336', '#FFC107'])
+        // // Setup the diferent datasets (this is a multi chart)
+        // ->dataset('Element 1', [5,20,100])
+        // ->dataset('Element 2', [15,30,80])
+        // ->dataset('Element 3', [25,10,40])
+        // // Setup what the values mean
+        // ->labels(['One', 'Two', 'Three']);
+        $chart = Charts::create('line', 'highcharts')
+        ->title('Desempeño')
+        ->elementLabel('Desempeño')
+        ->labels(['2016-1', '2016-2', '2017-1'])
+        ->values([5,10,20])
+        ->dimensions(1000,500)
+        ->responsive(false);
+        $data =[
+            'chart' => $chart,
+        ];
+        return view('reports.index',$data);
     }
 
     /**
@@ -121,9 +148,9 @@ class ReportController extends Controller
         }])->get();
 
         //Los puntajes maximos, medios y minimos de la competencia
-        $highScore = $levels->sum('puntajeAlto');
-        $midScore = $levels->sum('puntajeMedio');
-        $lowScore = $levels->sum('puntajeBajo');
+        // $highScore = $levels->sum('puntajeAlto');
+        // $midScore = $levels->sum('puntajeMedio');
+        // $lowScore = $levels->sum('puntajeBajo');
 
         //Por cada alumno
         foreach ($schedule->students as $student) {
@@ -131,17 +158,21 @@ class ReportController extends Controller
             //Evidencias filtradas por alumnos y competencia
             $evidences = Evidence::where('student_id',$student->id)->with(['evaluation.performance.competence' => function($query)use($competenceId){
                 $query->where('id',$competenceId);
-            }])->get();                                   
+            }])->get();
+            $onlineEvaluations = OnlineEvaluation::where('student_id',$student->id)->with(['poll.evaluation.performance.competence' => function($query)use($competenceId){
+                $query->where('id',$competenceId);
+            }])->get();                                    
             $evidencesAvg = $evidences->avg('puntaje');
+            $onlineAvg = $onlineEvaluations->avg('puntaje');            
             $scoreCollection->push($evidencesAvg);
         }
         
         $data = [
             'students' => $schedule->students,
             'scoreCollection' => $scoreCollection,
-            'highScore' => $highScore,
-            'midScore' => $midScore,
-            'lowScore' => $lowScore
+            // 'highScore' => $highScore,
+            // 'midScore' => $midScore,
+            // 'lowScore' => $lowScore
         ];        
         return view('reports.scheduleReport',$data);
     }

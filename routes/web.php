@@ -69,4 +69,5 @@ Route::get('/evaluacionenlinea/resolverCuestionario/{id}',['as' => 'evaluacionen
 Route::put('/evaluacionenlinea/resolverCuestionario',['as' => 'evaluacionenlinea.solvePollPost', 'uses' => 'OnlineEvaluationController@solvePollPost'])->middleware('student');
 Route::get('/evaluacionenlinea/corregirCuestionario/{id}',['as' => 'evaluacionenlinea.checkPollGet', 'uses' => 'OnlineEvaluationController@checkPollGet'])->middleware('teacher');
 Route::put('/evaluacionenlinea/corregirCuestionario',['as' => 'evaluacionenlinea.checkPollPost', 'uses' => 'OnlineEvaluationController@checkPollPost'])->middleware('teacher');
+Route::get('/evaluacionenlinea/listaCuestionarios/{id}',['as' => 'evaluacionenlinea.pollsIndex', 'uses' => 'OnlineEvaluationController@pollsIndex'])->middleware('teacher');
 Route::resource('evaluacionenlinea', 'OnlineEvaluationController')->middleware('student');

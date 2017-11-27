@@ -48,11 +48,12 @@ class QuestionController extends Controller
     {
         try{
             $question = new Question;
-            dd($request['tipo']);
+            //dd($request['tipo']);
             $question->tipo = $request['tipo'];            
             $question->utilizado = 1;
             $question->proporcion = $request['proporcion'];
             $question->competence_id = $request['competencia'];            
+            $question->enunciado = $request['enunciado'];
             if($request['tipo']==2){
                 $question->respuestaCerrada = $request['respuestaCerrada'];
             }

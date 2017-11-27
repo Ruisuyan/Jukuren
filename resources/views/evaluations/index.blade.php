@@ -54,8 +54,11 @@
                                 @elseif($evaluation->tipo == 2)
                                     <td>Cuestionario</td>
                                     <td class="centered">
+                                        <a href="{{route('evaluacionenlinea.pollsIndex',$evaluation->id)}}" title="Asignar a Docente" class="btn btn-success btn-xs view-group">
+                                            <i class="fa fa-arrow-circle-o-right">Resolver Cuestionarios</i>
+                                        </a>
                                         <a href="{{route('cuestionario.create',$evaluation->id)}}" title="Asignar a Docente" class="btn btn-success btn-xs view-group">
-                                            <i class="fa fa-arrow-circle-o-right">Cuestionario</i>
+                                            <i class="fa fa-arrow-circle-o-right">Crear Cuestionario</i>
                                         </a>
                                     </td>
                                 @elseif($evaluation->tipo == 3)
@@ -66,8 +69,7 @@
                                         </a>
                                     </td>
                                 @endif                                
-                                {{--  <td>{{$evaluation->performance->nombre}}</td>  --}}
-                                
+                                                                
                             </tr> 
                             @endforeach
                         </tbody>
