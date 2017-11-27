@@ -55,9 +55,9 @@ class ScheduleController extends Controller
             $schedule->course_id = $request['courseId'];
             $schedule->cycle_id = $request['cicloAcademico'];
             $schedule->save();
-            return redirect()->route('horario.index');
+            return redirect()->route('horario.index')->with('success','Se registró un horario exitosamente');
         }catch(Exception $e){
-            return redirect()->back();
+            return redirect()->back()->with('warning','Ocurrió un error en el registro');
         }
     }
 
@@ -126,9 +126,9 @@ class ScheduleController extends Controller
             $schedule = Schedule::where('id',$id)->get()->first();                
             $schedule->teacher_id = $request['teacherId'];
             $schedule->save();
-            return redirect()->route('horario.index',$id)->with('success','yay');
+            return redirect()->route('horario.index',$id)->with('success','Se asignó un docente a un horario');
         }catch(Exception $e){
-            return redirect()->back()->with('warning','doh');
+            return redirect()->back()->with('warning','Error en el proceso');
         }
     }
 
@@ -153,9 +153,9 @@ class ScheduleController extends Controller
                 $student = Student::where('id',$studentId)->first();
                 $student->schedules()->attach($id);
             }                        
-            return redirect()->route('horario.index',$id)->with('success','yay');
+            return redirect()->route('horario.index',$id)->with('success','Se asgino un grupo de alumnos a un horaio');
         }catch(Exception $e){
-            return redirect()->back()->with('warning','doh');
+            return redirect()->back()->with('warning','Error en el proceso');
         }
     }
 }

@@ -146,9 +146,9 @@ class PerformanceController extends Controller
                 $course->performances()->attach($id);   
             }
 
-            return redirect()->route('desempenho.index',$id)->with('success','yay');
+            return redirect()->route('desempenho.index',$id)->with('success','Se asignó un desempeño a un curso');
         }catch(Exception $e){
-            return redirect()->back()->with('warning','doh');
+            return redirect()->back()->with('warning','Error en el proceso');
         }
     }
 }

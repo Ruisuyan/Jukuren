@@ -102,7 +102,7 @@ class EvaluationController extends Controller
                 $level->save();
             }
 
-            return redirect()->route('evaluacion.index');
+            return redirect()->route('evaluacion.index')->with('success','Se registró una evluación exitosamente');
         }catch(Exception $e){
             return redirect()->back();
         }

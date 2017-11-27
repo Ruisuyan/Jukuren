@@ -48,9 +48,9 @@ class CompetenceController extends Controller
             $competence->tipo = $request['tipo'];
             $competence->save();
 
-            return redirect()->route('competencia.index')->with('success','yay');
+            return redirect()->route('competencia.index')->with('success','Se registró una competencia exitosamente');
         }catch(Exception $e){
-            return redirect()->back()->with('warning','doh');
+            return redirect()->back()->with('warning','Ocurrió un error en el registro');
         }
     }
 

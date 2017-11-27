@@ -50,9 +50,9 @@ class CycleController extends Controller
             $cycle->fechafin = $request['fechafin'];
             $cycle->estado = $request['estado'];
             $cycle->save();
-            return redirect()->route('ciclo.index')->with('success','yay');
+            return redirect()->route('ciclo.index')->with('success','Se registró un ciclo exitosamente');
         }catch(Exception $e){
-            return redirect()->back()->with('warning','doh');
+            return redirect()->back()->with('warning','Ocurrió un error en el registro');
         }
     }
 

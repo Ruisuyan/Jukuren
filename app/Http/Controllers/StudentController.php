@@ -52,9 +52,9 @@ class StudentController extends Controller
             $student->correo = $request['correo'];
             $student->telefono = $request['telefono'];
             $student->save();
-            return redirect()->route('alumno.index')->with('success','yay');
+            return redirect()->route('alumno.index')->with('success','Se registró un alumno exitosamente');
         }catch(Exception $e){
-            return redirect()->back()->with('warning','doh');
+            return redirect()->back()->with('warning','Ocurrió un error en el registro');
         }
     }
 

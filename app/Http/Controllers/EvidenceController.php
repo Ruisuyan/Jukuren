@@ -98,9 +98,9 @@ class EvidenceController extends Controller
             $evidence->performance_id = $request['desempenho'];
             $evidence->estado = 1;
             $evidence->save();
-            return redirect()->route('evidencia.index');
+            return redirect()->route('evidencia.index')->with('success','Se registró una evidencia exitosamente');
         }catch(Exception $e){
-            return redirect()->back();
+            return redirect()->back()->with('warning','Ocurrió un error en el registro');
         }
         
     }
@@ -185,9 +185,9 @@ class EvidenceController extends Controller
             $evidence->observaciones = $request['observaciones'];
             $evidence->puntaje = $request['puntaje'];
             $evidence->save();
-            return redirect()->route('evaluacion.index');
+            return redirect()->route('evaluacion.index')->with('success','Revision de la evidencia culminada');
         }catch(Exception $e){
-            return redirect()->back();
+            return redirect()->back()->with('Evidencia corregida');
         }
     }
 }

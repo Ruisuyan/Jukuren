@@ -57,9 +57,9 @@ class TeacherController extends Controller
             //dd($teacher);
             $teacher->save();
 
-            return redirect()->route('docente.index')->with('success','yay');
+            return redirect()->route('docente.index')->with('success','Se registró un docente exitosamente');
         }catch(Exception $e){
-            return redirect()->back()->with('warning','doh');
+            return redirect()->back()->with('warning','Ocurrió un error en el registro');
         }
     }
 

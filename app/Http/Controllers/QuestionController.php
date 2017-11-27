@@ -67,9 +67,9 @@ class QuestionController extends Controller
                     $alternative->save();
                 }                
             }
-            return redirect()->route('pregunta.index')->with('success','yay');
+            return redirect()->route('pregunta.index')->with('success','Se registró ua pregunta de cuestionario exitosamente');
         }catch(Exception $e){
-            return redirect()->back()->with('warning','doh');
+            return redirect()->back()->with('warning','Ocurrió un error en el registro');
         }
     }
 

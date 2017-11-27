@@ -47,9 +47,9 @@ class CourseController extends Controller
             $course->cicloCurso = $request['cicloCurso'];
             $course->save();
 
-            return redirect()->route('curso.index')->with('success','yay');
+            return redirect()->route('curso.index')->with('success','Se registró un curso exitosamente');
         }catch(Exception $e){
-            return redirect()->back()->with('warning','doh');
+            return redirect()->back()->with('warning','Ocurrió un error en el registro');
         }
     }
 

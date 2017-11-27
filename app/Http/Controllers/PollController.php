@@ -63,9 +63,9 @@ class PollController extends Controller
                 $question->poll_id = $poll->id;               
                 $question->save();
             }
-            return redirect()->route('cuestionario.index')->with('success','yay');
+            return redirect()->route('cuestionario.index')->with('success','Se registró un cuestionario exitosamente');
         }catch(Exception $e){
-            return redirect()->back()->with('warning','doh');
+            return redirect()->back()->with('warning','Ocurrió un error en el registro');
         }
     }
 
