@@ -29,6 +29,6 @@ class TeachersTableSeeder extends Seeder
             'telefono' => 987654321,
             'user_id' => 3,
         ]);
-        factory(App\Teacher::class,5)->create();
+        factory(App\Teacher::class,4)->create();
     }
 }

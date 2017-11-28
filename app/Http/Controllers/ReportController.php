@@ -9,6 +9,7 @@ use App\Evaluation;
 use App\Evidence;
 use App\Teacher;
 use App\Level;
+use App\Cycle;
 use App\OnlineEvaluation;
 use Illuminate\Http\Request;
 use Charts;
@@ -22,26 +23,31 @@ class ReportController extends Controller
      */
     public function index()
     {
-        // $chart = Charts::multi('bar', 'material')
-        // // Setup the chart settings
-        // ->title("My Cool Chart")
-        // // A dimension of 0 means it will take 100% of the space
-        // ->dimensions(0, 400) // Width x Height
-        // // This defines a preset of colors already done:)
-        // ->template("material")
-        // // You could always set them manually
-        // // ->colors(['#2196F3', '#F44336', '#FFC107'])
-        // // Setup the diferent datasets (this is a multi chart)
-        // ->dataset('Element 1', [5,20,100])
-        // ->dataset('Element 2', [15,30,80])
-        // ->dataset('Element 3', [25,10,40])
-        // // Setup what the values mean
-        // ->labels(['One', 'Two', 'Three']);
+        $cycles = Cycle::select(['id','semestre'])->whereBetween('semestre',['2015-1','2017-1'])->get();        
+        
+        $scoreCollection = collect();        
+        foreach ($cycles as $key => $cycle) {            
+            $evidences = Evidence::select(['id','puntaje','evaluation_id'])->whereHas('evaluation.schedule', function($query)use($cycle){
+                $query->where('cycle_id',$cycle->id);
+            })->whereHas('evaluation.performance',function($query){
+                $query->where('competence_id','1');
+            })->where('student_id','3')->get();
+            //dd($evidences);
+            $evidencesAvg = $evidences->avg('puntaje');        
+            $scoreCollection->push($evidencesAvg);
+        }
+        // $evidences = Evidence::select(['id','puntaje','evaluation_id'])
+        // ->with(['evaluation.schedule.cycle' => function($query)use($cycle){
+        //     $query->where('semestre',$cycle->semestre);
+        // },'evaluation.performance.competence' => function($query){
+        //             $query->where('id',1);
+        //     }])->where('student_id',3)->toSql();
+        
         $chart = Charts::create('line', 'highcharts')
         ->title('Desempeño')
         ->elementLabel('Desempeño')
-        ->labels(['2016-1', '2016-2', '2017-1'])
-        ->values([5,10,20])
+        ->labels($cycles->pluck('semestre'))
+        ->values($scoreCollection)
         ->dimensions(1000,500)
         ->responsive(false);
         $data =[

@@ -153,7 +153,7 @@ class ScheduleController extends Controller
                 $student = Student::where('id',$studentId)->first();
                 $student->schedules()->attach($id);
             }                        
-            return redirect()->route('horario.index',$id)->with('success','Se asgino un grupo de alumnos a un horaio');
+            return redirect()->route('horario.index',$id)->with('success','Se asgino un grupo de alumnos a un horario');
         }catch(Exception $e){
             return redirect()->back()->with('warning','Error en el proceso');
         }

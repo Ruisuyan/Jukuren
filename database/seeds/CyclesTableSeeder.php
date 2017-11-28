@@ -13,6 +13,51 @@ class CyclesTableSeeder extends Seeder
     public function run()
     {
         DB::table('cycles')->insert([
+            'anho' => '2015',
+            'periodo' => '1',
+            'semestre' => '2015-1',
+            'fechainicio' => Carbon::createFromDate(2015, 3, 12),
+            'fechafin' => Carbon::createFromDate(2015, 6, 29),
+            'estado' => '3',
+        ]);
+        
+        DB::table('cycles')->insert([
+            'anho' => '2015',
+            'periodo' => '2',
+            'semestre' => '2015-2',
+            'fechainicio' => Carbon::createFromDate(2015, 8, 12),
+            'fechafin' => Carbon::createFromDate(2015, 11, 27),
+            'estado' => '3',
+        ]);
+        
+        DB::table('cycles')->insert([
+            'anho' => '2016',
+            'periodo' => '1',
+            'semestre' => '2016-1',
+            'fechainicio' => Carbon::createFromDate(2016, 3, 12),
+            'fechafin' => Carbon::createFromDate(2016, 6, 29),
+            'estado' => '3',
+        ]);
+        
+        DB::table('cycles')->insert([
+            'anho' => '2016',
+            'periodo' => '2',
+            'semestre' => '2016-2',
+            'fechainicio' => Carbon::createFromDate(2016, 8, 14),
+            'fechafin' => Carbon::createFromDate(2016, 11, 27),
+            'estado' => '3',
+        ]);
+        
+        DB::table('cycles')->insert([
+            'anho' => '2017',
+            'periodo' => '1',
+            'semestre' => '2017-1',
+            'fechainicio' => Carbon::createFromDate(2017, 3, 12),
+            'fechafin' => Carbon::createFromDate(2017, 6, 29),
+            'estado' => '3',
+        ]);
+        //Ciclo Actual
+        DB::table('cycles')->insert([
             'anho' => '2017',
             'periodo' => '2',
             'semestre' => '2017-2',
@@ -20,23 +65,6 @@ class CyclesTableSeeder extends Seeder
             'fechafin' => Carbon::createFromDate(2017, 11, 27),
             'estado' => '1',
         ]);
-
-        DB::table('cycles')->insert([
-            'anho' => '2018',
-            'periodo' => '1',
-            'semestre' => '2018-1',
-            'fechainicio' => Carbon::createFromDate(2018, 3, 12),
-            'fechafin' => Carbon::createFromDate(2018, 6, 29),
-            'estado' => '2',
-        ]);
-
-        DB::table('cycles')->insert([
-            'anho' => '2018',
-            'periodo' => '2',
-            'semestre' => '2018-2',
-            'fechainicio' => Carbon::createFromDate(2018, 8, 13),
-            'fechafin' => Carbon::createFromDate(2018, 11, 30),
-            'estado' => '2',
-        ]);
+        
     }
 }

@@ -45,7 +45,6 @@
 <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/toastr.min.js') }}" type="text/javascript"></script>
 {!! Charts::scripts() !!}
-{!! $chart->script() !!}
 @yield('scripts')
 @show
 </body>
