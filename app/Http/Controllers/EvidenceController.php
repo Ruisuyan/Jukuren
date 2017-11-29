@@ -166,7 +166,7 @@ class EvidenceController extends Controller
         $studentArchive = Storage::url($evidence->nombreArchivo);
         $evaluation = Evaluation::where('id',$evidence->evaluation_id)->with('levels')->first();
         // $studentArchive = Storage::disk('s3')->temporaryUrl(
-        //     '$evidence->nombreArchivo', Carbon::now()->addMinutes(5)
+        //     $evidence->nombreArchivo, Carbon::now()->addMinutes(5)
         // );        
         $data = [
             'evidence' => $evidence,
