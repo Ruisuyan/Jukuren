@@ -59,9 +59,13 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show($id)
     {
-        //
+        $course = Course::find($id);
+        $data = [
+            'course' => $course,
+        ];
+        return view('courses.show',$data);
     }
 
     /**

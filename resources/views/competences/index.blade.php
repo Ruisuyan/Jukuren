@@ -48,6 +48,9 @@
                                     <a href="{{route('competencia.edit',$competence->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">
                                         <i class="fa fa-pencil"></i>
                                     </a>
+                                    <a href="{{route('competencia.show',$competence->id)}}" title="Ver" class="btn btn-success btn-xs view-group">
+                                        <i class="fa fa-search"></i>
+                                    </a>
                                     <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$competence->id}}">
                                         <i class="fa fa-trash-o"></i>
                                     </a>

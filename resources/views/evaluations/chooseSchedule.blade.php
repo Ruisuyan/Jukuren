@@ -34,7 +34,7 @@
                     <tbody>
                         @foreach($teacher->schedules as $schedule)                        
                         <tr> 
-                            <td>{{Form::radio('scheduleId', $schedule->id)}}</td>                            
+                            <td>{{Form::radio('scheduleId', $schedule->id,['required'])}}</td>
                             <td>{{$schedule->course->codigo}}</td>
                             <td>{{$schedule->course->nombre}}</td>                            
                             <td>{{$schedule->codigo}}</td>                                                       
@@ -54,7 +54,6 @@
             {{Form::close()}}
             </div>
             
-
         </div>
     </div>
 </div>

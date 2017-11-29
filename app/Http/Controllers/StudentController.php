@@ -64,9 +64,13 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-     public function show(Student $student)
+     public function show($id)
      {
-         //
+        $student = Student::find($id);
+        $data = [
+            'student' => $student,
+        ];
+        return view('students.show',$data);
      }
 
     /**

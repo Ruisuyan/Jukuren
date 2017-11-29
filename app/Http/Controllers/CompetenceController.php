@@ -60,9 +60,13 @@ class CompetenceController extends Controller
      * @param  \App\Competence  $competence
      * @return \Illuminate\Http\Response
      */
-    public function show(Competence $competence)
+    public function show($id)
     {
-        //
+        $competence = Competence::find($id);
+        $data = [
+            'competence' => $competence,
+        ];
+        return view('competences.show',$data);
     }
 
     /**

@@ -36,13 +36,6 @@ class ReportController extends Controller
             $evidencesAvg = $evidences->avg('puntaje');        
             $scoreCollection->push($evidencesAvg);
         }
-        // $evidences = Evidence::select(['id','puntaje','evaluation_id'])
-        // ->with(['evaluation.schedule.cycle' => function($query)use($cycle){
-        //     $query->where('semestre',$cycle->semestre);
-        // },'evaluation.performance.competence' => function($query){
-        //             $query->where('id',1);
-        //     }])->where('student_id',3)->toSql();
-        
         $chart = Charts::create('line', 'highcharts')
         ->title('Desempeño')
         ->elementLabel('Desempeño')
@@ -149,23 +142,18 @@ class ReportController extends Controller
         $scoreCollection = collect();
         //dd($scoreCollection);
         //Niveles de desempeño para comparacion
-        $levels = Level::with(['evaluation.performance.competence' => function($query)use($competenceId){
+        $levels = Level::whereHas(['evaluation.performance.competence' => function($query)use($competenceId){
             $query->where('id',$competenceId);
         }])->get();
-
-        //Los puntajes maximos, medios y minimos de la competencia
-        // $highScore = $levels->sum('puntajeAlto');
-        // $midScore = $levels->sum('puntajeMedio');
-        // $lowScore = $levels->sum('puntajeBajo');
 
         //Por cada alumno
         foreach ($schedule->students as $student) {
 
             //Evidencias filtradas por alumnos y competencia
-            $evidences = Evidence::where('student_id',$student->id)->with(['evaluation.performance.competence' => function($query)use($competenceId){
+            $evidences = Evidence::where('student_id',$student->id)->whereHas(['evaluation.performance.competence' => function($query)use($competenceId){
                 $query->where('id',$competenceId);
             }])->get();
-            $onlineEvaluations = OnlineEvaluation::where('student_id',$student->id)->with(['poll.evaluation.performance.competence' => function($query)use($competenceId){
+            $onlineEvaluations = OnlineEvaluation::where('student_id',$student->id)->whereHas(['poll.evaluation.performance.competence' => function($query)use($competenceId){
                 $query->where('id',$competenceId);
             }])->get();                                    
             $evidencesAvg = $evidences->avg('puntaje');

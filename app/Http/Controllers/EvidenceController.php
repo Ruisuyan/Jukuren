@@ -50,8 +50,7 @@ class EvidenceController extends Controller
                 $evaluation->nombre,
                 $request->file('archivo')->getClientOriginalName()
                 //,'s3'
-            );            
-            $student = Student::where('user_id',auth()->user()->id)->first();
+            );                        
             $evidence = new Evidence;
             $evidence->evaluation_id = $id;            
             $evidence->student_id = $student->id;
@@ -60,9 +59,9 @@ class EvidenceController extends Controller
             $evidence->comentario = $request['comentario'];            
             $evidence->nombreArchivo = $path;
             $evidence->save();
-            return redirect()->route('alumno.myEvaluations');
+            return redirect()->route('alumno.myEvaluations')->with('success','Se registro un puntaje');
         }catch(Exception $e){
-            return redirect()->back();
+            return redirect()->back()->with('warning','Error en el proceso');
         }
     }
     /**
@@ -180,10 +179,13 @@ class EvidenceController extends Controller
     public function checkEvidencePost(Request $request,$id)
     {
         try{
-            $evidence = Evidence::where('id',$id)->first();
-            //dd($request);
-            $evidence->observaciones = $request['observaciones'];
-            $evidence->puntaje = $request['puntaje'];
+            $puntajeTotal = collect();
+            foreach ($request['scores'] as $levelId => $score) {
+                $puntajeTotal->push($score);
+            }            
+            $evidence = Evidence::where('id',$id)->first();            
+            $evidence->observaciones = $request['observaciones'];            
+            $evidence->puntaje = $puntajeTotal->sum();
             $evidence->save();
             return redirect()->route('evaluacion.index')->with('success','Revision de la evidencia culminada');
         }catch(Exception $e){

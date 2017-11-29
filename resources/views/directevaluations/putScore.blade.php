@@ -1,6 +1,7 @@
 @extends('layouts.app') 
-@section('title', 'Evidencia') 
+@section('title', 'Directa') 
 @section('content')
+
 <style>
 input.scoreInTable {
     width: 100%;
@@ -11,11 +12,12 @@ input.scoreInTable {
     -webkit-box-sizing: border-box;
 }
 </style>
+
 <div class="row">
 	<div class="col-md-12">
 		<div class="page-title">
 			<div class="title_left">
-				<h3>Nueva Evidencia</h3>
+				<h3>Puntuar al alumno</h3>
 			</div>
 		</div>
 	</div>
@@ -28,31 +30,27 @@ input.scoreInTable {
 				<h3 class="panel-title">Información</h3>
 			</div>
 			<div class="panel-body">
-				{{Form::open(['route' => ['evidencia.checkEvidencePost',$evidence->id],'class' => ' form-horizontal','id'=>'formSuggestion','files'=> true,'method' => 'put'])}}
+				{{Form::open(['route' => 'directa.putScorePost','class' => ' form-horizontal','id'=>'formSuggestion'])}}
+                {{Form::hidden('studentId',$student->id)}}
+                {{Form::hidden('evaluationId',$evaluation->id)}}
                 <div class="form-group">
-                    {{Form::label('Evaluacion: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                    {{Form::label('Nombre: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                     <div class="col-md-4">
-                        {{Form::text('nombreEvidencia',$evidence->evaluation->nombre,['class'=>'form-control', 'readonly'])}}
+                        {{Form::text('nombre',$evaluation->nombre,['class'=>'form-control', 'readonly'])}}
                     </div>
                 </div>
-                <div class="form-group">
-                    {{Form::label('Alumno: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+				<div class="form-group">
+                    {{Form::label('Fecha Entrega: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                     <div class="col-md-4">
-                        {{Form::text('nombreAlumno',$evidence->student->nombres.' '.$evidence->student->apellidoPaterno,['class'=>'form-control', 'readonly'])}}
+                        {{Form::text('fechaInicio',$evaluation->fechaInicio,['class'=>'form-control', 'readonly'])}}
                     </div>
-                </div>				
+                </div>
 				<div class="form-group">
 					{{Form::label('Desempeño: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
 					<div class="col-md-4 col-sm-8 col-xs-12">
-						{{Form::text('nombre',$evidence->evaluation->performance->nombre,['class'=>'form-control', 'readonly'])}}
+						{{Form::text('desempenho',$evaluation->performance->nombre,['class'=>'form-control', 'readonly'])}}
 					</div>
 				</div>
-                <div class="form-group">
-                    {{Form::label('Archivo: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
-                    <div class="col-md-4">
-                        <a class="btn btn-success" href="{{$studentArchive}}" download>Descargar</a>
-                    </div>
-                </div>
                 <div class="form-group">
                     {{Form::label('Observaciones: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                     <div class="col-md-4">
@@ -81,7 +79,7 @@ input.scoreInTable {
                         </tbody>
                     </table>                  
                 </div>
-                <div class="row">
+				<div class="row">
 					<div class="col-md-8 col-sm-12 col-xs-12">
 						{{Form::submit('Guardar', ['class'=>'btn btn-success pull-right'])}}
 						<a class="btn btn-default pull-right" href="{{ route('evaluacion.index') }}">Cancelar</a>
@@ -93,7 +91,3 @@ input.scoreInTable {
 	</div>
 </div>
 @endsection
-
-{{--  @section('scripts')
-<script src="{{ asset('js/checkEvidence.js') }}" type="text/javascript"></script>
-@endsection  --}}

@@ -14,29 +14,14 @@ $("#remove").click(function() {
         $(".preg:last-child").remove();
     n--;
 });
-// $('input[type=radio][name=tipo]').change(function() {
-//     var tipo = $('input[name=tipo]:checked').val();
-//     $(".tCerrada").attr("readonly","true");
-//     $(".tCerrada").removeAttr("required");
-//     $(".tCerr").attr("disabled","true");
-//     $(".tCerr").removeAttr("required");
-//     $("#form-cerrada").attr("hidden","true");
-//     if(tipo==2){
-//         $(".tCerrada").removeAttr("readonly");
-//         $(".tCerrada").attr("required","true");
-//         $(".tCerr").removeAttr("disabled");
-//         $(".tCerr").attr("required","true");
-//         $("#form-cerrada").removeAttr("hidden");	
-//     }	
+// $('#tipo').change(function() {
+//     var valorTipo = $('#tipo').val();
+//     //alert(valorTipo);    
+//     if(valorTipo==3){
+//         $("#fechaInicio").attr("disabled","true");
+//         $("#fechaFin").attr("disabled","true");
+//     }else{
+//         $("#fechaInicio").removeAttr("disabled");
+//         $("#fechaFin").removeAttr("disabled");
+//     }
 // });
-$('#tipo').change(function() {
-    var valorTipo = $('#tipo').val();
-    //alert(valorTipo);    
-    if(valorTipo==3){
-        $("#fechaInicio").attr("disabled","true");
-        $("#fechaFin").attr("disabled","true");
-    }else{
-        $("#fechaInicio").removeAttr("disabled");
-        $("#fechaFin").removeAttr("disabled");
-    }
-});

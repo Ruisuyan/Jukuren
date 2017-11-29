@@ -49,7 +49,7 @@ class EvaluationController extends Controller
 
     public function create($id)
     {
-        $schedule = Schedule::where('id',$id)->first();
+        $schedule = Schedule::where('id',$id)->with('course.performances')->first(); 
         $teacherId = $schedule->teacher->id;
         $data = [
             'scheduleId' => $schedule->id,
@@ -70,13 +70,6 @@ class EvaluationController extends Controller
     {
         //dd($request);
         try{
-            
-            // $level->gradoAlto = $request['gradoAlto'];
-            // $level->gradoMedio = $request['gradoMedio'];
-            // $level->gradoBajo = $request['gradoBajo'];
-            // $level->puntajeAlto = $request['puntajeAlto'];
-            // $level->puntajeMedio = $request['puntajeMedio'];
-            // $level->puntajeBajo = $request['puntajeBajo'];
             
             //evaluacion
             $evaluation = new Evaluation;

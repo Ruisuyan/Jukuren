@@ -30,6 +30,7 @@ Route::resource('usuario', 'UserController')->middleware('admin');
 Route::resource('ciclo', 'CycleController')->middleware('coord');
 Route::resource('horario', 'ScheduleController')->middleware('coord');
 Route::resource('cuestionario', 'PollController')->middleware('teacher');
+Route::resource('directa', 'DirectevaluationController')->middleware('teacher');
 //Cuestionario
 Route::get('/cuestionario/create/{id}',['as' => 'cuestionario.create', 'uses' => 'PollController@create'])->middleware('teacher');
 Route::post('/cuestionario',['as' => 'cuestionario.store', 'uses' => 'PollController@store'])->middleware('teacher');
@@ -71,3 +72,9 @@ Route::get('/evaluacionenlinea/corregirCuestionario/{id}',['as' => 'evaluacionen
 Route::put('/evaluacionenlinea/corregirCuestionario',['as' => 'evaluacionenlinea.checkPollPost', 'uses' => 'OnlineEvaluationController@checkPollPost'])->middleware('teacher');
 Route::get('/evaluacionenlinea/listaCuestionarios/{id}',['as' => 'evaluacionenlinea.pollsIndex', 'uses' => 'OnlineEvaluationController@pollsIndex'])->middleware('teacher');
 Route::resource('evaluacionenlinea', 'OnlineEvaluationController')->middleware('student');
+//Evaluacion directa
+Route::get('/directa/elegirAlumno/{id}',['as' => 'directa.chooseStudent', 'uses' => 'DirectevaluationController@chooseStudent'])->middleware('teacher');
+// Route::post('/directa/elegirAlumno/{id}',['as' => 'directa.chooseStudentPost', 'uses' => 'DirectevaluationController@chooseStudentPost'])->middleware('teacher');
+Route::get('/directa/puntuarEvaluacion/{id}{ev}',['as' => 'directa.putScoreGet', 'uses' => 'DirectevaluationController@putScoreGet'])->middleware('teacher');
+Route::post('/directa/puntuarEvaluacion',['as' => 'directa.putScorePost', 'uses' => 'DirectevaluationController@putScorePost'])->middleware('teacher');
+Route::resource('directa', 'DirectevaluationController')->middleware('teacher');

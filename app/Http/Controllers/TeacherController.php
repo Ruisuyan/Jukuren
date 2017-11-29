@@ -69,9 +69,15 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function show(Teacher $teacher)
+    public function show($id)
     {
-        //
+        $teacher = Teacher::find($id);
+        $courses = Course::all();
+        $data = [
+            'courses' => $courses->pluck('nombre','id'),
+            'teacher' => $teacher,
+        ];
+        return view('teachers.show',$data);
     }
 
     /**

@@ -32,8 +32,7 @@
                             <th class="centered column-title">Curso</th>
                             <th class="centered column-title">Fecha Inicio</th>
                             <th class="centered column-title">Fecha Fin</th>
-                            <th class="centered column-title">Tipo</th>
-                            {{--  <th class="centered column-title">Desempeño</th>  --}}
+                            <th class="centered column-title">Tipo</th>                            
                             <th class="centered column-title">Acciones</th>                            
                         </tr>
                         </thead>
@@ -64,7 +63,7 @@
                                 @elseif($evaluation->tipo == 3)
                                     <td>Directa</td>
                                     <td class="centered">
-                                        <a href="{{route('evidencia.evidencesIndex',$evaluation->id)}}" title="Asignar a Docente" class="btn btn-success btn-xs view-group">
+                                        <a href="{{route('directa.chooseStudent',$evaluation->id)}}" title="Asignar puntajes" class="btn btn-success btn-xs view-group">
                                             <i class="fa fa-arrow-circle-o-right">Directa</i>
                                         </a>
                                     </td>

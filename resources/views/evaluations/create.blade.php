@@ -113,4 +113,4 @@
 @endsection
 @section('scripts')
     <script src="{{ asset('js/evaluationCreate.js') }}" type="text/javascript"></script>
-    @endsection
+@endsection
