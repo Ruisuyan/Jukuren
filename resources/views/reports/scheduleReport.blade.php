@@ -37,15 +37,21 @@
                         <tr> 
                             <td>{{$student->codigo}}</td>
                             <td>{{$student->nombres}}</td>
+                            <td class="text-center">
                             @if(($scoreCollection[$n] <= $highScore) and ($scoreCollection[$n] > $midScore))
-                                <td class="text-center"><i class="fa fa-times fa-2" aria-hidden="true"></i></td>
+                                <i class="fa fa-times fa-2" aria-hidden="true"></i>
                             @endif
+                            </td>
+                            <td class="text-center">
                             @if( ($scoreCollection[$n] <= $midScore) and ($scoreCollection[$n] > $lowScore))
-                                <td class="text-center"><i class="fa fa-times fa-2" aria-hidden="true"></i></td>
+                                <i class="fa fa-times fa-2" aria-hidden="true"></i>
                             @endif
+                            </td>
+                            <td class="text-center">
                             @if(($scoreCollection[$n] <= $lowScore) and ($scoreCollection[$n] >= 0))
-                                <td class="text-center"><i class="fa fa-times fa-2" aria-hidden="true"></i></td>
+                                <i class="fa fa-times fa-2" aria-hidden="true"></i>
                             @endif
+                            </td>
                         </tr> 
                         @endforeach
                     </tbody>

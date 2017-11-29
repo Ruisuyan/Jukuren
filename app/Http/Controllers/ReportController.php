@@ -142,31 +142,31 @@ class ReportController extends Controller
         $scoreCollection = collect();
         //dd($scoreCollection);
         //Niveles de desempeño para comparacion
-        $levels = Level::whereHas(['evaluation.performance.competence' => function($query)use($competenceId){
-            $query->where('id',$competenceId);
-        }])->get();
+        // $levels = Level::whereHas(['evaluation.performance.competence' => function($query)use($competenceId){
+        //     $query->where('id',$competenceId);
+        // }])->get();
 
         //Por cada alumno
         foreach ($schedule->students as $student) {
 
             //Evidencias filtradas por alumnos y competencia
-            $evidences = Evidence::where('student_id',$student->id)->whereHas(['evaluation.performance.competence' => function($query)use($competenceId){
+            $evidences = Evidence::whereHas('evaluation.performance.competence',function($query)use($competenceId){
                 $query->where('id',$competenceId);
-            }])->get();
-            $onlineEvaluations = OnlineEvaluation::where('student_id',$student->id)->whereHas(['poll.evaluation.performance.competence' => function($query)use($competenceId){
-                $query->where('id',$competenceId);
-            }])->get();                                    
+            })->where('student_id',$student->id)->get();
+            // $onlineEvaluations = OnlineEvaluation::where('student_id',$student->id)->whereHas(['poll.evaluation.performance.competence' => function($query)use($competenceId){
+            //     $query->where('id',$competenceId);
+            // }])->get();                                    
             $evidencesAvg = $evidences->avg('puntaje');
-            $onlineAvg = $onlineEvaluations->avg('puntaje');            
+            // $onlineAvg = $onlineEvaluations->avg('puntaje');            
             $scoreCollection->push($evidencesAvg);
         }
-        
+        // dd($scoreCollection);
         $data = [
             'students' => $schedule->students,
             'scoreCollection' => $scoreCollection,
-            // 'highScore' => $highScore,
-            // 'midScore' => $midScore,
-            // 'lowScore' => $lowScore
+            'highScore' => 20.0,
+            'midScore' => 15.0,
+            'lowScore' => 10.0,
         ];        
         return view('reports.scheduleReport',$data);
     }
