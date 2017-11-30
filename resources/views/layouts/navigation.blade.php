@@ -85,13 +85,10 @@
             <li>
                 <a href="{{ route('pregunta.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Preguntas</span> </a>
             </li>
-            <li>
-                <a href="{{ route('cuestionario.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Cuestionarios</span> </a>
-            </li>
-            @endif            
             {{--  <li>
-                <a href="{{ route('evidencia.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Portafolio</span> </a>
+                <a href="{{ route('cuestionario.index') }}"><i class="fa fa-cog"></i> <span class="nav-label">Cuestionarios</span> </a>
             </li>  --}}
+            @endif
         </ul>
     </div>
 </nav>

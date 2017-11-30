@@ -20,9 +20,9 @@
 					@foreach($onlineEvaluation->answers as $key => $answer)
 						@if($poll->questions[$key]->tipo == 1)
 						<div class="form-group">
-
+						<div class="col-md-12">
 							<h4>Pregunta {{$key+1}}</h4>
-							<p>{{$poll->questions[$key]->enunciado}}</p>
+							<p class="form-control">{{$poll->questions[$key]->enunciado}}</p>
 
 							<h5>Respuesta:</h5>
 							<textarea class="form-control" rows="4" disabled>{{$answer->respuestaAbierta}}</textarea>
@@ -32,22 +32,24 @@
 
                             <h5>Puntaje:</h5>
 							<input class="form-control" type="number" name="arrScore[{{$answer->id}}]" min ="1" max ="3" >
-                            
+                           </div>
 						</div>
 						<hr/>
 						@elseif($poll->questions[$key]->tipo == 2)
 						<div class="form-group">
+						<div class="col-md-12">
 							<h4>Pregunta {{$key+1}}</h4>
-							<p>{{$poll->questions[$key]->enunciado}}</p>
+							<p class="form-control">{{$poll->questions[$key]->enunciado}}</p>
 
 							<h5>Respuesta:</h5>
-							<p>{{$answer->respuestaCerrada}}</p>
+							<p class="form-control">{{$answer->respuestaCerrada}}</p>
 
                             <h5>Observaciones:</h5>
                             <textarea class="form-control" name="arrObservation[{{$answer->id}}]" rows="4"></textarea>
 
                             <h5>Puntaje:</h5>							
                             {{Form::number('respuestaCerrada',$answer->puntaje,['class'=>'form-control','disabled' => 'true'])}}
+						</div>
 						</div>
 						<hr/>
 						@endif
