@@ -14,14 +14,7 @@ $("#remove").click(function() {
         $(".preg:last-child").remove();
     n--;
 });
-// $('#tipo').change(function() {
-//     var valorTipo = $('#tipo').val();
-//     //alert(valorTipo);    
-//     if(valorTipo==3){
-//         $("#fechaInicio").attr("disabled","true");
-//         $("#fechaFin").attr("disabled","true");
-//     }else{
-//         $("#fechaInicio").removeAttr("disabled");
-//         $("#fechaFin").removeAttr("disabled");
-//     }
-// });
+$("#performanceId").change(function() {
+    //alert('im here');
+    $("#competencia").text($('option:selected').attr('data-content'));    
+}).change();

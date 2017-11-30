@@ -17,9 +17,12 @@ class EvaluationController extends Controller
      */
     public function index()
     {
-        $evaluations = Evaluation::all();
+        $userId = auth()->user()->id;        
+        $teacher = Teacher::where('user_id',$userId)->first();        
+        // $evaluations = Evaluation::where('teacher_id',$teacherId)->get();
+        // dd($teacher->evaluations);
         $data = [
-            'evaluations' => $evaluations,
+            'evaluations' => $teacher->evaluations,
         ];
         return view('evaluations.index',$data);
     }
@@ -33,9 +36,9 @@ class EvaluationController extends Controller
     public function chooseScheduleGet()
     {
         $userId = auth()->user()->id;
-        $teacher = Teacher::where('user_id',$userId)->first();        
+        $teacher = Teacher::where('user_id',$userId)->with('schedules')->first();         
         $data = [
-            'teacher' => $teacher,            
+            'schedules' => $teacher->schedules,            
         ];
         //dd($userId);
         return view('evaluations.chooseSchedule',$data);
@@ -52,9 +55,9 @@ class EvaluationController extends Controller
         $schedule = Schedule::where('id',$id)->with('course.performances')->first(); 
         $teacherId = $schedule->teacher->id;
         $data = [
-            'scheduleId' => $schedule->id,
+            'schedule' => $schedule,
             'teacherId' => $teacherId,
-            'performances' => $schedule->course->performances->pluck('nombre','id'),
+            'performances' => $schedule->course->performances,
         ];
         //dd($data);
         return view('evaluations.create',$data);
@@ -108,9 +111,13 @@ class EvaluationController extends Controller
      * @param  \App\Evaluation  $evaluation
      * @return \Illuminate\Http\Response
      */
-    public function show(Evaluation $evaluation)
+    public function show($id)
     {
-        //
+        $evaluation = Evaluation::find($id);
+        $data = [
+            'evaluation' => $evaluation,
+        ];
+        return view('evaluations.show');
     }
 
     /**
@@ -119,9 +126,13 @@ class EvaluationController extends Controller
      * @param  \App\Evaluation  $evaluation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Evaluation $evaluation)
+    public function edit($id)
     {
-        //
+        $evaluation = Evaluation::find($id);
+        $data = [
+            'evaluation' => $evaluation,
+        ];
+        return view('evaluations.edit');
     }
 
     /**
@@ -131,9 +142,23 @@ class EvaluationController extends Controller
      * @param  \App\Evaluation  $evaluation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Evaluation $evaluation)
+    public function update(Request $request, $id)
     {
-        //
+        try{
+            $evaluation = Evaluation::find($id);
+            $evaluation->nombre = $request['nombre'];
+            $evaluation->tipo = $request['tipo'];
+            $evaluation->fechaInicio = $request['fechaInicio'];
+            $evaluation->fechaFin = $request['fechaFin'];
+            $evaluation->indicaciones = $request['indicaciones'];
+            $evaluation->estado = $request['estado'];
+            $evaluation->performance_id = $request['performanceId'];      
+            $evaluation->save();
+
+            return redirect()->route('evaluacion.index')->with('success','Se actualizó una evluación exitosamente');
+        }catch(Exception $e){
+            return redirect()->back()->with('warning','Error en el proceso');
+        }
     }
 
     /**

@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div class="page-title">
             <div class="title_left">
-                <h3>Nueva Evaluacion</h3>
+                <h3>Editar Evaluacion</h3>
             </div>
         </div>
     </div>
@@ -19,19 +19,11 @@
                 <h3 class="panel-title">Información</h3>
             </div>
             <div class="panel-body">
-            {{Form::open(['route' => 'evaluacion.store','class' => ' form-horizontal','id'=>'formSuggestion'])}}
+            {{Form::open(['route' => ['evaluacion.update',$evaluation->id],'class' => ' form-horizontal','id'=>'formSuggestion','method' => 'put'])}}
 
             {{Form::hidden('scheduleId',$schedule->id)}}
 
             {{Form::hidden('teacherId',$teacherId)}}
-
-            {{--  Parte select  --}}
-            {{--  <div class="form-group">
-                {{Form::label('Desempeño: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
-                <div class="col-md-4 col-sm-8 col-xs-12">
-                    {{Form::select('performanceId',$performances,null,['placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
-                </div>
-            </div>  --}}
 
             <div class="form-group">
                 {{Form::label('Curso: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
@@ -46,7 +38,11 @@
                     <select name="performanceId" id="performanceId" class="form-control">
                         <option name="performanceId" value="" data-content="Elegir desempeño">Elegir</option>
                         @foreach($performances as $performance)
-                            <option name="performanceId" value="{{$performance->id}}" data-content="{{$performance->competence->nombre}}">{{$performance->nombre}}</option>
+                            <option name="performanceId" value="{{$performance->id}}" data-content="{{$performance->competence->nombre}}"
+                            @if($performance->id==evaluation->performance->id)
+                                selected="selected"
+                            @endif
+                            >{{$performance->nombre}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -55,45 +51,46 @@
             <div class="form-group">
                 {{Form::label('Competencia: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    <label id="competencia" class="form-control"></label>
+                    <label id="competencia" class="form-control">{{$evaluation->performance->competence->nombre}}</label>
                 </div>
             </div>
             
             <div class="form-group">
-                {{Form::label('Nombre: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                {{Form::label('Titulo: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::text('nombre',null,['class'=>'form-control', 'required', 'maxlength' => 50])}}
+                    {{Form::text('nombre',$evaluation->nombre,['class'=>'form-control', 'required', 'maxlength' => 50])}}
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Tipo: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4 col-sm-8 col-xs-12">
-                    {{Form::select('tipo',[1 => 'Carga de evidencia',2 => 'Cuestionario', 3 => 'Directa'],null,['placeholder' => 'Elegir','class'=>'form-control', 'required', 'id' => 'tipo'])}}
+                    {{Form::select('tipo',[1 => 'Carga de evidencia',2 => 'Cuestionario', 3 => 'Directa'],$evaluation->tipo,['placeholder' => 'Elegir','class'=>'form-control', 'required', 'id' => 'tipo'])}}
                 </div>
             </div>
+            {{--  La idea es que solo pueda modificar antes de la fecha inicio, luego de esta tendra que cancelarla  --}}
 
             <div class="form-group">
                 {{Form::label('Fecha Inicio: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::date('fechaInicio',null,['class'=>'form-control', 'required','id' => 'fechaInicio'])}}
+                    {{Form::date('fechaInicio',$evaluation->fechaInicio,['class'=>'form-control', 'required','id' => 'fechaInicio'])}}
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Fecha Fin: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::date('fechaFin',null,['class'=>'form-control','id' => 'fechaFin'])}}
+                    {{Form::date('fechaFin',$evaluation->fechaFin,['class'=>'form-control','id' => 'fechaFin'])}}
                 </div>
             </div>
 
             <div class="form-group">
                 {{Form::label('Indicaciones: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::textarea('indicaciones',null,['class'=>'form-control', 'required', 'maxlength' => 500])}}
+                    {{Form::textarea('indicaciones',$evaluation->indicaciones,['class'=>'form-control', 'required', 'maxlength' => 500])}}
                 </div>
             </div>
-            <hr/>
+            {{--  <hr/>
             <div>
                 <h3>Criterios de evaluación</h3>
             </div>
@@ -120,7 +117,7 @@
                         </div>
                     </div>                                
                 </div>
-            </div>
+            </div>  --}}
             <hr/>
             <div class="row">
                 <div class="col-md-8 col-sm-12 col-xs-12">                    

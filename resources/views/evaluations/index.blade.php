@@ -30,7 +30,6 @@
                         <tr class="headings">                            
                             <th class="column-title">Nombre</th>
                             <th class="centered column-title">Curso</th>
-                            <th class="centered column-title">Fecha Inicio</th>
                             <th class="centered column-title">Fecha Fin</th>
                             <th class="centered column-title">Tipo</th>                            
                             <th class="centered column-title">Acciones</th>                            
@@ -38,38 +37,53 @@
                         </thead>
                         <tbody>
                             @foreach($evaluations as $evaluation)
-                            <tr>                                
+                            @if($evaluation->schedule->cycle->estado != 3)
+                                <tr>                                
                                 <td>{{$evaluation->nombre}}</td>
                                 <td>{{$evaluation->schedule->course->nombre}}</td>
-                                <td>{{$evaluation->fechaInicio}}</td>
                                 <td>{{$evaluation->fechaFin}}</td>
                                 @if($evaluation->tipo == 1)
                                     <td>Carga de evidencia</td>
-                                    <td class="centered">                                        
-                                        <a href="{{route('evidencia.evidencesIndex',$evaluation->id)}}" title="Asignar a Docente" class="btn btn-success btn-xs view-group">
-                                            <i class="fa fa-arrow-circle-o-right">Evaluaciones subidas</i>
-                                        </a>
+                                    <td class="centered">   
+                                        <a href="{{route('evidencia.evidencesIndex',$evaluation->id)}}" title="Revisar evidencia">
+                                            <button type="button" class="btn btn-success btn-xs view-group">
+                                                <i class="fa fa-arrow-circle-o-right"></i>
+                                                Revisar evidencias
+                                            </button>
+									    </a>
                                     </td>
                                 @elseif($evaluation->tipo == 2)
                                     <td>Cuestionario</td>
                                     <td class="centered">
-                                        <a href="{{route('evaluacionenlinea.pollsIndex',$evaluation->id)}}" title="Asignar a Docente" class="btn btn-success btn-xs view-group">
-                                            <i class="fa fa-arrow-circle-o-right">Resolver Cuestionarios</i>
+                                    @if(count($evaluation->poll))
+                                        <a href="{{route('evaluacionenlinea.pollsIndex',$evaluation->id)}}" title="Revisar cuestionarios">
+                                            <button type="button" class="btn btn-success btn-xs view-group">
+                                                <i class="fa fa-arrow-circle-o-right"></i>
+                                                Revisar cuestionarios
+                                            </button>
                                         </a>
-                                        <a href="{{route('cuestionario.create',$evaluation->id)}}" title="Asignar a Docente" class="btn btn-success btn-xs view-group">
-                                            <i class="fa fa-arrow-circle-o-right">Crear Cuestionario</i>
+                                    @else
+                                        <a href="{{route('cuestionario.create',$evaluation->id)}}" title="Crear cuestionario">
+                                            <button type="button" class="btn btn-success btn-xs view-group">
+                                                <i class="fa fa-arrow-circle-o-right"></i>
+                                                Crear cuestionario
+                                            </button>
                                         </a>
+                                    @endif
                                     </td>
                                 @elseif($evaluation->tipo == 3)
                                     <td>Directa</td>
                                     <td class="centered">
-                                        <a href="{{route('directa.chooseStudent',$evaluation->id)}}" title="Asignar puntajes" class="btn btn-success btn-xs view-group">
-                                            <i class="fa fa-arrow-circle-o-right">Directa</i>
+                                        <a href="{{route('directa.chooseStudent',$evaluation->id)}}" title="Asignar puntajes">
+                                            <button type="button" class="btn btn-success btn-xs view-group">
+                                                <i class="fa fa-arrow-circle-o-right"></i>
+                                                Asignar puntajes
+                                            </button>
                                         </a>
                                     </td>
-                                @endif                                
-                                                                
-                            </tr> 
+                                @endif                         
+                            </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>                  

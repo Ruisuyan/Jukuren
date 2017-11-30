@@ -26,19 +26,19 @@
                     <thead>
                         <tr class="headings">
                             <th></th>                          
-                            <th class="column-title">Codigo</th>     
-                            <th class="column-title">Curso</th>
-                            <th class="column-title">Horario</th>                            
+                            <th class="column-title">Codigo del Horario</th>
+                            <th class="column-title">Nombre del Curso</th>                                                       
                         </tr>
                     </thead> 
                     <tbody>
-                        @foreach($teacher->schedules as $schedule)                        
-                        <tr> 
-                            <td>{{Form::radio('scheduleId', $schedule->id,['required'])}}</td>
-                            <td>{{$schedule->course->codigo}}</td>
-                            <td>{{$schedule->course->nombre}}</td>                            
-                            <td>{{$schedule->codigo}}</td>                                                       
-                        </tr> 
+                        @foreach($schedules as $schedule)                        
+                            @if($schedule->cycle->estado != 3)
+                            <tr> 
+                                <td>{{Form::radio('scheduleId', $schedule->id)}}</td>
+                                <td>{{$schedule->codigo}}</td>                            
+                                <td>{{$schedule->course->nombre}}</td>                                    
+                            </tr> 
+                            @endif                                               
                         @endforeach
                     </tbody>
                 </table>                  

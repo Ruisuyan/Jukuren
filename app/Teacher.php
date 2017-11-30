@@ -10,5 +10,9 @@ class Teacher extends Model
     {
         return $this->hasMany('App\Schedule');
     }
+    public function evaluations()
+    {
+        return $this->hasMany('App\Evaluation');
+    }
     use SoftDeletes;
 }

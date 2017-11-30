@@ -24,4 +24,8 @@ class Evaluation extends Model
     {
         return $this->hasMany('App\Level');
     }
+    public function poll()
+    {
+        return $this->hasOne('App\Poll');
+    }
 }
