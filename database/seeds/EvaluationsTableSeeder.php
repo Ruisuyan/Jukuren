@@ -14,7 +14,7 @@ class EvaluationsTableSeeder extends Seeder
     {
         //Horario 1
         DB::table('evaluations')->insert([
-            'nombre' => 'Evaluacion 1',
+            'nombre' => 'Trabajo de campo II',
             'tipo' => '1',
             'fechaInicio' => Carbon::createFromDate(2015, 5, 10),
             'fechaFin' => Carbon::createFromDate(2015, 5, 17),
@@ -26,7 +26,7 @@ class EvaluationsTableSeeder extends Seeder
         ]);
 
         DB::table('evaluations')->insert([
-            'nombre' => 'Evaluacion 2',
+            'nombre' => 'Trabajo en equipo I',
             'tipo' => '1',
             'fechaInicio' => Carbon::createFromDate(2015, 4, 10),
             'fechaFin' => Carbon::createFromDate(2015, 4, 17),
@@ -38,7 +38,7 @@ class EvaluationsTableSeeder extends Seeder
         ]);
         //Horario 2
         DB::table('evaluations')->insert([
-            'nombre' => 'Evaluacion 1',
+            'nombre' => 'Exposicion oral I',
             'tipo' => '1',
             'fechaInicio' => Carbon::createFromDate(2015, 8, 10),
             'fechaFin' => Carbon::createFromDate(2015, 8, 17),
@@ -50,7 +50,7 @@ class EvaluationsTableSeeder extends Seeder
         ]);
 
         DB::table('evaluations')->insert([
-            'nombre' => 'Evaluacion 2',
+            'nombre' => 'Trabajo de grupo III',
             'tipo' => '1',
             'fechaInicio' => Carbon::createFromDate(2015, 8, 10),
             'fechaFin' => Carbon::createFromDate(2015, 8, 17),
@@ -62,7 +62,7 @@ class EvaluationsTableSeeder extends Seeder
         ]);
         //Horario 3
         DB::table('evaluations')->insert([
-            'nombre' => 'Evaluacion 1',
+            'nombre' => 'Desenvolvimiento escenico',
             'tipo' => '1',
             'fechaInicio' => Carbon::createFromDate(2016, 5, 10),
             'fechaFin' => Carbon::createFromDate(2016, 5, 17),
@@ -74,7 +74,7 @@ class EvaluationsTableSeeder extends Seeder
         ]);
 
         DB::table('evaluations')->insert([
-            'nombre' => 'Evaluacion 2',
+            'nombre' => 'Capacidad de socializacion',
             'tipo' => '1',
             'fechaInicio' => Carbon::createFromDate(2016, 5, 10),
             'fechaFin' => Carbon::createFromDate(2016, 5, 17),
@@ -86,7 +86,7 @@ class EvaluationsTableSeeder extends Seeder
         ]);
         //Horario 4
         DB::table('evaluations')->insert([
-            'nombre' => 'Evaluacion 1',
+            'nombre' => 'Tarea academica',
             'tipo' => '1',
             'fechaInicio' => Carbon::createFromDate(2016, 8, 10),
             'fechaFin' => Carbon::createFromDate(2016, 8, 17),
@@ -98,7 +98,7 @@ class EvaluationsTableSeeder extends Seeder
         ]);
 
         DB::table('evaluations')->insert([
-            'nombre' => 'Evaluacion 2',
+            'nombre' => 'Trabajo individual',
             'tipo' => '1',
             'fechaInicio' => Carbon::createFromDate(2016, 8, 10),
             'fechaFin' => Carbon::createFromDate(2016, 8, 17),
@@ -110,7 +110,7 @@ class EvaluationsTableSeeder extends Seeder
         ]);
         //Horario 5
         DB::table('evaluations')->insert([
-            'nombre' => 'Evaluacion 1',
+            'nombre' => 'Exposicion oral I',
             'tipo' => '1',
             'fechaInicio' => Carbon::createFromDate(2017, 5, 10),
             'fechaFin' => Carbon::createFromDate(2017, 5, 17),
@@ -122,7 +122,7 @@ class EvaluationsTableSeeder extends Seeder
         ]);
 
         DB::table('evaluations')->insert([
-            'nombre' => 'Evaluacion 2',
+            'nombre' => 'Capacidad de analisis',
             'tipo' => '1',
             'fechaInicio' => Carbon::createFromDate(2017, 5, 10),
             'fechaFin' => Carbon::createFromDate(2017, 5, 17),

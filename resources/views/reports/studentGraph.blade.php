@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="page-title">    
-		    <h3>Reporte de Competencia 1</h3>
+		    <h3>{{'Reporte de la competencia: '.$competence->nombre.', del alumno '.$student->nombres.' '.$student->apellidoPaterno}}</h3>
         </div>
     </div>
 </div>

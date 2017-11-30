@@ -59,7 +59,7 @@ class ReportController extends Controller
             'students' => $students,
             'semestreIni' => $cycles->pluck('semestre','id'),
             'semestreFin' => $cycles->pluck('semestre','id'),
-            'competencies' => $competencies,
+            'competencies' => $competencies->pluck('nombre','id'),
         ];
         return view('reports.studentParameters',$data);
     }
@@ -79,12 +79,12 @@ class ReportController extends Controller
         $semestreIni = Cycle::find($si);                
         $semestreFin = Cycle::find($sf);        
         $cycles = Cycle::whereBetween('semestre',[$semestreIni->semestre,$semestreFin->semestre])->get();        
-        $competencies = Competence::all();        
+        $competencies = Competence::all();
         $scoreCollection = collect();        
         foreach ($cycles as $key => $cycle) {            
             $evidences = Evidence::select(['id','puntaje','evaluation_id'])->whereHas('evaluation.schedule', function($query)use($cycle){
                 $query->where('cycle_id',$cycle->id);
-            })->whereHas('evaluation.performance',function($query)use($competencies){
+            })->whereHas('evaluation.performance',function($query)use($co){
                 $query->where('competence_id',$co);
             })->where('student_id',$id)->get();            
             $evidencesAvg = $evidences->avg('puntaje');        
@@ -98,10 +98,12 @@ class ReportController extends Controller
         ->values($scoreCollection)
         ->dimensions(1000,500)
         ->responsive(false);
-
+        $competence = Competence::find($co);
+        $student = Student::find($id);
         $data =[
             'chart' => $chart,
-            'competencies' => $competencies,
+            'competence' => $competence,
+            'student' => $student,
         ];
         return view('reports.studentGraph',$data);
     }
