@@ -70,13 +70,6 @@
                 </div>
             </div>
 
-             <div class="form-group">
-                {{Form::label('Curso: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
-                <div class="col-md-4 col-sm-8 col-xs-12">
-                    {{Form::text('curso',$courses,['id' => 'courseOfTeacher','class'=>'form-control', 'readonly'])}}
-                </div>
-            </div>
-
             <div class="row">
                 <div class="col-md-8 col-sm-12 col-xs-12">                    
                     <a class="btn btn-success pull-right" href="{{ route('docente.index') }}">Regresar</a>

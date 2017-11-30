@@ -46,6 +46,9 @@
                                     <a href="{{route('alumno.edit',$student->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">
                                         <i class="fa fa-pencil"></i>
                                     </a>
+                                    <a href="{{route('alumno.show',$student->id)}}" title="Detalles" class="btn btn-success btn-xs view-group">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
                                     <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$student->id}}">
                                         <i class="fa fa-trash-o"></i>
                                     </a>

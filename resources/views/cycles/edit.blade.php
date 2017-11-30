@@ -17,35 +17,35 @@
                 <h3 class="panel-title">Información</h3>
             </div>
             <div class="panel-body">
-            {{Form::open(['route' => 'ciclo.store','class' => ' form-horizontal','id'=>'formSuggestion'])}}  
+            {{Form::open(['route' => ['ciclo.update',$cycle->id],'class' => ' form-horizontal','method' => 'put'])}}  
                 <div class="form-group">
                     {{Form::label('Año: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                     <div class="col-md-4 col-sm-8 col-xs-12">
-                        {{Form::number('anho',null,['class'=>'form-control', 'required','min' => 1970, 'max' => 2077])}}
+                        {{Form::number('anho',$cycle->anho,['class'=>'form-control', 'required','min' => 1970, 'max' => 2077])}}
                     </div>
                 </div>
                 <div class="form-group">
                     {{Form::label('Periodo: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                     <div class="col-md-4 col-sm-8 col-xs-12">
-                        {{Form::number('periodo',null,['class'=>'form-control', 'required','min' => 0, 'max' => 2])}}
+                        {{Form::number('periodo',$cycle->periodo,['class'=>'form-control', 'required','min' => 0, 'max' => 2])}}
                     </div>
                 </div>
                 <div class="form-group">
                     {{Form::label('Fecha Inicio: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                     <div class="col-md-4">
-                        {{Form::date('fechainicio',null,['class'=>'form-control', 'required'])}}
+                        {{Form::date('fechainicio',$cycle->fechainicio,['class'=>'form-control', 'required'])}}
                     </div>
                 </div>
                 <div class="form-group">
                     {{Form::label('Fecha Fin: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                     <div class="col-md-4">
-                        {{Form::date('fechafin',null,['class'=>'form-control', 'required'])}}
+                        {{Form::date('fechafin',$cycle->fechafin,['class'=>'form-control', 'required'])}}
                     </div>
                 </div>
                 <div class="form-group">
                     {{Form::label('Estado: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                     <div class="col-md-4 col-sm-8 col-xs-12">
-                        {{Form::select('estado',[1 => 'Activo',2 => 'Proximo',3 => 'Culminado'],null,['placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
+                        {{Form::select('estado',[1 => 'Activo',2 => 'Proximo',3 => 'Culminado'],$cycle->estado,['placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
                     </div>
                 </div>
                 <div class="row">

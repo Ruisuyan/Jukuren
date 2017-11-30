@@ -32,7 +32,7 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        $cycles = Cycle::all();
+        $cycles = Cycle::where('estado','!=',3)->get(); //Todos los ciclos actuales y pendientes, no pasados
         $courses = Course::all();
         $data = [
             'cycles' => $cycles->pluck('semestre','id'),
@@ -136,8 +136,7 @@ class ScheduleController extends Controller
     {
         $schedule = Schedule::find($id);
         $students = Student::all();
-        //dd($teachers);
-        
+                
         $data = [
             'students' => $students,
             'schedule' => $schedule,            

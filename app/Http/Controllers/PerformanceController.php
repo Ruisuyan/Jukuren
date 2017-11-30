@@ -63,9 +63,13 @@ class PerformanceController extends Controller
      * @param  \App\Performance  $performance
      * @return \Illuminate\Http\Response
      */
-    public function show(Performance $performance)
+    public function show($id)
     {
-        //
+        $performance = Performance::find($id);        
+        $data = [
+            'performance' => $performance,        
+        ];
+        return view('performances.show',$data);
     }
 
     /**

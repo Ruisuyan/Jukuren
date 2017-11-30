@@ -22,8 +22,13 @@
             {{Form::open(['class' => ' form-horizontal','id'=>'formSuggestion'])}}
                 <div class="form-group">
                     {{Form::label('Tipo: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
-                    <div class="col-md-4 col-sm-8 col-xs-12">                        
-                        {{Form::text('tipo',$competence->tipo,['class'=>'form-control', 'readonly', 'maxlength' => 50])}}
+                    <div class="col-md-4 col-sm-8 col-xs-12">
+                        @if($competence->tipo==1)
+                            {{Form::text('tipo','Competencia genérica',['class'=>'form-control', 'readonly', 'maxlength' => 50])}}    
+                        @else
+                            {{Form::text('tipo','Competencia específica',['class'=>'form-control', 'readonly', 'maxlength' => 50])}}    
+                        @endif                        
+                        
                     </div>
                 </div>
 

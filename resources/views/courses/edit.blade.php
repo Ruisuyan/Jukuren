@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Nuevo Curso</h3>
+                    <h3>Editar Curso</h3>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                         <div class="form-group">
                             {{Form::label('Ciclo',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                             <div class="col-md-4">
-                                {{Form::number('cicloCurso',$course->ciclo,['class'=>'form-control', 'required'])}}
+                                {{Form::number('cicloCurso',$course->cicloCurso,['class'=>'form-control', 'required', 'min' => 1, 'max' => 10])}}
                             </div>
                         </div>                        
                         <div class="row">

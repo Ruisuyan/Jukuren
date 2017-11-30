@@ -5,21 +5,42 @@
     <div class="col-md-12">
         <div class="page-title">
             <div class="title_left">
-                <h3>Asignar Desempeño a Cursos</h3>
+                <h3>Asignar un desempeño a uno o más cursos</h3>
             </div>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{{$performance->nombre}}</h3>
-            </div>
+        <div class="panel panel-default">            
             <div class="panel-body">
              {{Form::open(['route' => ['desempenho.assignToCoursePost',$performance->id],'class' => ' form-horizontal','method'=>'put'])}}            
+
             <div class="form-group">
-                {{Form::label('Ciclo: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                {{Form::label('Desempeño:',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                <div class="col-md-4">
+                    {{Form::text('nombre',$performance->nombre,['class'=>'form-control', 'readonly', 'maxlength' => 500])}}                    
+                </div>
+                <div class="col-md-1">
+                    <a class="btn btn-success btn-xs form-control" title="Detalles" data-toggle="modal" data-target="#performance{{$performance->id}}">
+                        <i class="fa fa-eye "></i>
+                    </a>
+                </div>                
+            </div>
+            <div class="form-group">
+                {{Form::label('Competencia: ',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    {{Form::text('competencia',$performance->competence->nombre,['class'=>'form-control', 'readonly'])}}
+                </div>
+                <div class="col-md-1">
+                    <a class="btn btn-success btn-xs form-control" title="Detalles" data-toggle="modal" data-target="#competence{{$performance->competence->id}}">
+                        <i class="fa fa-eye "></i>
+                    </a>
+                </div> 
+            </div>
+            <hr/>
+            <div class="form-group">
+                {{Form::label('Ciclo del curso: ',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4 col-sm-8 col-xs-12">
                     {{Form::selectRange('cicloCurso',1,10,null,['id' => 'cycleOfCourse','placeholder' => 'Elegir','class'=>'form-control'])}}
                 </div>
@@ -37,8 +58,8 @@
                         <tr class="headings">
                             <th></th>                               
                             <th class="column-title">Codigo</th>
-                            <th class="column-title text-center">Nombre</th>                            
-                            <th class="column-title text-center">Ciclo de enseñanza</th>
+                            <th class="column-title">Nombre</th>                            
+                            <th class="column-title">Detalle</th>
                         </tr>
                     </thead> 
                     <tbody class="listOfCourses">
@@ -46,9 +67,14 @@
                         <tr class="course{{$course->cicloCurso}}"> 
                             <td>{{Form::checkbox('checks['. $course->id .']', $course->id)}}</td>
                             <td>{{$course->codigo}}</td>
-                            <td class='text-center'>{{$course->nombre}}</td>
-                            <td class='text-center'>{{$course->cicloCurso}}</td>                           
-                        </tr> 
+                            <td>{{$course->nombre}}</td>
+                            <td>
+                                <a class="btn btn-success btn-xs" title="Detalles" data-toggle="modal" data-target="#course{{$course->id}}">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        @include('modals.course', ['id'=> $course->id, 'course' => $course]) 
                         @endforeach
                     </tbody>
                 </table>                  
@@ -66,6 +92,8 @@
         </div>
     </div>
 </div>
+@include('modals.performance', ['id'=> $performance->id, 'performance' => $performance])
+@include('modals.competence', ['id'=> $performance->competence->id, 'competence' => $performance->competence])
 @endsection
 
 @section('scripts')

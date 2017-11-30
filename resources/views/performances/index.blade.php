@@ -41,17 +41,25 @@
                                 <td>{{$performance->competence->nombre}}</td>
                                 <td class="centered">
                                     <a href="{{route('desempenho.edit',$performance->id)}}" title="Editar" class="btn btn-primary btn-xs view-group">
-                                        <i class="fa fa-pencil"> Editar</i>
+                                        <i class="fa fa-pencil"></i>
                                     </a>
-                                    <a href="{{route('desempenho.assignToCourseGet',$performance->id)}}" title="Asignar a Curso" class="btn btn-success btn-xs view-group">
-                                        <i class="fa fa-arrow-circle-o-right"> Asignar a cursos</i>
-                                    </a>
+                                    <a href="{{route('desempenho.show',$performance->id)}}" title="Detalles" class="btn btn-success btn-xs view-group">
+                                        <i class="fa fa-eye"></i>
+                                    </a>                                    
                                     <a class="btn btn-danger btn-xs delete-group" title="Eliminar" data-toggle="modal" data-target="#{{$performance->id}}">
-                                        <i class="fa fa-trash-o"> Eliminar</i>
+                                        <i class="fa fa-trash-o"></i>
                                     </a>
+                                    |                                    
+                                    <a href="{{route('desempenho.assignToCourseGet',$performance->id)}}" title="Asignar a Curso">
+                                        <button type="button" class="btn btn-success btn-xs view-group">
+                                        <i class="fa fa-arrow-circle-o-right"></i>
+                                        Asignar a cursos
+                                        </button>                                        
+                                    </a>
+                                    
                                 </td>
                             </tr>
-                            @include('modals.destroy', ['id'=> $performance->id, 'message' => '¿Esta seguro que desea eliminar este desempeño?', 'route' => 'desempenho.destroy'])  
+                            @include('modals.destroy', ['id'=> $performance->id, 'message' => '¿Esta seguro que desea eliminar este desempeño?', 'route' => 'desempenho.destroy'])                                
                             @endforeach
                         </tbody>
                     </table>                  

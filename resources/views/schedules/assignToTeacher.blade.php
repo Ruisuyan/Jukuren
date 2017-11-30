@@ -19,29 +19,23 @@
             <div class="panel-body">
              {{Form::open(['route' =>['horario.assignToTeacherPost',$schedule->id],'class' => ' form-horizontal','method'=>'put'])}}            
              <div class="form-group">
-                {{Form::label('Codigo',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                {{Form::label('Codigo del horario',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::label('codigo',$schedule->codigo,['class'=>'form-control'])}}
+                    {{Form::text('codigo',$schedule->codigo,['class'=>'form-control','readonly'])}}
                 </div>
             </div>
             <div class="form-group">
-                {{Form::label('Nombre',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                {{Form::label('Nombre del curso',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4">
-                    {{Form::label('nombre',$schedule->course->nombre,['class'=>'form-control'])}}
+                    {{Form::text('nombre',$schedule->course->nombre,['class'=>'form-control','readonly'])}}
                 </div>
             </div>
             <div class="form-group">
-                {{Form::label('Ciclo Academico: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                {{Form::label('Ciclo Academico: ',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                 <div class="col-md-4 col-sm-8 col-xs-12">
-                    {{Form::label('cicloAcademico',$schedule->cycle->semestre,['id' => 'academicCycle','class'=>'form-control'])}}
+                    {{Form::text('cicloAcademico',$schedule->cycle->semestre,['id' => 'academicCycle','class'=>'form-control','readonly'])}}
                 </div>
-            </div>
-            <div class="form-group">
-                {{Form::label('Ciclo (nivel academico): *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
-                <div class="col-md-4 col-sm-8 col-xs-12">
-                    {{Form::label('cicloCurso',$schedule->course->cicloCurso,['id' => 'cycleOfCourse','class'=>'form-control'])}}
-                </div>
-            </div>            
+            </div>           
 
              {{-- Tabla   --}}
 
@@ -56,7 +50,6 @@
                                 <th class="column-title"></th>
                                 <th class="column-title">Codigo</th>
                                 <th class="column-title">Nombre</th>
-                                <th class="column-title">Correo</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,8 +58,13 @@
                                 <td>{{Form::radio('teacherId', $teacher->id)}}</td>
                                 <td>{{$teacher->codigo}}</td>
                                 <td>{{$teacher->nombres . ' ' . $teacher->apellidoPaterno . ' ' . $teacher->apellidoMaterno}}</td>
-                                <td>{{$teacher->email}}</td>                                                               
-                            </tr> 
+                                <td>
+                                    <a class="btn btn-success btn-xs" title="Detalles" data-toggle="modal" data-target="#teacher{{$teacher->id}}">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </td>                                                               
+                            </tr>
+                            @include('modals.teacher', ['id'=> $teacher->id, 'teacher' => $teacher])  
                             @endforeach
                         </tbody>
                     </table>                  

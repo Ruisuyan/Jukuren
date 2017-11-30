@@ -97,7 +97,7 @@ class CourseController extends Controller
             $course->codigo = $request['codigo'];
             $course->nombre = $request['nombre'];
             $course->descripcion = $request['descripcion'];
-            $course->ciclo = $request['ciclo'];
+            $course->cicloCurso = $request['cicloCurso'];
             $course->save();
             return redirect()->route('curso.index',$id)->with('success','yay');
         }catch(Exception $e){

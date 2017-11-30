@@ -15,8 +15,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all()->sortBy('nombres');
-//        dd($teachers);
+        $teachers = Teacher::all()->sortBy('codigo');
         $data = [
             'teachers' => $teachers,
         ];
@@ -49,12 +48,7 @@ class TeacherController extends Controller
             $teacher->apellidoMaterno = $request['apellidoMaterno'];
             $teacher->oficina = $request['oficina'];
             $teacher->email = $request['email'];
-            $teacher->telefono = $request['telefono'];
-            // $teacher->tiempoCompleto =  0;
-            // if($request['tiempoCompleto']){
-            //     $teacher->tiempoCompleto = $request['tiempoCompleto'];
-            // }            
-            //dd($teacher);
+            $teacher->telefono = $request['telefono'];            
             $teacher->save();
 
             return redirect()->route('docente.index')->with('success','Se registró un docente exitosamente');
