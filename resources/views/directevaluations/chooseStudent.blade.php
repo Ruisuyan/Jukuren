@@ -32,7 +32,7 @@
                                 <td>{{$student->codigo}}</td> 
                                 <td>{{$student->nombres.' '.$student->apellidoPaterno}}</td>                                
                                 <td class="centered">
-                                    <a href="{{route('directa.putScoreGet',[$student->id,$evaluation->id])}}" title="Puntuar" class="btn btn-primary btn-xs view-group">
+                                    <a href="{{route('directa.putScoreGet',[$evaluation->id,$student->id,])}}" title="Puntuar" class="btn btn-primary btn-xs view-group">
                                         <i class="fa fa-pencil">Puntuar</i>
                                     </a>
                                 </td>                        

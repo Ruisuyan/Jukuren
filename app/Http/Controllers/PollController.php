@@ -7,6 +7,7 @@ use App\Teacher;
 use App\Evaluation;
 use App\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PollController extends Controller
 {
@@ -63,7 +64,7 @@ class PollController extends Controller
                 $question->poll_id = $poll->id;               
                 $question->save();
             }
-            return redirect()->route('cuestionario.index')->with('success','Se registró un cuestionario exitosamente');
+            return redirect()->route('evaluacion.index')->with('success','Se registró un cuestionario exitosamente');
         }catch(Exception $e){
             return redirect()->back()->with('warning','Ocurrió un error en el registro');
         }

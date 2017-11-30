@@ -112,9 +112,9 @@
                         {{Form::label('-',null,['class'=>'control-label col-md-2 col-sm-2 col-xs-1 col-md-offset-0 col-sm-offset-0 col-xs-offset-5'])}}
                         <div class="col-md-8 col-sm-8 col-xs-6">
                             <div class="input-group">									
-                                {{Form::text('clave[1]',null,['class'=>'form-control tCerrada', 'maxlength' => 500])}}
+                                {{Form::text('clave[1]',null,['class'=>'form-control','required' => 'required', 'maxlength' => 500])}}
                                 <span class="input-group-addon">
-                                    <input class="tCerr" type="number" value="0" name="puntaje[1]" > Puntaje 
+                                    <input type="number" required value="0" name="puntaje[1]" > Puntaje 
                                 </span>
                             </div>
                         </div>

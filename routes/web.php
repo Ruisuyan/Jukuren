@@ -65,7 +65,7 @@ Route::post('/reporte/elegirHorario',['as' => 'reporte.scheduleSelectPost', 'use
 Route::get('/reporte/reporteHorario/{id}',['as' => 'reporte.scheduleReport', 'uses' => 'ReportController@scheduleReport'])->middleware('teacher');
 Route::get('/reporte/elegirParametros',['as' => 'reporte.studentParametersGet', 'uses' => 'ReportController@studentParametersGet'])->middleware('coord');
 Route::post('/reporte/elegirParametros',['as' => 'reporte.studentParametersPost', 'uses' => 'ReportController@studentParametersPost'])->middleware('coord');
-Route::get('/reporte/graficoAlumno/{id}{si}{sf}',['as' => 'reporte.studentGraph', 'uses' => 'ReportController@studentGraph'])->middleware('coord');
+Route::get('/reporte/graficoAlumno/{id}{si}{sf}{co}',['as' => 'reporte.studentGraph', 'uses' => 'ReportController@studentGraph'])->middleware('coord');
 Route::resource('reporte', 'ReportController')->middleware('teacher');
 //EnLinea
 Route::get('/evaluacionenlinea/infoCuestionario/{id}',['as' => 'evaluacionenlinea.infoPoll', 'uses' => 'OnlineEvaluationController@infoPoll'])->middleware('student');

@@ -24,12 +24,12 @@ class DirectevaluationController extends Controller
     }
 
     public function putScoreGet($id,$ev)
-    {   
-        // dd($id);            
+    {                   
+        
         $evaluation = Evaluation::where('id',$id)->with('levels')->first(); 
-        // dd($evaluation);            
+                   
         $student = Student::where('id',$ev)->first();
-        // dd($student);
+        
         $data = [
             'evaluation' => $evaluation,
             'student' => $student,

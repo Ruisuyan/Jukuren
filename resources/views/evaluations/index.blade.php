@@ -44,7 +44,10 @@
                                 <td>{{$evaluation->fechaFin}}</td>
                                 @if($evaluation->tipo == 1)
                                     <td>Carga de evidencia</td>
-                                    <td class="centered">   
+                                    <td class="centered">
+                                        <a href="{{route('evaluacion.edit',$evaluation->id)}}" title="Editar" class="btn btn-success btn-xs view-group">
+                                            <i class="fa fa-eye"></i>
+                                        </a>   
                                         <a href="{{route('evidencia.evidencesIndex',$evaluation->id)}}" title="Revisar evidencia">
                                             <button type="button" class="btn btn-success btn-xs view-group">
                                                 <i class="fa fa-arrow-circle-o-right"></i>
@@ -56,6 +59,9 @@
                                     <td>Cuestionario</td>
                                     <td class="centered">
                                     @if(count($evaluation->poll))
+                                        <a href="{{route('evaluacion.edit',$evaluation->id)}}" title="Editar" class="btn btn-success btn-xs view-group">
+                                            <i class="fa fa-eye"></i>
+                                        </a> 
                                         <a href="{{route('evaluacionenlinea.pollsIndex',$evaluation->id)}}" title="Revisar cuestionarios">
                                             <button type="button" class="btn btn-success btn-xs view-group">
                                                 <i class="fa fa-arrow-circle-o-right"></i>
@@ -63,6 +69,9 @@
                                             </button>
                                         </a>
                                     @else
+                                        <a href="{{route('evaluacion.edit',$evaluation->id)}}" title="Editar" class="btn btn-success btn-xs view-group">
+                                            <i class="fa fa-eye"></i>
+                                        </a> 
                                         <a href="{{route('cuestionario.create',$evaluation->id)}}" title="Crear cuestionario">
                                             <button type="button" class="btn btn-success btn-xs view-group">
                                                 <i class="fa fa-arrow-circle-o-right"></i>
@@ -74,6 +83,9 @@
                                 @elseif($evaluation->tipo == 3)
                                     <td>Directa</td>
                                     <td class="centered">
+                                        <a href="{{route('evaluacion.edit',$evaluation->id)}}" title="Editar" class="btn btn-success btn-xs view-group">
+                                            <i class="fa fa-eye"></i>
+                                        </a> 
                                         <a href="{{route('directa.chooseStudent',$evaluation->id)}}" title="Asignar puntajes">
                                             <button type="button" class="btn btn-success btn-xs view-group">
                                                 <i class="fa fa-arrow-circle-o-right"></i>

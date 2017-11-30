@@ -19,13 +19,19 @@
 				<div class="form-group">
                     {{Form::label('Semestre inicial: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                     <div class="col-md-4 col-sm-8 col-xs-12">
-                        {{Form::select('semestreIni',$semestreIni,null,['id' => 'competenceOfQuestions','placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
+                        {{Form::select('semestreIni',$semestreIni,null,['placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
                     </div>
                 </div>
 				<div class="form-group">
                     {{Form::label('Semestre final: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
                     <div class="col-md-4 col-sm-8 col-xs-12">
-                        {{Form::select('semestreFin',$semestreFin,null,['id' => 'competenceOfQuestions','placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
+                        {{Form::select('semestreFin',$semestreFin,null,['placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
+                    </div>
+                </div>
+				<div class="form-group">
+                    {{Form::label('Competencia: *',null,['class'=>'control-label col-md-4 col-sm-3 col-xs-12'])}}
+                    <div class="col-md-4 col-sm-8 col-xs-12">
+                        {{Form::select('competenceId',$competencies,null,['placeholder' => 'Elegir','class'=>'form-control', 'required'])}}
                     </div>
                 </div>
 

@@ -16,41 +16,42 @@
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="panel panel-default">
 			<div class="panel-body">
-                {{--  <div id="contador_tiempo">
-                    <h5 style="display: inline-block;" id="h">Tiempo restante:</h5>
-                    <div style="display: inline-block;" id="contador"></div>
-                </div>  --}}
-			
+                			
 			{{Form::open(['route' => ['evaluacionenlinea.solvePollPost',$evaluation->id], 'class'=>'form-horizontal','method' => 'put'])}}
 				{{Form::hidden('evaluationId',$evaluation->id)}}
 				
 					@foreach($poll->questions as $key => $question)
 						@if($question->tipo == 1)
 						<div class="form-group">
-							<h4>Pregunta {{$key+1}}</h4>
-							<p>{{$question->enunciado}}</p>
+						<div class="col-md-12">
+						<h4>Pregunta {{$key+1}}</h4>
+							<p class="form-control">{{$question->enunciado}}</p>
 							<h5>Respuesta: (máximo 5000 caracteres)</h5>
-							<textarea class="form-control" name="arrQuestion[{{$question->id}}]" rows="4" maxlength="5000"></textarea>						
+							<textarea class="form-control" name="arrQuestion[{{$question->id}}]" rows="4" maxlength="5000"></textarea>
+						</div>
+													
 						</div><br>
 						@elseif($question->tipo == 2)
 						<div class="form-group">
-							<h4>Pregunta {{$key+1}}</h4>
-							<p>{{$question->enunciado}}</p>
-							<h5>Respuesta:</h5>
-							<ul>
-								<li hidden>
-									<p>
-										<input checked name="arrQuestion[{{$question->id}}]" value="0" type="radio" />		
-									</p>															
-								</li>
-								@foreach($question->alternatives as $subKey => $alternative)
-								<li>
-									<div class="radio">
-									<label><input name="arrQuestion[{{$question->id}}]" value="{{$subKey+1}}" type="radio" id="clave_{{$question->id}}_{{$subKey+1}}" /> {{$subKey+1}}. {{$alternative->descripcion}} </label>
-									</div>											
-								</li>
-								@endforeach
-							</ul>
+							<div class="col-md-12">
+								<h4>Pregunta {{$key+1}}</h4>
+								<p class="form-control">{{$question->enunciado}}</p>
+								<h5>Respuesta:</h5>
+								<ul>
+									<li hidden>
+										<p>
+											<input checked name="arrQuestion[{{$question->id}}]" value="0" type="radio" />		
+										</p>															
+									</li>
+									@foreach($question->alternatives as $subKey => $alternative)
+									<li>
+										<div class="radio">
+										<label><input class="form-control" name="arrQuestion[{{$question->id}}]" value="{{$subKey+1}}" type="radio" id="clave_{{$question->id}}_{{$subKey+1}}" /> {{$subKey+1}}. {{$alternative->descripcion}} </label>
+										</div>											
+									</li>
+									@endforeach
+								</ul>
+							</div>							
 						</div><br>
 						@endif
 					@endforeach

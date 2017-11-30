@@ -59,7 +59,6 @@ class EvaluationController extends Controller
             'teacherId' => $teacherId,
             'performances' => $schedule->course->performances,
         ];
-        //dd($data);
         return view('evaluations.create',$data);
     }
 
@@ -98,7 +97,7 @@ class EvaluationController extends Controller
                 $level->save();
             }
 
-            return redirect()->route('evaluacion.index')->with('success','Se registró una evluación exitosamente');
+            return redirect()->route('evaluacion.index')->with('success','Se registró una evaluación exitosamente');
         }catch(Exception $e){
             return redirect()->back();
         }
@@ -117,7 +116,7 @@ class EvaluationController extends Controller
         $data = [
             'evaluation' => $evaluation,
         ];
-        return view('evaluations.show');
+        return view('evaluations.show',$data);
     }
 
     /**
@@ -131,8 +130,9 @@ class EvaluationController extends Controller
         $evaluation = Evaluation::find($id);
         $data = [
             'evaluation' => $evaluation,
+            'performances' => $evaluation->schedule->course->performances->pluck('nombre','id'),
         ];
-        return view('evaluations.edit');
+        return view('evaluations.edit',$data);
     }
 
     /**

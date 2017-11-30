@@ -54,10 +54,12 @@ class ReportController extends Controller
     {
         $students = Student::orderBy('codigo')->paginate(10);
         $cycles = Cycle::all();
+        $competencies = Competence::all();
         $data = [
             'students' => $students,
             'semestreIni' => $cycles->pluck('semestre','id'),
             'semestreFin' => $cycles->pluck('semestre','id'),
+            'competencies' => $competencies,
         ];
         return view('reports.studentParameters',$data);
     }
@@ -67,23 +69,23 @@ class ReportController extends Controller
         $studentId  =  $request['studentId'];
         $semestreIni = $request['semestreIni'];
         $semestreFin = $request['semestreFin'];
+        $competence = $request['competenceId'];
 
-        return redirect()->route('reporte.studentGraph',[$studentId,$semestreIni,$semestreFin]);
+        return redirect()->route('reporte.studentGraph',[$studentId,$semestreIni,$semestreFin,$competence]);
     }
 
-    public function studentGraph($id,$si,$sf)
+    public function studentGraph($id,$si,$sf,$co)
     {        
         $semestreIni = Cycle::find($si);                
         $semestreFin = Cycle::find($sf);        
         $cycles = Cycle::whereBetween('semestre',[$semestreIni->semestre,$semestreFin->semestre])->get();        
-        $competencies = Competence::all();
-        //dd($competencies[0]);
+        $competencies = Competence::all();        
         $scoreCollection = collect();        
         foreach ($cycles as $key => $cycle) {            
             $evidences = Evidence::select(['id','puntaje','evaluation_id'])->whereHas('evaluation.schedule', function($query)use($cycle){
                 $query->where('cycle_id',$cycle->id);
             })->whereHas('evaluation.performance',function($query)use($competencies){
-                $query->where('competence_id',$competencies[0]->id);
+                $query->where('competence_id',$co);
             })->where('student_id',$id)->get();            
             $evidencesAvg = $evidences->avg('puntaje');        
             $scoreCollection->push($evidencesAvg);

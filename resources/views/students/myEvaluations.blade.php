@@ -32,7 +32,7 @@
                             <th class="centered column-title">Curso</th>
                             <th class="centered column-title">Fecha Inicio</th>
                             <th class="centered column-title">Fecha Fin</th>
-                            {{--  <th class="centered column-title">Desempeño</th>--}}
+                            <th class="centered column-title">Ver</th>
                             <th class="centered column-title">Acciones</th>
                         </tr>
                         </thead>
@@ -44,21 +44,37 @@
                                     <td>{{$evaluation->schedule->course->nombre}}</td>
                                     <td>{{$evaluation->fechaInicio}}</td>
                                     <td>{{$evaluation->fechaFin}}</td>
+                                    <td>
+                                    <a class="btn btn-success btn-xs" title="Detalles" data-toggle="modal" data-target="#evaluation{{$evaluation->id}}">
+										<i class="fa fa-eye"></i>
+									</a>
+                                    </td>
                                     {{--  <td>{{$evaluation->performance->nombre}}</td>  --}}
-                                    @if($evaluation->tipo == 1)
+                                    @if(($timeNow->diffInDays(\Carbon\Carbon::createFromFormat('Y-m-d', $evaluation->fechaFin), false))<0)
+                                        <td>No disponible por fecha limite</td>
+                                    @elseif($evaluation->tipo == 1)                                    
                                         <td>
-                                            <a href="{{route('evidencia.uploadEvidenceGet',$evaluation->id)}}" title="Resolver" class="btn btn-success btn-xs view-group">
-                                                <i class="fa fa-arrow-circle-o-right">Subir Archivo</i>
-                                            </a> 
+                                            <a href="{{route('evidencia.uploadEvidenceGet',$evaluation->id)}}" title="Resolver">
+                                                <button type="button" class="btn btn-success btn-xs view-group">
+                                                    <i class="fa fa-arrow-circle-o-right"></i>
+                                                    Subir Archivo
+                                                </button>
+                                            </a>
                                         </td>
                                     @elseif($evaluation->tipo == 2)
                                         <td>
-                                            <a href="{{route('evaluacionenlinea.infoPoll',$evaluation->id)}}" title="Resolver" class="btn btn-success btn-xs view-group">
-                                                <i class="fa fa-arrow-circle-o-right">Resolver Cuestionario</i>
-                                            </a> 
+                                            <a href="{{route('evaluacionenlinea.infoPoll',$evaluation->id)}}" title="Resolver">
+                                                <button type="button" class="btn btn-success btn-xs view-group">
+                                                    <i class="fa fa-arrow-circle-o-right"></i>
+                                                    Resolver Cuestionario
+                                                </button>
+                                            </a>
                                         </td>
+                                    @elseif($evaluation->tipo == 3)    
+                                        <td>Es una evaluacion directa del docente</td>
                                     @endif
-                                </tr> 
+                                </tr>
+                                @include('modals.evaluation', ['id'=> $evaluation->id, 'evaluation' => $evaluation]) 
                                 @endforeach                            
                             @endforeach
                         </tbody>

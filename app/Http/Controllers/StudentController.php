@@ -7,6 +7,7 @@ use App\Schedule;
 use App\ScheduleXStudent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Carbon\Carbon;
 
 class StudentController extends Controller
 {
@@ -128,8 +129,10 @@ class StudentController extends Controller
     {
         $userId = auth()->user()->id;
         $student = Student::where('user_id',$userId)->with('schedules.evaluations')->first();
+        $timeNow = Carbon::now();
         $data = [
             'student' => $student,
+            'timeNow' => $timeNow,
         ];
         return view('students.myEvaluations',$data);
     }
