@@ -77,7 +77,8 @@
                         @include('modals.course', ['id'=> $course->id, 'course' => $course]) 
                         @endforeach
                     </tbody>
-                </table>                  
+                </table>
+                {{$courses->links()}}
             </div>
 
             <div class="row">

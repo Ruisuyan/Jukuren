@@ -62,7 +62,8 @@
                             @include('modals.destroy', ['id'=> $performance->id, 'message' => '¿Esta seguro que desea eliminar este desempeño?', 'route' => 'desempenho.destroy'])                                
                             @endforeach
                         </tbody>
-                    </table>                  
+                    </table>
+                    {{$performances->links()}}                  
                 </div>
             </div>
         </div>

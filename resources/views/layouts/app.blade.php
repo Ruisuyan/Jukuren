@@ -12,7 +12,7 @@
 
     <!-- Styles -->    
     <link rel="stylesheet" href="{{ asset('css/vendor.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />    
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />        
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}" />
      {!! Charts::styles() !!}
 </head>
@@ -43,29 +43,8 @@
 
 
 <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/toastr.min.js') }}" type="text/javascript"></script>
-<script type="text/javascript">
-  //Code for show success  messages
-  @if( @Session::has('success') )
-    toastr.success('{{ @Session::get('success') }}');
-  @endif
-</script>
-
-<script type="text/javascript">
-  //Code for show success  messages
-  @if( @Session::has('warning') )
-    toastr.error('{{ @Session::get('warning') }}');
-  @endif
-</script>
-
-<script type="text/javascript">
-  //Code for show back error messages
-  @if (@Session::has('errors'))
-    @foreach ($errors->all() as $error)
-        toastr.error('{{ @$error }}');
-    @endforeach
-  @endif
-</script>
 {!! Charts::scripts() !!}
 @yield('scripts')
 @show

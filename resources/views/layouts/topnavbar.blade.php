@@ -1,14 +1,9 @@
 <div class="row border-bottom">
     <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
+            {{--  <div class="container">  --}}
                 @auth               
                 <div class="navbar-header">
-                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-                    {{--  <form role="search" class="navbar-form-custom" method="post" action="/">
-                        <div class="form-group" hidden>
-                            <input type="text" placeholder="Buscar..." class="form-control" name="top-search" id="top-search" />
-                        </div>
-                    </form>  --}}
+                    {{--  <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>                      --}}
                 </div>
                 @endauth
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -25,27 +20,27 @@
                             <li><a href="{{ route('register') }}">Registrarse</a></li>
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                {{--  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>  --}}
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    Cerrar Sesión
                                 </a>
 
-                                <ul class="dropdown-menu">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                                {{--  <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Cerrar Sesión
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
+                                        
                                     </li>
-                                </ul>
+                                </ul>  --}}
                             </li>
                         @endguest
                     </ul>
                 </div>
-            </div>
+            {{--  </div>  --}}
         </nav>
 </div>

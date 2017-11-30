@@ -6,6 +6,7 @@ use App\Performance;
 use App\Competence;
 use App\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PerformanceController extends Controller
 {
@@ -16,7 +17,8 @@ class PerformanceController extends Controller
      */
     public function index()
     {
-        $performances = Performance::all();        
+        $performances = Performance::orderBy('nombre')->paginate(10);        
+        // dd($performances);
         $data = [
             'performances' => $performances,
         ];
@@ -133,7 +135,7 @@ class PerformanceController extends Controller
     public function assignToCourseGet($id)
     {
         $performance = Performance::find($id);
-        $courses = Course::all();        
+        $courses = Course::orderBy('codigo')->paginate(10);;        
         $data = [
             'performance' => $performance,
             'courses' => $courses,

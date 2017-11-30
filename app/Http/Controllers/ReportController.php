@@ -11,7 +11,9 @@ use App\Teacher;
 use App\Level;
 use App\Cycle;
 use App\OnlineEvaluation;
+use App\Competence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Charts;
 
 class ReportController extends Controller
@@ -23,19 +25,70 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $cycles = Cycle::select(['id','semestre'])->whereBetween('semestre',['2015-1','2017-1'])->get();        
+        // $cycles = Cycle::select(['id','semestre'])->whereBetween('semestre',['2015-1','2017-1'])->get();        
         
+        // $scoreCollection = collect();        
+        // foreach ($cycles as $key => $cycle) {            
+        //     $evidences = Evidence::select(['id','puntaje','evaluation_id'])->whereHas('evaluation.schedule', function($query)use($cycle){
+        //         $query->where('cycle_id',$cycle->id);
+        //     })->whereHas('evaluation.performance',function($query){
+        //         $query->where('competence_id','1');
+        //     })->where('student_id','3')->get();            
+        //     $evidencesAvg = $evidences->avg('puntaje');        
+        //     $scoreCollection->push($evidencesAvg);
+        // }
+        // $chart = Charts::create('line', 'highcharts')
+        // ->title('Desempeño')
+        // ->elementLabel('Desempeño')
+        // ->labels($cycles->pluck('semestre'))
+        // ->values($scoreCollection)
+        // ->dimensions(1000,500)
+        // ->responsive(false);
+        // $data =[
+        //     'chart' => $chart,
+        // ];
+        // return view('reports.index',$data);
+    }
+
+    public function studentParametersGet()
+    {
+        $students = Student::orderBy('codigo')->paginate(10);
+        $cycles = Cycle::all();
+        $data = [
+            'students' => $students,
+            'semestreIni' => $cycles->pluck('semestre','id'),
+            'semestreFin' => $cycles->pluck('semestre','id'),
+        ];
+        return view('reports.studentParameters',$data);
+    }
+
+    public function studentParametersPost(Request $request)
+    {
+        $studentId  =  $request['studentId'];
+        $semestreIni = $request['semestreIni'];
+        $semestreFin = $request['semestreFin'];
+
+        return redirect()->route('reporte.studentGraph',[$studentId,$semestreIni,$semestreFin]);
+    }
+
+    public function studentGraph($id,$si,$sf)
+    {        
+        $semestreIni = Cycle::find($si);                
+        $semestreFin = Cycle::find($sf);        
+        $cycles = Cycle::whereBetween('semestre',[$semestreIni->semestre,$semestreFin->semestre])->get();        
+        $competencies = Competence::all();
+        //dd($competencies[0]);
         $scoreCollection = collect();        
         foreach ($cycles as $key => $cycle) {            
             $evidences = Evidence::select(['id','puntaje','evaluation_id'])->whereHas('evaluation.schedule', function($query)use($cycle){
                 $query->where('cycle_id',$cycle->id);
-            })->whereHas('evaluation.performance',function($query){
-                $query->where('competence_id','1');
-            })->where('student_id','3')->get();
-            //dd($evidences);
+            })->whereHas('evaluation.performance',function($query)use($competencies){
+                $query->where('competence_id',$competencies[0]->id);
+            })->where('student_id',$id)->get();            
             $evidencesAvg = $evidences->avg('puntaje');        
             $scoreCollection->push($evidencesAvg);
         }
+        //dd($scoreCollection);
         $chart = Charts::create('line', 'highcharts')
         ->title('Desempeño')
         ->elementLabel('Desempeño')
@@ -43,12 +96,13 @@ class ReportController extends Controller
         ->values($scoreCollection)
         ->dimensions(1000,500)
         ->responsive(false);
+
         $data =[
             'chart' => $chart,
+            'competencies' => $competencies,
         ];
-        return view('reports.index',$data);
+        return view('reports.studentGraph',$data);
     }
-
     /**
      * Show the form for creating a new resource.
      *

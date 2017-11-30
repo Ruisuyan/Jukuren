@@ -23,22 +23,6 @@ class DirectevaluationController extends Controller
         return view('directevaluations.chooseStudent',$data);
     }
 
-    // public function chooseStudentPost(Request $request)
-    // {
-    //     try{
-    //         $evaluation = Evaluation::select('id')->where('id',$request['evaluationId'])->first();
-    //         $direct = new Directevaluation;
-    //         $direct->fechaEvaluacion = Carbon::now();
-    //         $direct->evaluation_id = $evaluation->id;
-    //         $direct->student_id = $request['studentId'];
-    //         $direct->save();
-    //         return redirect()->route('directa.putScoreGet',$direct->id);
-    //     }catch(Exception $e){
-    //         return redirect()->back()->with('warning','Error en el proceso');
-    //     }      
-        
-    // }
-
     public function putScoreGet($id,$ev)
     {   
         // dd($id);            

@@ -71,7 +71,7 @@
                             <li class="bold"><a href="{{route('reporte.scheduleSelectGet')}}">Por horario</a></li>
                         @endif
                         @if(auth()->user()->role_id==2)
-                        <li class="bold"><a href="#">Por alumno</a></li>
+                            <li class="bold"><a href="{{route('reporte.studentParametersGet')}}">Por alumno</a></li>
                         @endif
                     </ul>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
@@ -14,7 +15,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all()->sortBy('cicloCurso');        
+        $courses = Course::orderBy('codigo')->paginate(10);        
         $data = [
             'courses' => $courses,
         ];

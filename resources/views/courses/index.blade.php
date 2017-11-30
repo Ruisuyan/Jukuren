@@ -55,7 +55,8 @@
                             @include('modals.destroy', ['id'=> $course->id, 'message' => '¿Esta seguro que desea eliminar este curso?', 'route' => 'curso.destroy'])  
                             @endforeach
                         </tbody>
-                    </table>                  
+                    </table>
+                    {{ $courses->links() }}                  
                 </div>
             </div>
         </div>

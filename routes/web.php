@@ -63,6 +63,9 @@ Route::resource('evidencia', 'EvidenceController')->middleware('auth');
 Route::get('/reporte/elegirHorario',['as' => 'reporte.scheduleSelectGet', 'uses' => 'ReportController@scheduleSelectGet'])->middleware('teacher');
 Route::post('/reporte/elegirHorario',['as' => 'reporte.scheduleSelectPost', 'uses' => 'ReportController@scheduleSelectPost'])->middleware('teacher');
 Route::get('/reporte/reporteHorario/{id}',['as' => 'reporte.scheduleReport', 'uses' => 'ReportController@scheduleReport'])->middleware('teacher');
+Route::get('/reporte/elegirParametros',['as' => 'reporte.studentParametersGet', 'uses' => 'ReportController@studentParametersGet'])->middleware('coord');
+Route::post('/reporte/elegirParametros',['as' => 'reporte.studentParametersPost', 'uses' => 'ReportController@studentParametersPost'])->middleware('coord');
+Route::get('/reporte/graficoAlumno/{id}{si}{sf}',['as' => 'reporte.studentGraph', 'uses' => 'ReportController@studentGraph'])->middleware('coord');
 Route::resource('reporte', 'ReportController')->middleware('teacher');
 //EnLinea
 Route::get('/evaluacionenlinea/infoCuestionario/{id}',['as' => 'evaluacionenlinea.infoPoll', 'uses' => 'OnlineEvaluationController@infoPoll'])->middleware('student');
